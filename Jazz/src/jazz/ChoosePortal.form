@@ -17,16 +17,16 @@
             <Property name="text" type="java.lang.String" value="File"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="contactusButton">
+            <MenuItem class="javax.swing.JMenuItem" name="cntactusButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Contact Us"/>
               </Properties>
-            </Menu>
-            <Menu class="javax.swing.JMenu" name="closeButton">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="closeButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Close"/>
               </Properties>
-            </Menu>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu2">
@@ -34,11 +34,11 @@
             <Property name="text" type="java.lang.String" value="Others"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="featuresButton">
+            <MenuItem class="javax.swing.JMenuItem" name="featureButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Features"/>
               </Properties>
-            </Menu>
+            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>

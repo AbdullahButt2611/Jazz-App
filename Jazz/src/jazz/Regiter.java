@@ -34,15 +34,12 @@ public class Regiter extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         registerButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
         userText = new javax.swing.JTextField();
         cnicText = new javax.swing.JTextField();
         contactText = new javax.swing.JTextField();
         emailtext = new javax.swing.JTextField();
-        mradio = new javax.swing.JRadioButton();
-        fradio = new javax.swing.JRadioButton();
         invalidUsername = new javax.swing.JLabel();
         invalidCnic = new javax.swing.JLabel();
         invalidContact = new javax.swing.JLabel();
@@ -75,10 +72,6 @@ public class Regiter extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(251, 255, 0));
         jLabel6.setText("Email :");
 
-        jLabel7.setFont(new java.awt.Font("Calibri", 1, 22)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(251, 255, 0));
-        jLabel7.setText("Gender :");
-
         registerButton.setBackground(new java.awt.Color(3, 3, 194));
         registerButton.setFont(new java.awt.Font("Calibri", 1, 28)); // NOI18N
         registerButton.setForeground(new java.awt.Color(255, 255, 255));
@@ -110,19 +103,6 @@ public class Regiter extends javax.swing.JFrame {
         emailtext.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         emailtext.setForeground(new java.awt.Color(255, 255, 255));
 
-        buttonGroup1.add(mradio);
-        mradio.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        mradio.setText("Male");
-        mradio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mradioActionPerformed(evt);
-            }
-        });
-
-        buttonGroup1.add(fradio);
-        fradio.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        fradio.setText("Female");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -142,7 +122,6 @@ public class Regiter extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7)
                             .addComponent(jLabel6)
                             .addComponent(jLabel5)
                             .addComponent(jLabel4)
@@ -150,10 +129,6 @@ public class Regiter extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(emailtext, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(mradio)
-                                .addGap(39, 39, 39)
-                                .addComponent(fradio))
                             .addComponent(contactText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cnicText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(userText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -193,18 +168,9 @@ public class Regiter extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(emailtext, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel7))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(invalidEmail)
-                        .addGap(5, 5, 5)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(mradio)
-                            .addComponent(fradio))))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(invalidEmail)
+                .addGap(74, 74, 74)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -219,10 +185,6 @@ public class Regiter extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1088, 647));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void mradioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mradioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mradioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -265,7 +227,6 @@ public class Regiter extends javax.swing.JFrame {
     private javax.swing.JTextField cnicText;
     private javax.swing.JTextField contactText;
     private javax.swing.JTextField emailtext;
-    private javax.swing.JRadioButton fradio;
     private javax.swing.JLabel invalidCnic;
     private javax.swing.JLabel invalidContact;
     private javax.swing.JLabel invalidEmail;
@@ -276,9 +237,7 @@ public class Regiter extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton mradio;
     private javax.swing.JButton registerButton;
     private javax.swing.JTextField userText;
     // End of variables declaration//GEN-END:variables

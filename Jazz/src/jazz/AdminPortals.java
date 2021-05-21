@@ -37,10 +37,10 @@ public class AdminPortals extends javax.swing.JFrame {
         worldButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         closeButt = new javax.swing.JMenu();
-        contactusButton = new javax.swing.JMenu();
-        closeButton = new javax.swing.JMenu();
+        contactusButton = new javax.swing.JMenuItem();
+        closeButton = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        featuresButton = new javax.swing.JMenu();
+        featureButton = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Admin Portals");
@@ -141,6 +141,11 @@ public class AdminPortals extends javax.swing.JFrame {
         closeButt.setText("File");
 
         contactusButton.setText("Contact Us");
+        contactusButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contactusButtonActionPerformed(evt);
+            }
+        });
         closeButt.add(contactusButton);
 
         closeButton.setText("Close");
@@ -150,8 +155,8 @@ public class AdminPortals extends javax.swing.JFrame {
 
         jMenu2.setText("Others");
 
-        featuresButton.setText("Features");
-        jMenu2.add(featuresButton);
+        featureButton.setText("Features");
+        jMenu2.add(featureButton);
 
         jMenuBar1.add(jMenu2);
 
@@ -159,6 +164,10 @@ public class AdminPortals extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void contactusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactusButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contactusButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -198,9 +207,9 @@ public class AdminPortals extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cashButton;
     private javax.swing.JMenu closeButt;
-    private javax.swing.JMenu closeButton;
-    private javax.swing.JMenu contactusButton;
-    private javax.swing.JMenu featuresButton;
+    private javax.swing.JMenuItem closeButton;
+    private javax.swing.JMenuItem contactusButton;
+    private javax.swing.JMenuItem featureButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

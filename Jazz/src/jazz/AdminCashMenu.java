@@ -38,7 +38,7 @@ public class AdminCashMenu extends javax.swing.JFrame {
         displayaccountsButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        closeButton = new javax.swing.JMenu();
+        closeButton = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Admin Cash Menu");
@@ -144,7 +144,7 @@ public class AdminCashMenu extends javax.swing.JFrame {
 
         jMenu1.setText("File");
 
-        closeButton.setText("Close Menu");
+        closeButton.setText("Close");
         jMenu1.add(closeButton);
 
         jMenuBar1.add(jMenu1);
@@ -202,7 +202,7 @@ public class AdminCashMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addmoneyButton;
-    private javax.swing.JMenu closeButton;
+    private javax.swing.JMenuItem closeButton;
     private javax.swing.JButton deleteAccountButton;
     private javax.swing.JButton displayPackageButton;
     private javax.swing.JButton displayaccountsButton;

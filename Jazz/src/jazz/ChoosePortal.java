@@ -37,10 +37,10 @@ public class ChoosePortal extends javax.swing.JFrame {
         worldButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        contactusButton = new javax.swing.JMenu();
-        closeButton = new javax.swing.JMenu();
+        cntactusButton = new javax.swing.JMenuItem();
+        closeButton = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        featuresButton = new javax.swing.JMenu();
+        featureButton = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Choose Portal");
@@ -140,8 +140,8 @@ public class ChoosePortal extends javax.swing.JFrame {
 
         jMenu1.setText("File");
 
-        contactusButton.setText("Contact Us");
-        jMenu1.add(contactusButton);
+        cntactusButton.setText("Contact Us");
+        jMenu1.add(cntactusButton);
 
         closeButton.setText("Close");
         jMenu1.add(closeButton);
@@ -150,8 +150,8 @@ public class ChoosePortal extends javax.swing.JFrame {
 
         jMenu2.setText("Others");
 
-        featuresButton.setText("Features");
-        jMenu2.add(featuresButton);
+        featureButton.setText("Features");
+        jMenu2.add(featureButton);
 
         jMenuBar1.add(jMenu2);
 
@@ -197,9 +197,9 @@ public class ChoosePortal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cashButton;
-    private javax.swing.JMenu closeButton;
-    private javax.swing.JMenu contactusButton;
-    private javax.swing.JMenu featuresButton;
+    private javax.swing.JMenuItem closeButton;
+    private javax.swing.JMenuItem cntactusButton;
+    private javax.swing.JMenuItem featureButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
