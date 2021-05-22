@@ -69,12 +69,22 @@ public class DeleteAccountConfirm extends javax.swing.JFrame {
         yesButton.setForeground(new java.awt.Color(255, 255, 255));
         yesButton.setText("Yes, I m sure");
         yesButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
+        yesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yesButtonActionPerformed(evt);
+            }
+        });
 
         noButton.setBackground(new java.awt.Color(0, 0, 204));
         noButton.setFont(new java.awt.Font("Calibri", 1, 28)); // NOI18N
         noButton.setForeground(new java.awt.Color(255, 255, 255));
         noButton.setText("NO !");
         noButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
+        noButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                noButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -139,6 +149,20 @@ public class DeleteAccountConfirm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void noButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noButtonActionPerformed
+        // TODO add your handling code here:
+        DeleteAccont delete = new DeleteAccont();
+        delete.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_noButtonActionPerformed
+
+    private void yesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesButtonActionPerformed
+        // TODO add your handling code here:
+        AdminCashMenu menu=new AdminCashMenu();
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_yesButtonActionPerformed
 
     /**
      * @param args the command line arguments

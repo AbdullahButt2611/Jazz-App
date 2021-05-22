@@ -218,6 +218,11 @@ public class BussReservation extends javax.swing.JFrame {
         receiptButton.setText("Receipt");
         receiptButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
         receiptButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        receiptButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                receiptButtonActionPerformed(evt);
+            }
+        });
 
         cacelButton.setBackground(new java.awt.Color(255, 0, 0));
         cacelButton.setFont(new java.awt.Font("Calibri", 1, 30)); // NOI18N
@@ -225,6 +230,11 @@ public class BussReservation extends javax.swing.JFrame {
         cacelButton.setText("Cancel");
         cacelButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
         cacelButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cacelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cacelButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -298,6 +308,20 @@ public class BussReservation extends javax.swing.JFrame {
     private void mradioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mradioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mradioActionPerformed
+
+    private void cacelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cacelButtonActionPerformed
+        // TODO add your handling code here:
+        TicketReservatiob ticket = new TicketReservatiob();
+        ticket.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_cacelButtonActionPerformed
+
+    private void receiptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receiptButtonActionPerformed
+        // TODO add your handling code here:
+        CustomerCashMenu menu=new CustomerCashMenu();
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_receiptButtonActionPerformed
 
     /**
      * @param args the command line arguments

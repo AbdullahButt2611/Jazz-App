@@ -183,30 +183,55 @@ public class CustomerCashMenu extends javax.swing.JFrame {
         sendmoneyButton.setForeground(new java.awt.Color(251, 255, 0));
         sendmoneyButton.setText("Send Money");
         sendmoneyButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(237, 2, 2), 4));
+        sendmoneyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendmoneyButtonActionPerformed(evt);
+            }
+        });
 
         paybillsButton.setBackground(new java.awt.Color(0, 0, 0));
         paybillsButton.setFont(new java.awt.Font("Calibri", 1, 30)); // NOI18N
         paybillsButton.setForeground(new java.awt.Color(251, 255, 0));
         paybillsButton.setText("Pay Bills");
         paybillsButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(246, 3, 3), 4));
+        paybillsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                paybillsButtonActionPerformed(evt);
+            }
+        });
 
         subscribeButton.setBackground(new java.awt.Color(0, 0, 0));
         subscribeButton.setFont(new java.awt.Font("Calibri", 1, 30)); // NOI18N
         subscribeButton.setForeground(new java.awt.Color(251, 255, 0));
         subscribeButton.setText("Subscribe Package");
         subscribeButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 2, 2), 4));
+        subscribeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subscribeButtonActionPerformed(evt);
+            }
+        });
 
         rechargeButton.setBackground(new java.awt.Color(0, 0, 0));
         rechargeButton.setFont(new java.awt.Font("Calibri", 1, 30)); // NOI18N
         rechargeButton.setForeground(new java.awt.Color(251, 255, 0));
         rechargeButton.setText("Recharge Balance");
         rechargeButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(247, 2, 2), 4));
+        rechargeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rechargeButtonActionPerformed(evt);
+            }
+        });
 
         reservationButton.setBackground(new java.awt.Color(0, 0, 0));
         reservationButton.setFont(new java.awt.Font("Calibri", 1, 30)); // NOI18N
         reservationButton.setForeground(new java.awt.Color(251, 255, 0));
         reservationButton.setText("Ticket Reservation");
         reservationButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 2, 2), 4));
+        reservationButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reservationButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -292,6 +317,11 @@ public class CustomerCashMenu extends javax.swing.JFrame {
         jMenu1.setText("File");
 
         closeButton.setText("Close Menu");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed(evt);
+            }
+        });
         jMenu1.add(closeButton);
 
         jMenuBar1.add(jMenu1);
@@ -299,9 +329,19 @@ public class CustomerCashMenu extends javax.swing.JFrame {
         jMenu2.setText("Accounts");
 
         updateButton.setText("Update");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
         jMenu2.add(updateButton);
 
         deleteButton.setText("Delete");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
         jMenu2.add(deleteButton);
 
         jMenuBar1.add(jMenu2);
@@ -321,6 +361,62 @@ public class CustomerCashMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        // TODO add your handling code here:
+        ChoosePortal portal = new ChoosePortal();
+        portal.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_closeButtonActionPerformed
+
+    private void sendmoneyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendmoneyButtonActionPerformed
+        // TODO add your handling code here:
+        SendMoney money = new SendMoney();
+        money.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_sendmoneyButtonActionPerformed
+
+    private void paybillsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paybillsButtonActionPerformed
+        // TODO add your handling code here:
+        PayBills bills = new PayBills();
+        bills.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_paybillsButtonActionPerformed
+
+    private void subscribeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subscribeButtonActionPerformed
+        // TODO add your handling code here:
+        SubcribePackage pack = new SubcribePackage();
+        pack.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_subscribeButtonActionPerformed
+
+    private void rechargeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rechargeButtonActionPerformed
+        // TODO add your handling code here:
+        RechargeBalance balance = new RechargeBalance();
+        balance.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_rechargeButtonActionPerformed
+
+    private void reservationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservationButtonActionPerformed
+        // TODO add your handling code here:
+        TicketReservatiob ticket = new TicketReservatiob();
+        ticket.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_reservationButtonActionPerformed
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // TODO add your handling code here:
+        UpdateAccount update = new UpdateAccount();
+        update.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        // TODO add your handling code here:
+        DeleteOwnAccount del = new DeleteOwnAccount();
+        del.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_deleteButtonActionPerformed
 
     /**
      * @param args the command line arguments

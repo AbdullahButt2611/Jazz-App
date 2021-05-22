@@ -61,6 +61,11 @@ public class RetrieveMoneyConfirmation extends javax.swing.JFrame {
         yesButton.setText("Yes, I'm sure !");
         yesButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 2));
         yesButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        yesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yesButtonActionPerformed(evt);
+            }
+        });
 
         nobutton.setBackground(new java.awt.Color(204, 0, 0));
         nobutton.setFont(new java.awt.Font("Calibri", 1, 28)); // NOI18N
@@ -68,6 +73,11 @@ public class RetrieveMoneyConfirmation extends javax.swing.JFrame {
         nobutton.setText("NO !");
         nobutton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 2));
         nobutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        nobutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nobuttonActionPerformed(evt);
+            }
+        });
 
         tpnText.setBackground(new java.awt.Color(153, 153, 153));
         tpnText.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
@@ -138,6 +148,21 @@ public class RetrieveMoneyConfirmation extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void yesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesButtonActionPerformed
+        // TODO add your handling code here:
+        AdminCashMenu menu=new AdminCashMenu();
+        menu.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_yesButtonActionPerformed
+
+    private void nobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nobuttonActionPerformed
+        // TODO add your handling code here:
+        RetrieveMoney money = new RetrieveMoney();
+        money.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_nobuttonActionPerformed
 
     /**
      * @param args the command line arguments

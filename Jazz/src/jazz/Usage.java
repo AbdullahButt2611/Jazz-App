@@ -124,6 +124,11 @@ public class Usage extends javax.swing.JFrame {
         mbButton.setText("MBs");
         mbButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
         mbButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mbButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mbButtonActionPerformed(evt);
+            }
+        });
 
         smsButton.setBackground(new java.awt.Color(0, 0, 0));
         smsButton.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
@@ -131,6 +136,11 @@ public class Usage extends javax.swing.JFrame {
         smsButton.setText("Messages");
         smsButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
         smsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        smsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                smsButtonActionPerformed(evt);
+            }
+        });
 
         minutesButton.setBackground(new java.awt.Color(0, 0, 0));
         minutesButton.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
@@ -138,6 +148,11 @@ public class Usage extends javax.swing.JFrame {
         minutesButton.setText("Calls");
         minutesButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
         minutesButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        minutesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                minutesButtonActionPerformed(evt);
+            }
+        });
 
         menuButton.setBackground(new java.awt.Color(0, 0, 0));
         menuButton.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
@@ -145,6 +160,11 @@ public class Usage extends javax.swing.JFrame {
         menuButton.setText("Menu");
         menuButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
         menuButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -161,15 +181,12 @@ public class Usage extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(191, 191, 191))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(101, 101, 101)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 796, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(101, 101, 101)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 796, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 796, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -280,6 +297,34 @@ public class Usage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
+        // TODO add your handling code here:
+        WorldCustomerMenu menu = new WorldCustomerMenu();
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_menuButtonActionPerformed
+
+    private void mbButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mbButtonActionPerformed
+        // TODO add your handling code here:
+        InternetForm mb = new InternetForm();
+        mb.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_mbButtonActionPerformed
+
+    private void smsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_smsButtonActionPerformed
+        // TODO add your handling code here:
+        MessageForm sms = new MessageForm();
+        sms.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_smsButtonActionPerformed
+
+    private void minutesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minutesButtonActionPerformed
+        // TODO add your handling code here:
+        CallForm call = new CallForm();
+        call.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_minutesButtonActionPerformed
 
     /**
      * @param args the command line arguments

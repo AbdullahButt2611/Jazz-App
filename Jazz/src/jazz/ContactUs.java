@@ -93,6 +93,11 @@ public class ContactUs extends javax.swing.JFrame {
         menuButton.setForeground(new java.awt.Color(251, 255, 0));
         menuButton.setText("Back to Menu");
         menuButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 2, 2), 2));
+        menuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -168,6 +173,13 @@ public class ContactUs extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
+        // TODO add your handling code here:
+        AdminPortals portal=new AdminPortals();
+        portal.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_menuButtonActionPerformed
 
     /**
      * @param args the command line arguments

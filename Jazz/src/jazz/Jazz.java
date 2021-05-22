@@ -16,6 +16,9 @@ public class Jazz {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        FirstScreen first = new FirstScreen();
+        first.setVisible(true);
+        
     }
     
 }

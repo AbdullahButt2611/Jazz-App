@@ -62,6 +62,11 @@ public class TicketReservatiob extends javax.swing.JFrame {
         bussbutton.setText("BUS");
         bussbutton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
         bussbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bussbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bussbuttonActionPerformed(evt);
+            }
+        });
 
         movieButton.setBackground(new java.awt.Color(0, 0, 0));
         movieButton.setFont(new java.awt.Font("Calibri", 1, 30)); // NOI18N
@@ -69,6 +74,11 @@ public class TicketReservatiob extends javax.swing.JFrame {
         movieButton.setText("MOVIE");
         movieButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
         movieButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        movieButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                movieButtonActionPerformed(evt);
+            }
+        });
 
         menuButton.setBackground(new java.awt.Color(0, 0, 0));
         menuButton.setFont(new java.awt.Font("Calibri", 1, 30)); // NOI18N
@@ -76,6 +86,11 @@ public class TicketReservatiob extends javax.swing.JFrame {
         menuButton.setText("Back to Menu");
         menuButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
         menuButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -140,6 +155,27 @@ public class TicketReservatiob extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1088, 648));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
+        // TODO add your handling code here:
+        CustomerCashMenu menu=new CustomerCashMenu();
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_menuButtonActionPerformed
+
+    private void bussbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bussbuttonActionPerformed
+        // TODO add your handling code here:
+        BussReservation reserve = new BussReservation();
+        reserve.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_bussbuttonActionPerformed
+
+    private void movieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_movieButtonActionPerformed
+        // TODO add your handling code here:
+        MovieReservation reserve = new MovieReservation();
+        reserve.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_movieButtonActionPerformed
 
     /**
      * @param args the command line arguments

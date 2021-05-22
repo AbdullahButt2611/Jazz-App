@@ -64,6 +64,11 @@ public class WorldAdminMenu extends javax.swing.JFrame {
         addButton.setText("Add Package");
         addButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(246, 3, 3), 4));
         addButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
 
         deleteButton.setBackground(new java.awt.Color(0, 0, 0));
         deleteButton.setFont(new java.awt.Font("Calibri", 1, 30)); // NOI18N
@@ -71,6 +76,11 @@ public class WorldAdminMenu extends javax.swing.JFrame {
         deleteButton.setText("Delete Package");
         deleteButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(244, 3, 3), 4));
         deleteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
 
         updateButton.setBackground(new java.awt.Color(0, 0, 0));
         updateButton.setFont(new java.awt.Font("Calibri", 1, 30)); // NOI18N
@@ -78,6 +88,11 @@ public class WorldAdminMenu extends javax.swing.JFrame {
         updateButton.setText("Update Package");
         updateButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(248, 1, 1), 4));
         updateButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
 
         displayButton.setBackground(new java.awt.Color(0, 0, 0));
         displayButton.setFont(new java.awt.Font("Calibri", 1, 30)); // NOI18N
@@ -85,6 +100,11 @@ public class WorldAdminMenu extends javax.swing.JFrame {
         displayButton.setText("Display Packages");
         displayButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(248, 3, 3), 4));
         displayButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        displayButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                displayButtonActionPerformed(evt);
+            }
+        });
 
         Recharge.setBackground(new java.awt.Color(0, 0, 0));
         Recharge.setFont(new java.awt.Font("Calibri", 1, 30)); // NOI18N
@@ -92,6 +112,11 @@ public class WorldAdminMenu extends javax.swing.JFrame {
         Recharge.setText("Recharge");
         Recharge.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 1, 1), 4));
         Recharge.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Recharge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RechargeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -161,6 +186,11 @@ public class WorldAdminMenu extends javax.swing.JFrame {
         jMenu1.setText("File");
 
         closeButton.setText("Close Menu");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed(evt);
+            }
+        });
         jMenu1.add(closeButton);
 
         jMenuBar1.add(jMenu1);
@@ -180,6 +210,48 @@ public class WorldAdminMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        // TODO add your handling code here:
+        AdminPortals portal=new AdminPortals();
+        portal.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_closeButtonActionPerformed
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        // TODO add your handling code here:
+        AddPackage add=new AddPackage();
+        add.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_addButtonActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        // TODO add your handling code here:
+        DeletePackage delete=new DeletePackage();
+        delete.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // TODO add your handling code here:
+        UpdatePackage update = new UpdatePackage();
+        update.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void displayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayButtonActionPerformed
+        // TODO add your handling code here:
+        DisplayPackages display = new DisplayPackages();
+        display.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_displayButtonActionPerformed
+
+    private void RechargeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RechargeActionPerformed
+        // TODO add your handling code here:
+        Recharge rec = new Recharge();
+        rec.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_RechargeActionPerformed
 
     /**
      * @param args the command line arguments

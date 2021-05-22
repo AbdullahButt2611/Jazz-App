@@ -127,6 +127,11 @@ public class MovieReservation extends javax.swing.JFrame {
         bookButton.setText("Book Tickets");
         bookButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 0), 4));
         bookButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bookButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookButtonActionPerformed(evt);
+            }
+        });
 
         cancelButton.setBackground(new java.awt.Color(0, 0, 153));
         cancelButton.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
@@ -134,6 +139,11 @@ public class MovieReservation extends javax.swing.JFrame {
         cancelButton.setText("Cancel");
         cancelButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 0), 4));
         cancelButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -204,6 +214,20 @@ public class MovieReservation extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1088, 647));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        // TODO add your handling code here:
+        TicketReservatiob ticket = new TicketReservatiob();
+        ticket.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void bookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookButtonActionPerformed
+        // TODO add your handling code here:
+        CustomerCashMenu menu=new CustomerCashMenu();
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_bookButtonActionPerformed
 
     /**
      * @param args the command line arguments

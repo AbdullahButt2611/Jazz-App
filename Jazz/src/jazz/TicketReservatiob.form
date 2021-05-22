@@ -180,6 +180,9 @@
                   <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bussbuttonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="movieButton">
               <Properties>
@@ -204,6 +207,9 @@
                   <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="movieButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="menuButton">
               <Properties>
@@ -228,6 +234,9 @@
                   <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

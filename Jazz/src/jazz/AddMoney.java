@@ -85,6 +85,11 @@ public class AddMoney extends javax.swing.JFrame {
         sendButton.setText("Send");
         sendButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(251, 255, 0), 3, true));
         sendButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        sendButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendButtonActionPerformed(evt);
+            }
+        });
 
         cancelButton.setBackground(new java.awt.Color(204, 0, 0));
         cancelButton.setFont(new java.awt.Font("Calibri", 1, 28)); // NOI18N
@@ -92,6 +97,11 @@ public class AddMoney extends javax.swing.JFrame {
         cancelButton.setText("Cancel");
         cancelButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
         cancelButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
 
         invalidAmount.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         invalidAmount.setForeground(new java.awt.Color(153, 153, 153));
@@ -184,6 +194,20 @@ public class AddMoney extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        // TODO add your handling code here:
+        AdminCashMenu menu=new AdminCashMenu();
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
+        // TODO add your handling code here:
+        AdminCashMenu menu=new AdminCashMenu();
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_sendButtonActionPerformed
 
     /**
      * @param args the command line arguments

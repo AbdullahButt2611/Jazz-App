@@ -48,6 +48,9 @@ public class WorldCustomerMenu extends javax.swing.JFrame {
         usageButton = new javax.swing.JButton();
         giftButton = new javax.swing.JButton();
         orderButton = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        closeButton = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("JazzWorld Menu");
@@ -186,18 +189,33 @@ public class WorldCustomerMenu extends javax.swing.JFrame {
         usageButton.setText("USAGE");
         usageButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(244, 3, 3), 4));
         usageButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        usageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usageButtonActionPerformed(evt);
+            }
+        });
 
         giftButton.setBackground(new java.awt.Color(0, 0, 0));
         giftButton.setFont(new java.awt.Font("Calibri", 1, 28)); // NOI18N
         giftButton.setForeground(new java.awt.Color(251, 255, 0));
         giftButton.setText("Gifts");
         giftButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 3, 3), 4));
+        giftButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                giftButtonActionPerformed(evt);
+            }
+        });
 
         orderButton.setBackground(new java.awt.Color(0, 0, 0));
         orderButton.setFont(new java.awt.Font("Calibri", 1, 28)); // NOI18N
         orderButton.setForeground(new java.awt.Color(251, 255, 0));
         orderButton.setText("Order Food");
         orderButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 1, 1), 4));
+        orderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -267,8 +285,22 @@ public class WorldCustomerMenu extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
+
+        jMenu1.setText("File");
+
+        closeButton.setText("Close");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed(evt);
+            }
+        });
+        jMenu1.add(closeButton);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -283,6 +315,34 @@ public class WorldCustomerMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        // TODO add your handling code here:
+        ChoosePortal portal = new ChoosePortal();
+        portal.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_closeButtonActionPerformed
+
+    private void orderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderButtonActionPerformed
+        // TODO add your handling code here:
+        OrderFood food = new OrderFood();
+        food.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_orderButtonActionPerformed
+
+    private void giftButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_giftButtonActionPerformed
+        // TODO add your handling code here:
+        Gifts gift = new Gifts();
+        gift.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_giftButtonActionPerformed
+
+    private void usageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usageButtonActionPerformed
+        // TODO add your handling code here:
+        Usage use = new Usage();
+        use.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_usageButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -321,6 +381,7 @@ public class WorldCustomerMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField balanceText;
+    private javax.swing.JMenuItem closeButton;
     private javax.swing.JButton giftButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -331,6 +392,8 @@ public class WorldCustomerMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

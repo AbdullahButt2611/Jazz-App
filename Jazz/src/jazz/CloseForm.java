@@ -139,6 +139,11 @@ public class CloseForm extends javax.swing.JFrame {
         noButton.setText("NO :)");
         noButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
         noButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        noButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                noButtonActionPerformed(evt);
+            }
+        });
 
         yesButton.setBackground(new java.awt.Color(204, 0, 0));
         yesButton.setFont(new java.awt.Font("Calibri", 1, 28)); // NOI18N
@@ -146,6 +151,11 @@ public class CloseForm extends javax.swing.JFrame {
         yesButton.setText("YES :(");
         yesButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
         yesButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        yesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yesButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -251,6 +261,18 @@ public class CloseForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void noButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noButtonActionPerformed
+        // TODO add your handling code here:
+        FirstScreen first=new FirstScreen();
+        first.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_noButtonActionPerformed
+
+    private void yesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesButtonActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_yesButtonActionPerformed
 
     /**
      * @param args the command line arguments

@@ -60,30 +60,55 @@ public class AdminCashMenu extends javax.swing.JFrame {
         displayPackageButton.setForeground(new java.awt.Color(251, 255, 0));
         displayPackageButton.setText("Display Package Bundles");
         displayPackageButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
+        displayPackageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                displayPackageButtonActionPerformed(evt);
+            }
+        });
 
         deleteAccountButton.setBackground(new java.awt.Color(0, 0, 0));
         deleteAccountButton.setFont(new java.awt.Font("Calibri", 1, 28)); // NOI18N
         deleteAccountButton.setForeground(new java.awt.Color(251, 255, 0));
         deleteAccountButton.setText("Delete Account");
         deleteAccountButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(247, 51, 2), 2));
+        deleteAccountButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteAccountButtonActionPerformed(evt);
+            }
+        });
 
         addmoneyButton.setBackground(new java.awt.Color(0, 0, 0));
         addmoneyButton.setFont(new java.awt.Font("Calibri", 1, 28)); // NOI18N
         addmoneyButton.setForeground(new java.awt.Color(251, 255, 0));
         addmoneyButton.setText("Add Money");
         addmoneyButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 4, 4), 2));
+        addmoneyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addmoneyButtonActionPerformed(evt);
+            }
+        });
 
         retrievemoneyButton.setBackground(new java.awt.Color(0, 0, 0));
         retrievemoneyButton.setFont(new java.awt.Font("Calibri", 1, 28)); // NOI18N
         retrievemoneyButton.setForeground(new java.awt.Color(251, 255, 0));
         retrievemoneyButton.setText("Retrieve Money");
         retrievemoneyButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(242, 2, 2), 2));
+        retrievemoneyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                retrievemoneyButtonActionPerformed(evt);
+            }
+        });
 
         displayaccountsButton.setBackground(new java.awt.Color(0, 0, 0));
         displayaccountsButton.setFont(new java.awt.Font("Calibri", 1, 28)); // NOI18N
         displayaccountsButton.setForeground(new java.awt.Color(251, 255, 0));
         displayaccountsButton.setText("Display Registered Accounts");
         displayaccountsButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(237, 2, 2), 3, true));
+        displayaccountsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                displayaccountsButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -145,6 +170,11 @@ public class AdminCashMenu extends javax.swing.JFrame {
         jMenu1.setText("File");
 
         closeButton.setText("Close");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed(evt);
+            }
+        });
         jMenu1.add(closeButton);
 
         jMenuBar1.add(jMenu1);
@@ -164,6 +194,48 @@ public class AdminCashMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        // TODO add your handling code here:
+        AdminPortals portal=new AdminPortals();
+        portal.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_closeButtonActionPerformed
+
+    private void displayPackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayPackageButtonActionPerformed
+        // TODO add your handling code here:
+        DisplayPackageBundles display = new DisplayPackageBundles();
+        display.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_displayPackageButtonActionPerformed
+
+    private void deleteAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAccountButtonActionPerformed
+        // TODO add your handling code here:
+        DeleteAccont delete = new DeleteAccont();
+        delete.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_deleteAccountButtonActionPerformed
+
+    private void addmoneyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addmoneyButtonActionPerformed
+        // TODO add your handling code here:
+        AddMoney add = new AddMoney();
+        add.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_addmoneyButtonActionPerformed
+
+    private void retrievemoneyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retrievemoneyButtonActionPerformed
+        // TODO add your handling code here:
+        RetrieveMoney money = new RetrieveMoney();
+        money.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_retrievemoneyButtonActionPerformed
+
+    private void displayaccountsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayaccountsButtonActionPerformed
+        // TODO add your handling code here:
+        DisplayRegisteredAccounts display = new DisplayRegisteredAccounts();
+        display.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_displayaccountsButtonActionPerformed
 
     /**
      * @param args the command line arguments

@@ -126,14 +126,23 @@ public class FirstScreen extends javax.swing.JFrame {
 
     private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
         // TODO add your handling code here:
+        AdminLogin admin=new AdminLogin();
+        admin.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_adminButtonActionPerformed
 
     private void enterbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterbuttonActionPerformed
         // TODO add your handling code here:
+        Login log=new Login();
+        log.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_enterbuttonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         // TODO add your handling code here:
+        CloseForm close=new CloseForm();
+        close.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_exitButtonActionPerformed
 
     /**

@@ -71,6 +71,11 @@ public class ChoosePortal extends javax.swing.JFrame {
         cashButton.setText("Jazz Cash");
         cashButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(245, 2, 2), 2));
         cashButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cashButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cashButtonActionPerformed(evt);
+            }
+        });
 
         worldButton.setBackground(new java.awt.Color(0, 0, 0));
         worldButton.setFont(new java.awt.Font("Calibri", 1, 28)); // NOI18N
@@ -78,6 +83,11 @@ public class ChoosePortal extends javax.swing.JFrame {
         worldButton.setText("Jazz World");
         worldButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(247, 2, 2), 2));
         worldButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        worldButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                worldButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -141,9 +151,19 @@ public class ChoosePortal extends javax.swing.JFrame {
         jMenu1.setText("File");
 
         cntactusButton.setText("Contact Us");
+        cntactusButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cntactusButtonActionPerformed(evt);
+            }
+        });
         jMenu1.add(cntactusButton);
 
         closeButton.setText("Close");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed(evt);
+            }
+        });
         jMenu1.add(closeButton);
 
         jMenuBar1.add(jMenu1);
@@ -159,6 +179,34 @@ public class ChoosePortal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cntactusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cntactusButtonActionPerformed
+        // TODO add your handling code here:
+        CustomContactUs contact= new CustomContactUs();
+        contact.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_cntactusButtonActionPerformed
+
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        // TODO add your handling code here:
+        Login log = new Login();
+        log.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_closeButtonActionPerformed
+
+    private void cashButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashButtonActionPerformed
+        // TODO add your handling code here:
+        CustomerCashMenu menu=new CustomerCashMenu();
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_cashButtonActionPerformed
+
+    private void worldButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_worldButtonActionPerformed
+        // TODO add your handling code here:
+        WorldCustomerMenu menu = new WorldCustomerMenu();
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_worldButtonActionPerformed
 
     /**
      * @param args the command line arguments

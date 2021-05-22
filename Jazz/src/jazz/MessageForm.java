@@ -70,6 +70,11 @@ public class MessageForm extends javax.swing.JFrame {
         cancelButton.setText("CANCEL");
         cancelButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
         cancelButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelButtonActionPerformed(evt);
+            }
+        });
 
         usebutton.setBackground(new java.awt.Color(204, 0, 0));
         usebutton.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
@@ -77,6 +82,11 @@ public class MessageForm extends javax.swing.JFrame {
         usebutton.setText("USE");
         usebutton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
         usebutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        usebutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usebuttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -142,6 +152,20 @@ public class MessageForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        // TODO add your handling code here:
+        Usage use = new Usage();
+        use.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void usebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usebuttonActionPerformed
+        // TODO add your handling code here:
+        WorldCustomerMenu menu = new WorldCustomerMenu();
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_usebuttonActionPerformed
 
     /**
      * @param args the command line arguments

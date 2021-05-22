@@ -71,6 +71,11 @@ public class AdminPortals extends javax.swing.JFrame {
         cashButton.setText("Jazz Cash");
         cashButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(245, 2, 2), 2));
         cashButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cashButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cashButtonActionPerformed(evt);
+            }
+        });
 
         worldButton.setBackground(new java.awt.Color(0, 0, 0));
         worldButton.setFont(new java.awt.Font("Calibri", 1, 28)); // NOI18N
@@ -78,6 +83,11 @@ public class AdminPortals extends javax.swing.JFrame {
         worldButton.setText("Jazz World");
         worldButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(247, 2, 2), 2));
         worldButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        worldButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                worldButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -149,6 +159,11 @@ public class AdminPortals extends javax.swing.JFrame {
         closeButt.add(contactusButton);
 
         closeButton.setText("Close");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeButtonActionPerformed(evt);
+            }
+        });
         closeButt.add(closeButton);
 
         jMenuBar1.add(closeButt);
@@ -156,6 +171,11 @@ public class AdminPortals extends javax.swing.JFrame {
         jMenu2.setText("Others");
 
         featureButton.setText("Features");
+        featureButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                featureButtonActionPerformed(evt);
+            }
+        });
         jMenu2.add(featureButton);
 
         jMenuBar1.add(jMenu2);
@@ -167,7 +187,38 @@ public class AdminPortals extends javax.swing.JFrame {
 
     private void contactusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactusButtonActionPerformed
         // TODO add your handling code here:
+        ContactUs contact = new ContactUs();
+        contact.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_contactusButtonActionPerformed
+
+    private void cashButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashButtonActionPerformed
+        // TODO add your handling code here:
+        AdminCashMenu menu=new AdminCashMenu();
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_cashButtonActionPerformed
+
+    private void worldButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_worldButtonActionPerformed
+        // TODO add your handling code here:
+        WorldAdminMenu menu=new WorldAdminMenu();
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_worldButtonActionPerformed
+
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+        // TODO add your handling code here:
+        AdminLogin login=new AdminLogin();
+        login.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_closeButtonActionPerformed
+
+    private void featureButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_featureButtonActionPerformed
+        // TODO add your handling code here:
+        Features features=new Features();
+        features.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_featureButtonActionPerformed
 
     /**
      * @param args the command line arguments
