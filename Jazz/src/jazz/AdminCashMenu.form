@@ -9,11 +9,14 @@
             <Property name="text" type="java.lang.String" value="File"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="closeButton">
+            <MenuItem class="javax.swing.JMenuItem" name="closeButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Close Menu"/>
+                <Property name="text" type="java.lang.String" value="Close"/>
               </Properties>
-            </Menu>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="closeButtonActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>
@@ -208,6 +211,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteAccountButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="addmoneyButton">
               <Properties>
@@ -229,6 +235,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addmoneyButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="retrievemoneyButton">
               <Properties>
@@ -250,6 +259,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="retrievemoneyButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="displayaccountsButton">
               <Properties>
@@ -271,6 +283,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="displayaccountsButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

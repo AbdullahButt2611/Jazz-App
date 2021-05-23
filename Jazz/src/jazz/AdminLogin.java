@@ -73,6 +73,11 @@ public class AdminLogin extends javax.swing.JFrame {
         loginButton.setText("Login");
         loginButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 4));
         loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(237, 2, 2));
         jButton2.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
@@ -146,7 +151,17 @@ public class AdminLogin extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        FirstScreen first = new FirstScreen();
+        first.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+        AdminPortals portal= new AdminPortals();
+        portal.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
      * @param args the command line arguments
