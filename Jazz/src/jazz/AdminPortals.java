@@ -145,8 +145,7 @@ public class AdminPortals extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 600));
 
-        jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
-        jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
 
         closeButt.setText("File");
 

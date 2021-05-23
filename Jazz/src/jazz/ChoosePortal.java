@@ -145,8 +145,7 @@ public class ChoosePortal extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 600));
 
-        jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
-        jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
 
         jMenu1.setText("File");
 
@@ -171,6 +170,11 @@ public class ChoosePortal extends javax.swing.JFrame {
         jMenu2.setText("Others");
 
         featureButton.setText("Features");
+        featureButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                featureButtonActionPerformed(evt);
+            }
+        });
         jMenu2.add(featureButton);
 
         jMenuBar1.add(jMenu2);
@@ -207,6 +211,13 @@ public class ChoosePortal extends javax.swing.JFrame {
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_worldButtonActionPerformed
+
+    private void featureButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_featureButtonActionPerformed
+        // TODO add your handling code here:
+        CustomFeatures feature = new CustomFeatures();
+        feature.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_featureButtonActionPerformed
 
     /**
      * @param args the command line arguments
