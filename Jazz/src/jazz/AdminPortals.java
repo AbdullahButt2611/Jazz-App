@@ -66,7 +66,7 @@ public class AdminPortals extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Choose one of the Following Portals", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 0, 18), new java.awt.Color(251, 255, 0))); // NOI18N
 
         cashButton.setBackground(new java.awt.Color(0, 0, 0));
-        cashButton.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
+        cashButton.setFont(new java.awt.Font("Calibri", 1, 35)); // NOI18N
         cashButton.setForeground(new java.awt.Color(251, 255, 0));
         cashButton.setText("Jazz Cash");
         cashButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(245, 2, 2), 2));
@@ -78,7 +78,7 @@ public class AdminPortals extends javax.swing.JFrame {
         });
 
         worldButton.setBackground(new java.awt.Color(0, 0, 0));
-        worldButton.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
+        worldButton.setFont(new java.awt.Font("Calibri", 1, 35)); // NOI18N
         worldButton.setForeground(new java.awt.Color(251, 255, 0));
         worldButton.setText("Jazz World");
         worldButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(247, 2, 2), 2));
