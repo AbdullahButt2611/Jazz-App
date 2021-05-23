@@ -60,6 +60,11 @@ public class AdminCashMenu extends javax.swing.JFrame {
         displayPackageButton.setForeground(new java.awt.Color(251, 255, 0));
         displayPackageButton.setText("Display Package Bundles");
         displayPackageButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
+        displayPackageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                displayPackageButtonActionPerformed(evt);
+            }
+        });
 
         deleteAccountButton.setBackground(new java.awt.Color(0, 0, 0));
         deleteAccountButton.setFont(new java.awt.Font("Calibri", 1, 28)); // NOI18N
@@ -164,6 +169,10 @@ public class AdminCashMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void displayPackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayPackageButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_displayPackageButtonActionPerformed
 
     /**
      * @param args the command line arguments

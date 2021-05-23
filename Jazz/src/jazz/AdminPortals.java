@@ -73,7 +73,7 @@ public class AdminPortals extends javax.swing.JFrame {
         cashButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         worldButton.setBackground(new java.awt.Color(0, 0, 0));
-        worldButton.setFont(new java.awt.Font("Calibri", 1, 28)); // NOI18N
+        worldButton.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
         worldButton.setForeground(new java.awt.Color(251, 255, 0));
         worldButton.setText("Jazz World");
         worldButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(247, 2, 2), 2));
