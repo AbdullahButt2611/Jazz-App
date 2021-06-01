@@ -180,12 +180,20 @@ public class WorldAdminMenu extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
+        jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
+
+        jMenu1.setBackground(new java.awt.Color(0, 0, 0));
+        jMenu1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
+        jMenu1.setForeground(new java.awt.Color(255, 255, 0));
         jMenu1.setText("File");
 
+        closeButton.setBackground(new java.awt.Color(0, 0, 0));
+        closeButton.setForeground(new java.awt.Color(255, 0, 0));
         closeButton.setText("Close Menu");
+        closeButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
         closeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 closeButtonActionPerformed(evt);

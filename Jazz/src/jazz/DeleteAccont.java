@@ -5,6 +5,9 @@
  */
 package jazz;
 
+import java.awt.Color;
+import javax.swing.table.DefaultTableCellRenderer;
+
 /**
  *
  * @author DEll
@@ -16,6 +19,11 @@ public class DeleteAccont extends javax.swing.JFrame {
      */
     public DeleteAccont() {
         initComponents();
+        jScrollPane1.setBackground(new Color(0,0,0,0));
+        jScrollPane1.setOpaque(false);
+        deleteTable.setOpaque(false);
+        ((DefaultTableCellRenderer)deleteTable.getDefaultRenderer(Object.class)).setOpaque(false);
+        jScrollPane1.getViewport().setOpaque(false);
     }
 
     /**
@@ -53,7 +61,8 @@ public class DeleteAccont extends javax.swing.JFrame {
         jLabel2.setText("Management System");
 
         deleteTable.setBackground(new java.awt.Color(204, 204, 204));
-        deleteTable.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        deleteTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
+        deleteTable.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
         deleteTable.setForeground(new java.awt.Color(255, 255, 255));
         deleteTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -124,6 +133,7 @@ public class DeleteAccont extends javax.swing.JFrame {
         deleteButton.setForeground(new java.awt.Color(255, 255, 255));
         deleteButton.setText("Delete");
         deleteButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
+        deleteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButtonActionPerformed(evt);
@@ -135,6 +145,7 @@ public class DeleteAccont extends javax.swing.JFrame {
         cancelButton.setForeground(new java.awt.Color(255, 255, 255));
         cancelButton.setText("Cancel");
         cancelButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
+        cancelButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelButtonActionPerformed(evt);

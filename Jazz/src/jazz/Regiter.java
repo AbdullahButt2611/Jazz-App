@@ -5,6 +5,8 @@
  */
 package jazz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DEll
@@ -12,10 +14,11 @@ package jazz;
 public class Regiter extends javax.swing.JFrame {
 
     /**
-     * Creates new form Regiter
+     * Creates new form Register
      */
     public Regiter() {
         initComponents();
+        invalidCnic.setText("(Only Digits Required)");
     }
 
     /**
@@ -113,6 +116,14 @@ public class Regiter extends javax.swing.JFrame {
         emailtext.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         emailtext.setForeground(new java.awt.Color(255, 255, 255));
 
+        invalidUsername.setForeground(new java.awt.Color(204, 0, 0));
+
+        invalidCnic.setForeground(new java.awt.Color(204, 0, 0));
+
+        invalidContact.setForeground(new java.awt.Color(204, 0, 0));
+
+        invalidEmail.setForeground(new java.awt.Color(204, 0, 0));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -205,9 +216,112 @@ public class Regiter extends javax.swing.JFrame {
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         // TODO add your handling code here:
-        Login log= new Login();
-        log.setVisible(true);
-        this.dispose();
+//        Login log= new Login();
+//        log.setVisible(true);
+//        this.dispose();
+            String name = userText.getText();
+            String cnic = cnicText.getText();
+            String contact = contactText.getText();
+            String email = emailtext.getText();
+            Users us = new Users();
+            boolean flag=false;
+            String str="";
+            String field="";
+ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            if(name.equals("") || name.equals(null))
+            {
+                invalidUsername.setText("Please Fill the TextField");
+                field="a";
+            }
+            else
+                invalidUsername.setText("");
+            if(cnic.equals("") || cnic.equals(null))
+            {
+                invalidCnic.setText("Please Fill the TextField");
+                field="a";
+            }
+            else
+                invalidCnic.setText("");
+            if(contact.equals("") || contact.equals(null))
+            {
+                invalidContact.setText("Please Fill the TextField");
+                field="a";
+            }
+            else
+                invalidContact.setText("");
+            if(email.equals("") || email.equals(null))
+            {
+                invalidEmail.setText("Please Fill the TextField");
+                field="a";
+            }
+            else
+                invalidEmail.setText("");
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            if(field.equals("") || field.equals(null))
+            {
+                flag=us.setUsername(name);
+                if(flag==false)
+                {
+                    str+="a";
+                    invalidUsername.setText("(Invalid Username)");
+                }
+                flag=us.setCnic(cnic);
+                if(flag==false)
+                {
+                    str+="a";
+                    invalidCnic.setText("(Invalid CNIC)");
+                }
+                else
+                    invalidCnic.setText("");
+                flag=us.setContact(contact);
+                if(flag==false)
+                {
+                    str+="a";
+                    invalidContact.setText("(Invalid Contact)");
+                }
+                flag=us.setEmail(email);
+                if(flag==false)
+                {
+                    str+="a";
+                    invalidEmail.setText("(Invalid Email)");
+                }
+ //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                if(str.equals(""))
+                {
+                    field="";
+                    for(int i=0;i<RegisteredAccounts.getUsersInstance().getUsers().size();i++)
+                    {
+                        if(RegisteredAccounts.getUsersInstance().getUsers().get(i).getCnic().equals(cnic))
+                        {
+                            field+="a";
+                            JOptionPane.showMessageDialog(this,"This CNIC has already been registered to this system\nWe can't allow it to register again","Redundant CNIC",JOptionPane.ERROR_MESSAGE);
+                            break;
+                        }
+                    }
+   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    if(field.equals(""))
+                    {
+                        us.setTPN();
+                        us.setLogins(1);
+                        RegisteredAccounts.getUsersInstance().getUsers().add(us);
+                        JOptionPane.showMessageDialog(this,"Data has been Addded Successfully\n You TPN coode is : "+RegisteredAccounts.getUsersInstance().getUsers().get(RegisteredAccounts.getUsersInstance().getUsers().size()-1).getTPN()+"\n You must remember this code to login to the system","Congratulations",JOptionPane.INFORMATION_MESSAGE);
+
+
+                        Login log= new Login();
+                        log.setVisible(true);
+                        this.dispose();
+                    }
+                    else
+                    {
+                        Login log= new Login();
+                        log.setVisible(true);
+                        this.dispose(); 
+                    }
+                    
+                }
+            }
+            else
+                JOptionPane.showMessageDialog(this, "You got some unfilled text fields","Error",JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_registerButtonActionPerformed
 
     /**

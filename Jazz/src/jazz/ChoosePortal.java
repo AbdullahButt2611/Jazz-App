@@ -145,11 +145,18 @@ public class ChoosePortal extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 600));
 
-        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
+        jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
 
+        jMenu1.setBackground(new java.awt.Color(0, 0, 0));
+        jMenu1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
+        jMenu1.setForeground(new java.awt.Color(255, 255, 0));
         jMenu1.setText("File");
+        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        cntactusButton.setBackground(new java.awt.Color(0, 0, 0));
+        cntactusButton.setForeground(new java.awt.Color(204, 0, 0));
         cntactusButton.setText("Contact Us");
+        cntactusButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0)));
         cntactusButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cntactusButtonActionPerformed(evt);
@@ -157,7 +164,11 @@ public class ChoosePortal extends javax.swing.JFrame {
         });
         jMenu1.add(cntactusButton);
 
-        closeButton.setText("Close");
+        closeButton.setBackground(new java.awt.Color(0, 0, 0));
+        closeButton.setForeground(new java.awt.Color(204, 0, 0));
+        closeButton.setText("Log Out");
+        closeButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
+        closeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         closeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 closeButtonActionPerformed(evt);
@@ -167,9 +178,17 @@ public class ChoosePortal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setBackground(new java.awt.Color(0, 0, 0));
+        jMenu2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
+        jMenu2.setForeground(new java.awt.Color(255, 255, 0));
         jMenu2.setText("Others");
+        jMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        featureButton.setBackground(new java.awt.Color(0, 0, 0));
+        featureButton.setForeground(new java.awt.Color(204, 0, 0));
         featureButton.setText("Features");
+        featureButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
+        featureButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         featureButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 featureButtonActionPerformed(evt);
@@ -193,7 +212,8 @@ public class ChoosePortal extends javax.swing.JFrame {
 
     private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
         // TODO add your handling code here:
-        Login log = new Login();
+        
+        CutomLogoutConfirmation log = new CutomLogoutConfirmation();
         log.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_closeButtonActionPerformed

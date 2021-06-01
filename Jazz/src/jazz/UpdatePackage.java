@@ -5,6 +5,9 @@
  */
 package jazz;
 
+import java.awt.Color;
+import javax.swing.table.DefaultTableCellRenderer;
+
 /**
  *
  * @author DEll
@@ -16,6 +19,11 @@ public class UpdatePackage extends javax.swing.JFrame {
      */
     public UpdatePackage() {
         initComponents();
+        jScrollPane1.setBackground(new Color(0,0,0,0));
+        jScrollPane1.setOpaque(false);
+        jTable1.setOpaque(false);
+        ((DefaultTableCellRenderer)jTable1.getDefaultRenderer(Object.class)).setOpaque(false);
+        jScrollPane1.getViewport().setOpaque(false);
     }
 
     /**
@@ -64,7 +72,9 @@ public class UpdatePackage extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(251, 255, 0));
         jLabel2.setText("Management System");
 
+        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
         jTable1.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

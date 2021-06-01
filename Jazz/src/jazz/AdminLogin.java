@@ -5,6 +5,8 @@
  */
 package jazz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DEll
@@ -57,15 +59,24 @@ public class AdminLogin extends javax.swing.JFrame {
         jLabel4.setText("Password :");
 
         passText.setBackground(new java.awt.Color(0, 0, 0));
-        passText.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        passText.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         passText.setForeground(new java.awt.Color(255, 255, 255));
+        passText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
 
         userText.setBackground(new java.awt.Color(0, 0, 0));
-        userText.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        userText.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        userText.setForeground(new java.awt.Color(255, 255, 255));
+        userText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
 
+        jCheckBox1.setBackground(new java.awt.Color(0, 0, 0,70));
         jCheckBox1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jCheckBox1.setForeground(new java.awt.Color(247, 2, 2));
         jCheckBox1.setText("Show Password");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
 
         loginButton.setBackground(new java.awt.Color(4, 4, 190));
         loginButton.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
@@ -158,10 +169,37 @@ public class AdminLogin extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-        AdminPortals portal= new AdminPortals();
+        
+        String name = userText.getText();
+        String password = passText.getText();
+        if(name.equals("JazzAdmin555") && password.equals("JazzAdmin555"))
+        {
+            AdminPortals portal= new AdminPortals();
+            portal.setVisible(true);
+            this.dispose();
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"Alert !\n Invalid Credentials \nTry Again with valid one");
+        }
+        
+        /*AdminPortals portal= new AdminPortals();
         portal.setVisible(true);
-        this.dispose();
+        this.dispose();*/
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+        jCheckBox1.setBackground(new java.awt.Color(0, 0, 0,80));
+        if(jCheckBox1.isSelected())
+        {
+            passText.setEchoChar((char)0);
+        }
+        else
+        {
+            passText.setEchoChar('*');
+        }
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     /**
      * @param args the command line arguments

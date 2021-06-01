@@ -5,6 +5,9 @@
  */
 package jazz;
 
+import java.awt.Color;
+import javax.swing.table.DefaultTableCellRenderer;
+
 /**
  *
  * @author DEll
@@ -16,6 +19,11 @@ public class DisplayPackageBundles extends javax.swing.JFrame {
      */
     public DisplayPackageBundles() {
         initComponents();
+        jScrollPane1.setBackground(new Color(0,0,0,0));
+       jScrollPane1.setOpaque(false);
+        displaytable.setOpaque(false);
+       ((DefaultTableCellRenderer)displaytable.getDefaultRenderer(Object.class)).setOpaque(false);
+       jScrollPane1.getViewport().setOpaque(false);
     }
 
     /**
@@ -50,9 +58,9 @@ public class DisplayPackageBundles extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(238, 3, 3));
         jLabel3.setText("PACKAGES");
 
-        displaytable.setBackground(new java.awt.Color(153, 153, 153));
-        displaytable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 4));
-        displaytable.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        displaytable.setBackground(new java.awt.Color(0, 0, 0));
+        displaytable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 2));
+        displaytable.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         displaytable.setForeground(new java.awt.Color(255, 255, 255));
         displaytable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -62,6 +70,7 @@ public class DisplayPackageBundles extends javax.swing.JFrame {
                 "Sr No.", "Name", "Validity", "Code", "MBs", "Minutes", "SMS", "Subscribers"
             }
         ));
+        displaytable.setEnabled(false);
         jScrollPane1.setViewportView(displaytable);
 
         menuButton.setBackground(new java.awt.Color(0, 0, 0));

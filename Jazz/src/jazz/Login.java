@@ -5,6 +5,8 @@
  */
 package jazz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DEll
@@ -18,6 +20,20 @@ public class Login extends javax.swing.JFrame {
         initComponents();
     }
 
+    
+    public boolean isNumber(String num)
+    {
+        boolean flag=false;
+        for(int i=0;i<num.length();i++)
+        {
+            if(num.charAt(i)>='0' && num.charAt(i)<='9')
+                flag=true;
+            else
+                return false;
+        }
+        return flag;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -186,6 +202,14 @@ public class Login extends javax.swing.JFrame {
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
+        if(jCheckBox1.isSelected())
+        {
+            codeField.setEchoChar((char)0);
+        }
+        else
+        {
+            codeField.setEchoChar('*');
+        }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
@@ -197,9 +221,42 @@ public class Login extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-        ChoosePortal portal = new ChoosePortal();
-        portal.setVisible(true);
-        this.dispose();
+//        ChoosePortal portal = new ChoosePortal();
+//        portal.setVisible(true);
+//        this.dispose();
+            String contact= contactField.getText();
+            String num = codeField.getText();
+            if(contact.equals("") || contact.equals(null) || num.equals("") || num.equals(null))
+            {
+                JOptionPane.showMessageDialog(this,"The Credentials are Empty","Error",JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+                if(isNumber(num))
+                {
+                    boolean flag=false;
+                    int TPN=Integer.parseInt(num);
+                    for(int i=0;i<RegisteredAccounts.getUsersInstance().getUsers().size();i++)
+                    {
+                        if(RegisteredAccounts.getUsersInstance().getUsers().get(i).getContact().equals(contact) && RegisteredAccounts.getUsersInstance().getUsers().get(i).getTPN()==TPN)
+                        {
+                            flag=false;
+                        }
+                        else
+                            flag=true;
+                    }
+                    if(flag==true)
+                        JOptionPane.showMessageDialog(this,"Credentials not found\nIf you have not registered yourself then you need to regitser yourself first","Error",JOptionPane.ERROR_MESSAGE);
+                    else
+                    {
+                        ChoosePortal portal = new ChoosePortal();
+                            portal.setVisible(true);
+                            this.dispose();
+                    }
+                }
+                else
+                   JOptionPane.showMessageDialog(this,"The TPN code should be digits only","Error",JOptionPane.ERROR_MESSAGE); 
+            }
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void signupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupButtonActionPerformed

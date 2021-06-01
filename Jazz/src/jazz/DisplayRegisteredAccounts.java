@@ -5,6 +5,9 @@
  */
 package jazz;
 
+import java.awt.Color;
+import javax.swing.table.DefaultTableCellRenderer;
+
 /**
  *
  * @author DEll
@@ -16,6 +19,11 @@ public class DisplayRegisteredAccounts extends javax.swing.JFrame {
      */
     public DisplayRegisteredAccounts() {
         initComponents();
+        jScrollPane1.setBackground(new Color(0,0,0,0));
+       jScrollPane1.setOpaque(false);
+       registerTable.setOpaque(false);
+       ((DefaultTableCellRenderer)registerTable.getDefaultRenderer(Object.class)).setOpaque(false);
+       jScrollPane1.getViewport().setOpaque(false);
     }
 
     /**

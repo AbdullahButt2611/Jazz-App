@@ -60,6 +60,7 @@ public class AdminCashMenu extends javax.swing.JFrame {
         displayPackageButton.setForeground(new java.awt.Color(251, 255, 0));
         displayPackageButton.setText("Display Package Bundles");
         displayPackageButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
+        displayPackageButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         displayPackageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 displayPackageButtonActionPerformed(evt);
@@ -71,6 +72,7 @@ public class AdminCashMenu extends javax.swing.JFrame {
         deleteAccountButton.setForeground(new java.awt.Color(251, 255, 0));
         deleteAccountButton.setText("Delete Account");
         deleteAccountButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(247, 51, 2), 2));
+        deleteAccountButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         deleteAccountButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteAccountButtonActionPerformed(evt);
@@ -82,6 +84,7 @@ public class AdminCashMenu extends javax.swing.JFrame {
         addmoneyButton.setForeground(new java.awt.Color(251, 255, 0));
         addmoneyButton.setText("Add Money");
         addmoneyButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 4, 4), 2));
+        addmoneyButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         addmoneyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addmoneyButtonActionPerformed(evt);
@@ -93,6 +96,7 @@ public class AdminCashMenu extends javax.swing.JFrame {
         retrievemoneyButton.setForeground(new java.awt.Color(251, 255, 0));
         retrievemoneyButton.setText("Retrieve Money");
         retrievemoneyButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(242, 2, 2), 2));
+        retrievemoneyButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         retrievemoneyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 retrievemoneyButtonActionPerformed(evt);
@@ -104,6 +108,7 @@ public class AdminCashMenu extends javax.swing.JFrame {
         displayaccountsButton.setForeground(new java.awt.Color(251, 255, 0));
         displayaccountsButton.setText("Display Registered Accounts");
         displayaccountsButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(237, 2, 2), 3, true));
+        displayaccountsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         displayaccountsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 displayaccountsButtonActionPerformed(evt);
@@ -136,7 +141,7 @@ public class AdminCashMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(retrievemoneyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(displayaccountsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                .addComponent(displayaccountsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -167,9 +172,17 @@ public class AdminCashMenu extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
+
+        jMenu1.setBackground(new java.awt.Color(0, 0, 0));
+        jMenu1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 0), 2));
+        jMenu1.setForeground(new java.awt.Color(255, 255, 0));
         jMenu1.setText("File");
 
+        closeButton.setBackground(new java.awt.Color(0, 0, 0));
+        closeButton.setForeground(new java.awt.Color(255, 0, 0));
         closeButton.setText("Close");
+        closeButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 0), 2));
         closeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 closeButtonActionPerformed(evt);

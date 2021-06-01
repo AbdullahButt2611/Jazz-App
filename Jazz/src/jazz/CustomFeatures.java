@@ -99,6 +99,7 @@ public class CustomFeatures extends javax.swing.JFrame {
         menuButton.setForeground(new java.awt.Color(251, 255, 0));
         menuButton.setText("Go Back to Menu");
         menuButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(246, 3, 3), 2));
+        menuButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuButtonActionPerformed(evt);
