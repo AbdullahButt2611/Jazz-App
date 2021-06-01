@@ -234,18 +234,19 @@ public class Login extends javax.swing.JFrame {
             {
                 if(isNumber(num))
                 {
-                    boolean flag=false;
+                    int id=-1;
                     int TPN=Integer.parseInt(num);
                     for(int i=0;i<RegisteredAccounts.getUsersInstance().getUsers().size();i++)
                     {
                         if(RegisteredAccounts.getUsersInstance().getUsers().get(i).getContact().equals(contact) && RegisteredAccounts.getUsersInstance().getUsers().get(i).getTPN()==TPN)
                         {
-                            flag=false;
+                            id=i;
+                            break;
                         }
                         else
-                            flag=true;
+                            id=-1;
                     }
-                    if(flag==true)
+                    if(id==-1)
                         JOptionPane.showMessageDialog(this,"Credentials not found\nIf you have not registered yourself then you need to regitser yourself first","Error",JOptionPane.ERROR_MESSAGE);
                     else
                     {
