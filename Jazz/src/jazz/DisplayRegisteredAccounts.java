@@ -6,6 +6,7 @@
 package jazz;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,7 +22,10 @@ public class DisplayRegisteredAccounts extends javax.swing.JFrame {
     public DisplayRegisteredAccounts() {
         initComponents();
         tableSet();
-        setDataToRow();
+        if(RegisteredAccounts.getUsersInstance().getUsers().size()>0)
+            setDataToRow();
+        else
+            JOptionPane.showMessageDialog(this, "No data to Show", "Null Data",JOptionPane.INFORMATION_MESSAGE);
     }
     
     public void tableSet()

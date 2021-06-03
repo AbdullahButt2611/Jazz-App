@@ -22,6 +22,75 @@ public class Packages {
     private int minutes;
     
     private int mbs;
+    
+    private String name;
+    
+    private int validity;
+    
+    public String code;
+
+    public String getCode() {
+        return code;
+    }
+    
+    public boolean setCode(String code)
+    {
+        boolean flag=false;
+        if(code.charAt(0)=='*')
+            flag=true;
+        else
+            return false;
+        
+        if(code.charAt(code.length()-1)=='#')
+            flag=true;
+        else
+            return false;
+        
+        for(int i=1;i<code.length()-1;i++)
+        {
+            if(code.charAt(i)>='0' && code.charAt(i)<='9')
+                flag=true;
+            else
+                return false;
+        }
+        this.code=code;
+        return flag;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getValidity() {
+        return validity;
+    }
+    
+    public boolean setName(String name)
+    {
+        boolean flag=false;
+        for(int i=0;i<name.length();i++)
+        {
+            if((name.charAt(i)>='A' && name.charAt(i)<='Z')||(name.charAt(i)>='a' && name.charAt(i)<='z')||(name.charAt(i)==' '))
+            {
+                flag=true;
+            }
+            else
+                return false;
+        }
+        this.name=name;
+        return flag;
+    }
+    
+    public boolean setValidity(int value)
+    {
+        
+        if(value==7 || value==1 || value==30)
+        {
+            return true;
+        }
+        else
+            return false;
+    }
 
     /**
      * This is a getter for the messages of the particular package

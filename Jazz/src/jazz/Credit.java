@@ -45,6 +45,18 @@ public class Credit {
             return false;
     }
     
+    public void addAmount(int amount)
+    {
+        int am=amount+this.Amount;
+        this.setAmount(am);
+    }
+    
+     public void retrieveAmount(int amount)
+    {
+        int am=this.Amount-amount;
+        this.setAmount(am);
+    }
+    
     
     
 /**

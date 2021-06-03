@@ -6,7 +6,9 @@
 package jazz;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,11 +21,42 @@ public class DisplayPackageBundles extends javax.swing.JFrame {
      */
     public DisplayPackageBundles() {
         initComponents();
+        SetTable();
+        if(JazzWorld.worldInstance().getPack().size()>0)
+        {
+            setDataToRow();
+        }
+        else
+            JOptionPane.showMessageDialog(this,"No Data to Show Yet","Null Data",JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public void SetTable()
+    {
         jScrollPane1.setBackground(new Color(0,0,0,0));
        jScrollPane1.setOpaque(false);
         displaytable.setOpaque(false);
        ((DefaultTableCellRenderer)displaytable.getDefaultRenderer(Object.class)).setOpaque(false);
        jScrollPane1.getViewport().setOpaque(false);
+    }
+    
+    public void setDataToRow()
+    {
+        DefaultTableModel model = new DefaultTableModel();
+        Object rowData[]=new Object[8];
+        model.setRowCount(0);
+        for(int i =0;i<JazzWorld.worldInstance().getPack().size();i++)
+        {
+            rowData[0]=i+1;
+            rowData[1]=JazzWorld.worldInstance().getPack().get(i).getName();
+            rowData[2]=JazzWorld.worldInstance().getPack().get(i).getValidity();
+            rowData[3]=JazzWorld.worldInstance().getPack().get(i).getCode();
+            rowData[4]=JazzWorld.worldInstance().getPack().get(i).getMbs();
+            rowData[5]=JazzWorld.worldInstance().getPack().get(i).getMinutes();
+            rowData[6]=JazzWorld.worldInstance().getPack().get(i).getMessages();
+            rowData[7]=JazzWorld.worldInstance().getPack().get(i).getSubscribers();
+            model.addRow(rowData);
+            
+        }
     }
 
     /**
@@ -59,9 +92,9 @@ public class DisplayPackageBundles extends javax.swing.JFrame {
         jLabel3.setText("PACKAGES");
 
         displaytable.setBackground(new java.awt.Color(0, 0, 0));
-        displaytable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 2));
+        displaytable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51)));
         displaytable.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        displaytable.setForeground(new java.awt.Color(255, 255, 255));
+        displaytable.setForeground(new java.awt.Color(255, 255, 0));
         displaytable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

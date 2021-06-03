@@ -5,12 +5,19 @@
  */
 package jazz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DEll
  */
 public class RetrieveMoney extends javax.swing.JFrame {
 
+    
+    int index = -1;
+    
+    String contact="";
+    
     /**
      * Creates new form RetrieveMoney
      */
@@ -70,6 +77,11 @@ public class RetrieveMoney extends javax.swing.JFrame {
         searchButton.setText("SEARCH");
         searchButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 4));
         searchButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Calibri", 0, 28)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(251, 255, 0));
@@ -196,9 +208,48 @@ public class RetrieveMoney extends javax.swing.JFrame {
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
-        AdminCashMenu menu=new AdminCashMenu();
-        menu.setVisible(true);
-        this.dispose();
+        
+         int in =-1;
+          if(contact.equals("") || contact.equals(null) || amountText.getText().equals(null) || amountText.getText().equals(null))
+          {
+              JOptionPane.showMessageDialog(this,"You input box is Empty\nYou first need to enter the account and click on the search button\nThen enter the amount and click on the Send button","Empty Input",JOptionPane.ERROR_MESSAGE);
+          }
+          else
+          {
+              for(int i=0;i<amountText.getText().length();i++)
+              {
+                  if(amountText.getText().charAt(i)>='0' && amountText.getText().charAt(i)<='9')
+                  {
+                      in=1;
+                      break;
+                  }
+                  else
+                  {
+                      in=-1;
+                  }
+              }
+              if(in==1)
+              {
+                  int amount = Integer.parseInt(amountText.getText());
+                  if(amount >= 50 && amount <=20000)
+                  {
+                    if(JazzCash.cashInstance().getCredit().get(index).isMoneyAvaialbe(amount)) 
+                    {
+                        JazzCash.cashInstance().getCredit().get(index).retrieveAmount(amount);
+                        JOptionPane.showMessageDialog(this,"Amount Added Successfully","Congratulations!!!",JOptionPane.INFORMATION_MESSAGE);
+                        AdminCashMenu menu=new AdminCashMenu();
+                        menu.setVisible(true);
+                        this.dispose();
+                    }
+                    else
+                        JOptionPane.showMessageDialog(this,"You dont have Enough credit to carry out the Transaction","Credit Lack",JOptionPane.ERROR_MESSAGE);
+                  }
+                  else
+                      JOptionPane.showMessageDialog(this,"The amount Does not lie in range","Error",JOptionPane.ERROR_MESSAGE);
+              }
+              else
+                  JOptionPane.showMessageDialog(this,"Only digits are allowed in Amount box","Digits Exception",JOptionPane.ERROR_MESSAGE);
+          }
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
@@ -208,6 +259,30 @@ public class RetrieveMoney extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_sendButtonActionPerformed
 
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // TODO add your handling code here:
+        contact = contactText.getText();
+        if(contact.equals("") || contact.equals(null))
+            JOptionPane.showMessageDialog(this,"You input box is Empty","Empty Input",JOptionPane.ERROR_MESSAGE);
+        else
+        {
+            if(RegisteredAccounts.getUsersInstance().getUsers().size()>0)
+            {
+                for(int i =0;i<RegisteredAccounts.getUsersInstance().getUsers().size();i++)
+                {
+                    if(RegisteredAccounts.getUsersInstance().getUsers().get(i).getContact().equals(contact))
+                    {
+                        index=i;
+                        break;
+                    }
+                }
+                if(index==-1)
+                    JOptionPane.showMessageDialog(this,"You have Entered Unregistered Number","Error",JOptionPane.ERROR_MESSAGE);
+            }
+            else
+                JOptionPane.showMessageDialog(this,"No Data to Delete","Empty List",JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_searchButtonActionPerformed
+}
     /**
      * @param args the command line arguments
      */

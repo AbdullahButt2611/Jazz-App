@@ -5,17 +5,29 @@
  */
 package jazz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DEll
  */
 public class DeleteAccountConfirm extends javax.swing.JFrame {
 
+    
+    String cnic="";
+    int index=-1;
     /**
      * Creates new form DeleteAccountConfirm
      */
     public DeleteAccountConfirm() {
         initComponents();
+    }
+    
+    public DeleteAccountConfirm(String cnic, int index) {
+        initComponents();
+        this.cnic=cnic;
+        this.index=index;
+        cnicText.setText(cnic);
     }
 
     /**
@@ -32,7 +44,7 @@ public class DeleteAccountConfirm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        cnicText = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         yesButton = new javax.swing.JButton();
         noButton = new javax.swing.JButton();
@@ -56,9 +68,11 @@ public class DeleteAccountConfirm extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(153, 153, 153));
         jLabel4.setText("You have requested to delete the account with Cnic :");
 
-        jTextField1.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField1.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(204, 0, 0));
+        cnicText.setBackground(new java.awt.Color(0, 0, 0));
+        cnicText.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        cnicText.setForeground(new java.awt.Color(255, 204, 0));
+        cnicText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
+        cnicText.setEnabled(false);
 
         jLabel5.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(153, 153, 153));
@@ -107,7 +121,7 @@ public class DeleteAccountConfirm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cnicText, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(165, 165, 165)
@@ -128,7 +142,7 @@ public class DeleteAccountConfirm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cnicText, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
@@ -161,6 +175,8 @@ public class DeleteAccountConfirm extends javax.swing.JFrame {
 
     private void yesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesButtonActionPerformed
         // TODO add your handling code here:
+        RegisteredAccounts.getUsersInstance().getUsers().remove(index);
+        JOptionPane.showMessageDialog(this, "User Deleted Successfully", "Deletion Complete", JOptionPane.INFORMATION_MESSAGE);
         AdminCashMenu menu=new AdminCashMenu();
         menu.setVisible(true);
         this.dispose();
@@ -202,13 +218,13 @@ public class DeleteAccountConfirm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField cnicText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton noButton;
     private javax.swing.JButton yesButton;
     // End of variables declaration//GEN-END:variables

@@ -6,7 +6,9 @@
 package jazz;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,16 +16,44 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class DeleteAccont extends javax.swing.JFrame {
 
+    
+    String cnic="";
+    
     /**
      * Creates new form DeleteAccont
      */
     public DeleteAccont() {
         initComponents();
+        TableSet();
+        if(RegisteredAccounts.getUsersInstance().getUsers().size()>0)
+            addDataToRow();
+        else
+            JOptionPane.showMessageDialog(this,"No Data to Show Yet","Null Data",JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public void TableSet()
+    {
         jScrollPane1.setBackground(new Color(0,0,0,0));
         jScrollPane1.setOpaque(false);
         deleteTable.setOpaque(false);
         ((DefaultTableCellRenderer)deleteTable.getDefaultRenderer(Object.class)).setOpaque(false);
         jScrollPane1.getViewport().setOpaque(false);
+    }
+    
+    public void addDataToRow()
+    {
+        DefaultTableModel model = new DefaultTableModel();
+        Object rowData[] = new Object[5];
+        model.setRowCount(0);
+        for(int i=0;i<RegisteredAccounts.getUsersInstance().getUsers().size();i++)
+        {
+           rowData[0]= i+1;
+           rowData[1]=RegisteredAccounts.getUsersInstance().getUsers().get(i).getUsername();
+           rowData[2]=RegisteredAccounts.getUsersInstance().getUsers().get(i).getCnic();
+           rowData[3]=RegisteredAccounts.getUsersInstance().getUsers().get(i).getContact();
+           rowData[4]=RegisteredAccounts.getUsersInstance().getUsers().get(i).getTPN();
+           model.addRow(rowData);
+        }
     }
 
     /**
@@ -60,10 +90,10 @@ public class DeleteAccont extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(251, 255, 0));
         jLabel2.setText("Management System");
 
-        deleteTable.setBackground(new java.awt.Color(204, 204, 204));
-        deleteTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
+        deleteTable.setBackground(new java.awt.Color(0, 0, 0));
+        deleteTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0)));
         deleteTable.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
-        deleteTable.setForeground(new java.awt.Color(255, 255, 255));
+        deleteTable.setForeground(new java.awt.Color(255, 204, 0));
         deleteTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -225,9 +255,42 @@ public class DeleteAccont extends javax.swing.JFrame {
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
-        DeleteAccountConfirm confirm=new DeleteAccountConfirm();
-        confirm.setVisible(true);
-        this.dispose();
+//        DeleteAccountConfirm confirm=new DeleteAccountConfirm();
+//        confirm.setVisible(true);
+//        this.dispose();
+            
+            int check=-1;
+          cnic = cnicText.getText();
+          if(cnic.equals("") || cnic.equals(null))
+              JOptionPane.showMessageDialog(this,"Box is Empty","Null Entry",JOptionPane.ERROR_MESSAGE);
+          else
+          {
+              if(RegisteredAccounts.getUsersInstance().getUsers().size()>0)
+              {
+                for(int i = 0;i<RegisteredAccounts.getUsersInstance().getUsers().size();i++)
+                {
+                    if(RegisteredAccounts.getUsersInstance().getUsers().get(i).getCnic().equals(cnic))
+                    {
+                        check=i;
+                        
+                        break;
+                    }
+                    else
+                        check=-1;
+                }
+                
+                if(check!=-1)
+                {
+                    DeleteAccountConfirm confirm=new DeleteAccountConfirm(cnic,check);
+                        confirm.setVisible(true);
+                        this.dispose();
+                }
+                else
+                    JOptionPane.showMessageDialog(this,"CNIC is not registered","Unidentified CNIC",JOptionPane.ERROR_MESSAGE);
+              }
+              else
+                  JOptionPane.showMessageDialog(this,"No data to delete","Null List",JOptionPane.ERROR_MESSAGE);
+          }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     /**
