@@ -25,6 +25,26 @@ public class JazzWorld {
     private List<Packages> pack;
     
     private List<RechargeAmount> balance;
+
+    public List<Minutes> getMin() {
+        return min;
+    }
+
+    public List<Internet> getInternet() {
+        return internet;
+    }
+
+    public List<SMS> getSms() {
+        return sms;
+    }
+
+    public List<Packages> getPack() {
+        return pack;
+    }
+
+    public List<RechargeAmount> getBalance() {
+        return balance;
+    }
     
     /**
      * This is a constructor for the JazzWorld class

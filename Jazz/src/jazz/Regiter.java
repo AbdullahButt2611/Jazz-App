@@ -301,6 +301,16 @@ public class Regiter extends javax.swing.JFrame {
    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                     if(field.equals(""))
                     {
+                        Credit c = new Credit(0);
+                        Minutes min= new Minutes();
+                        Internet in = new Internet();
+                        SMS s= new SMS();
+                        RechargeAmount rec= new RechargeAmount();
+                        JazzCash.cashInstance().getCredit().add(c);
+                        JazzWorld.worldInstance().getMin().add(min);
+                        JazzWorld.worldInstance().getInternet().add(in);
+                        JazzWorld.worldInstance().getSms().add(s);
+                        JazzWorld.worldInstance().getBalance().add(rec);
                         us.setTPN();
                         us.setLogins(0);
                         RegisteredAccounts.getUsersInstance().getUsers().add(us);

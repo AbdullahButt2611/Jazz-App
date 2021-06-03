@@ -11,9 +11,40 @@ package jazz;
  * 2020-CS-63
  */
 public class Credit {
-    int Amount=0;
-    Packages p=new Packages();
-    Order o=new Order();
+    private int Amount;
+    
+    
+    /**
+     * This is a constructor for this particular class
+     * @param amount 
+     */
+    public Credit(int amount)
+    {
+        Amount = amount;
+    }
+
+    /**
+     * This is a getter for the credit of the user
+     * @return int return the credit in the wallet of the user
+     */
+    public int getAmount() {
+        return Amount;
+    }
+
+    /**
+     * This is the setter for the credit of the user
+     * @param Amount the amount that should be greater than 0
+     */
+    public boolean setAmount(int Amount) {
+        if(Amount>0)
+        {
+            this.Amount = Amount;
+            return true;
+        }
+        else
+            return false;
+    }
+    
     
     
 /**

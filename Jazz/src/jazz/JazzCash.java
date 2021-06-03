@@ -23,6 +23,10 @@ public class JazzCash {
     {
        credit = new ArrayList<Credit>(); 
     }
+
+    public List<Credit> getCredit() {
+        return credit;
+    }
     
     /**
      * This is a getter for the instance of the method
