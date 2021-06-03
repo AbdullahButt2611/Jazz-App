@@ -253,6 +253,8 @@ public class Review extends javax.swing.JFrame {
 
     private void rateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rateButtonActionPerformed
         // TODO add your handling code here:
+        String f=reviewText.getText();
+        System.out.println(f);
         JOptionPane.showMessageDialog(this, "Logged out Successfully", "Success",JOptionPane.INFORMATION_MESSAGE);
         FirstScreen first = new FirstScreen();
         first.setVisible(true);

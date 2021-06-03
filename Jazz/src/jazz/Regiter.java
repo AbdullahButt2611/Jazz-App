@@ -302,10 +302,10 @@ public class Regiter extends javax.swing.JFrame {
                     if(field.equals(""))
                     {
                         Credit c = new Credit(0);
-                        Minutes min= new Minutes();
-                        Internet in = new Internet();
-                        SMS s= new SMS();
-                        RechargeAmount rec= new RechargeAmount();
+                        Minutes min= new Minutes(0,0,0);
+                        Internet in = new Internet(0,0,0);
+                        SMS s= new SMS(0,0,0);
+                        RechargeAmount rec= new RechargeAmount(0);
                         JazzCash.cashInstance().getCredit().add(c);
                         JazzWorld.worldInstance().getMin().add(min);
                         JazzWorld.worldInstance().getInternet().add(in);

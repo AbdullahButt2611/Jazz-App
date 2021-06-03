@@ -14,6 +14,13 @@ public class Minutes {
     private int numberOfUsedMinutes;
     private int numberOfRemainingMinutes;   
     private String Expiry;
+    public Minutes (int n,int u, int h)
+    {
+        this.numberOfMinutes=n;
+        this.numberOfRemainingMinutes=u;
+        this.numberOfUsedMinutes=h;
+        
+    }
     public int GetNumberOfMinutes()
     {
         return this.numberOfMinutes;
@@ -27,17 +34,32 @@ public class Minutes {
     {
         return this.numberOfRemainingMinutes;
     }
-    public void SetNumberOfMBS(int n)
+    public boolean SetNumberOfMBS(int n)
     {
+        if(n>=0)
+        {
         this.numberOfMinutes=n;
+        return true;
+        }
+        return false;
     }
-    public void SetNumberOfUsedMinutes(int m)
+    public boolean SetNumberOfUsedMinutes(int m)
     {
-        this.numberOfMinutes=m;
+         if(m>=0)
+        {
+        this.numberOfUsedMinutes=m;
+        return true;
+        }
+        return false;
     }
-    public void SetNumberOfRemainingMinutes(int i)
+    public boolean SetNumberOfRemainingMinutes(int i)
     {
+         if(i>=0)
+        {
         this.numberOfMinutes=i;
+        return true;
+        }
+        return false;
     }
     public String GetExpiry()
     {

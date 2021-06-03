@@ -14,6 +14,13 @@ public class Internet {
     private int numberOfUsedMBS;
     private int numberOfRemainingMBS;
     private String Expiry;
+    public Internet(int n,int u, int h)
+    {
+        this.numberOfMBS=n;
+        this.numberOfRemainingMBS=u;
+        this.numberOfUsedMBS=h;
+        
+    }
     public int GetNumberOfMBS()
     {
         return this.numberOfMBS;
@@ -27,17 +34,32 @@ public class Internet {
     {
         return this.numberOfRemainingMBS;
     }
-    public void SetNumberOfMBS(int n)
+    public boolean SetNumberOfMBS(int n)
     {
+         if(n>=0)
+        {
         this.numberOfMBS=n;
+        return true;
+        }
+        return false;
     }
-    public void SetNumberOfUsedMBS(int m)
+    public boolean SetNumberOfUsedMBS(int m)
     {
+         if(m>=0)
+        {
         this.numberOfMBS=m;
+        return true;
+        }
+        return false;
     }
-    public void SetNumberOfRemainingMBS(int i)
+    public boolean SetNumberOfRemainingMBS(int i)
     {
+         if(i>=0)
+        {
         this.numberOfMBS=i;
+        return true;
+        }
+        return false;
     }
     public String GetExpiry()
     {

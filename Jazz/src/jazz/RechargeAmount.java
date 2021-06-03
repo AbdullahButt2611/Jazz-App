@@ -12,6 +12,11 @@ package jazz;
 public class RechargeAmount {
      double Balance;
     Credit c=new Credit(0);
+    public RechargeAmount(double b)
+            
+    {
+        this.Balance=b;
+    }
     
     public boolean isBalanceVaild()
     {

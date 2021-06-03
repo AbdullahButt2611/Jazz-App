@@ -14,6 +14,13 @@ public class SMS {
     private int numberOfUsedSMS;
     private int numberOfRemainingSMS;
     private String Expiry;
+    public SMS(int n,int u, int h)
+    {
+        this.numberOfSMS=n;
+        this.numberOfRemainingSMS=u;
+        this.numberOfUsedSMS=h;
+       
+    }
     public int GetNumberOfSMS()
     {
         return this.numberOfSMS;
@@ -27,17 +34,32 @@ public class SMS {
     {
         return this.numberOfRemainingSMS;
     }
-    public void SetNumberOfSMS(int n)
+    public boolean SetNumberOfSMS(int n)
     {
+         if(n>=0)
+        {
         this.numberOfSMS=n;
+        return true;
+        }
+        return false;
     }
-    public void SetNumberOfUsedSMS(int m)
+    public boolean SetNumberOfUsedSMS(int m)
     {
+         if(m>=0)
+        {
         this.numberOfSMS=m;
+        return true;
+        }
+        return false;
     }
-    public void SetNumberOfRemainingSMS(int i)
+    public boolean SetNumberOfRemainingSMS(int i)
     {
+         if(i>=0)
+        {
         this.numberOfSMS=i;
+        return true;
+        }
+        return false;
     }
     public String GetExpiry()
     {
