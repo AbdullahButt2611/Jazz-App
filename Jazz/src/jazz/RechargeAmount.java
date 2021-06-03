@@ -11,7 +11,7 @@ package jazz;
  */
 public class RechargeAmount {
      double Balance;
-    Credit c=new Credit();
+    Credit c=new Credit(0);
     
     public boolean isBalanceVaild()
     {
@@ -24,7 +24,7 @@ public class RechargeAmount {
     public boolean RechargeBalance()
       
     {
-        if(Balance<=c.Amount)
+        if(Balance<=c.getAmount())
         {
             return true;
         }

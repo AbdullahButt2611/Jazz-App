@@ -227,12 +227,13 @@ public class RechargeBalance extends javax.swing.JFrame {
 
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
         // TODO add your handling code here:
-        Credit d=new Credit();
+        Credit d=new Credit(300);
         boolean flag=false;
         String a=contactText.getText();
-        int u=Integer.parseInt(amountText.getName());
-        String e=passText.getName();
+        int u=Integer.parseInt(amountText.getText());
+        String e=passText.getText();
         int y=Integer.parseInt(e);
+        int o=d.getAmount();
         for(int i=0;i<RegisteredAccounts.getUsersInstance().getUsers().size();i++)
         {
             if(RegisteredAccounts.getUsersInstance().getUsers().get(i).getContact().equals(a))
@@ -244,7 +245,9 @@ public class RechargeBalance extends javax.swing.JFrame {
                 flag=d.isMoneyAvaialbe(u);
                 if(flag==true)
                 {
-                    d.Amount=d.Amount-u;
+                o=o-u;
+                JOptionPane.showMessageDialog(this,"Money Sent" , "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                
                 }
                 }
                 else
