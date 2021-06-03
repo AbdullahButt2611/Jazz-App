@@ -5,13 +5,23 @@
  */
 package jazz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DEll
  */
 public class BussReservation extends javax.swing.JFrame {
 
+    
     int index = -1;
+    String company = "";
+    String route = "";
+    String timing = "";
+    String type = "";
+    int seats = -1;
+    int amount = -1;
+//    String 
     
     /**
      * Creates new form BussReservation
@@ -23,6 +33,8 @@ public class BussReservation extends javax.swing.JFrame {
     public BussReservation(int index) {
         initComponents();
         this.index = index;
+        mradio.setSelected(true);
+        acRadio.setSelected(true);
     }
 
     /**
@@ -134,6 +146,11 @@ public class BussReservation extends javax.swing.JFrame {
 
         seatsBox.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         seatsBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "Complete" }));
+        seatsBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seatsBoxActionPerformed(evt);
+            }
+        });
 
         reserveButton.setBackground(new java.awt.Color(0, 0, 0));
         reserveButton.setFont(new java.awt.Font("Calibri", 1, 30)); // NOI18N
@@ -141,6 +158,11 @@ public class BussReservation extends javax.swing.JFrame {
         reserveButton.setText("Reserve");
         reserveButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
         reserveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        reserveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reserveButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -325,10 +347,64 @@ public class BussReservation extends javax.swing.JFrame {
 
     private void receiptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receiptButtonActionPerformed
         // TODO add your handling code here:
-        CustomerCashMenu menu=new CustomerCashMenu(index);
-        menu.setVisible(true);
-        this.dispose();
+//        CustomerCashMenu menu=new CustomerCashMenu(index);
+//        menu.setVisible(true);
+//        this.dispose();
+
+            if(company.equals("") || company.equals(null) || route.equals("") ||route.equals(null) || timing.equals("") || timing.equals(null) || type.equals("") || (company.equals("") || company.equals(null) || route.equals("") ||route.equals(null) || timing.equals("") || timing.equals(null) || type.equals("") || type.equals(null) || seats == -1))
+            {
+                JOptionPane.showMessageDialog(this,"You have unfilled boxes","Error",JOptionPane.ERROR_MESSAGE);
+            }
     }//GEN-LAST:event_receiptButtonActionPerformed
+
+    private void reserveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reserveButtonActionPerformed
+        // TODO add your handling code here:
+        
+        company = companyBox.getSelectedItem().toString();
+        route = routeBox.getSelectedItem().toString();
+        if(mradio.isSelected())
+            timing = "Morning";
+        else if(eradio.isSelected())
+            timing = "Evening";
+        
+        if(acRadio.isSelected())
+            type = "A/C";
+        else if (nonRadio.isSelected())
+            type = "Non A/C";
+        
+        if(seatsBox.getSelectedIndex()==16)
+            seats=32;
+        else
+            seats=seatsBox.getSelectedIndex()+1;
+            
+        int price = -1;
+        if(company.equals("Daewoo"))
+            price = 950;
+        else if(company.equals("Niazi Express"))
+            price = 750;
+        else 
+            price = 500;
+        
+        price = price +(routeBox.getSelectedIndex()*100);
+        
+        if(mradio.isSelected())
+            price+=50;
+        else if(eradio.isSelected())
+            price = price;
+        
+        if(acRadio.isSelected())
+            price += 200;
+        
+        price = seats*price;
+        amountText.setText(price+"");
+            
+            
+            
+    }//GEN-LAST:event_reserveButtonActionPerformed
+
+    private void seatsBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seatsBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_seatsBoxActionPerformed
 
     /**
      * @param args the command line arguments
