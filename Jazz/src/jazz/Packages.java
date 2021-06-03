@@ -17,6 +17,26 @@ public class Packages {
     
     private int subscribers;
     
+    private String ID;
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+    
+    public void generateID()
+    {
+        String s="P-";
+        Random rand = new Random();
+        for(int i =0;i<4;i++)
+        {
+            s+=rand.nextInt();
+        }
+        this.ID=s;
+    }
     private int messages;
     
     private int minutes;

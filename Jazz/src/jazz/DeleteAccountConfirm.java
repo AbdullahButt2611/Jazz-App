@@ -176,6 +176,10 @@ public class DeleteAccountConfirm extends javax.swing.JFrame {
     private void yesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesButtonActionPerformed
         // TODO add your handling code here:
         RegisteredAccounts.getUsersInstance().getUsers().remove(index);
+        JazzCash.cashInstance().getCredit().remove(index);
+        JazzWorld.worldInstance().getInternet().remove(index);
+        JazzWorld.worldInstance().getMin().remove(index);
+        JazzWorld.worldInstance().getSms().remove(index);
         JOptionPane.showMessageDialog(this, "User Deleted Successfully", "Deletion Complete", JOptionPane.INFORMATION_MESSAGE);
         AdminCashMenu menu=new AdminCashMenu();
         menu.setVisible(true);

@@ -6,7 +6,9 @@
 package jazz;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,11 +21,35 @@ public class AddPackage extends javax.swing.JFrame {
      */
     public AddPackage() {
         initComponents();
+        SetTable();
+        if(JazzWorld.worldInstance().getPack().size()>0)
+            addDatatoRow();
+        else
+            JOptionPane.showMessageDialog(this, "No Data to display","Null data",JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public void SetTable()
+    {
         jScrollPane1.setBackground(new Color(0,0,0,0));
         jScrollPane1.setOpaque(false);
         jTable1.setOpaque(false);
         ((DefaultTableCellRenderer)jTable1.getDefaultRenderer(Object.class)).setOpaque(false);
         jScrollPane1.getViewport().setOpaque(false);
+    }
+    
+    public void addDatatoRow()
+    {
+        DefaultTableModel model = new DefaultTableModel();
+        Object rowData[] = new Object[4];
+        model.setRowCount(0);
+        for(int i=0;i<JazzWorld.worldInstance().getPack().size();i++)
+        {
+            rowData[0]=i+1;
+            rowData[1]=JazzWorld.worldInstance().getPack().get(i).getID();
+            rowData[2]=JazzWorld.worldInstance().getPack().get(i).getName();
+            rowData[3]=JazzWorld.worldInstance().getPack().get(i).getCode();
+            model.addRow(rowData);
+        }
     }
 
     /**
@@ -67,9 +93,10 @@ public class AddPackage extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(251, 255, 0));
         jLabel2.setText("Management System");
 
+        jTable1.setBackground(new java.awt.Color(0, 0, 0));
         jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
-        jTable1.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
+        jTable1.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(255, 204, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -151,6 +178,11 @@ public class AddPackage extends javax.swing.JFrame {
         addButton.setText("ADD");
         addButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
         addButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
 
         cancelButton.setBackground(new java.awt.Color(255, 0, 0));
         cancelButton.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
@@ -278,6 +310,113 @@ public class AddPackage extends javax.swing.JFrame {
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        // TODO add your handling code here:
+        String str="";
+        Packages pack = new Packages();
+        String name= nameText.getText();
+        String code = codeText.getText();
+        String mb = mbText.getText();
+        String minutes = minuteText.getText();
+        String sms = smsText.getText();
+        int v=validationBox.getSelectedIndex();
+        int in =-1;
+        if(name.equals(null) || name.equals("") ||code.equals(null) || code.equals("") || mb.equals(null) || mb.equals("") || minutes.equals(null) || minutes.equals("") || sms.equals(null) || sms.equals(""))
+            JOptionPane.showMessageDialog(this,"Some of the Boxes are Empty","Null Input",JOptionPane.ERROR_MESSAGE);
+        else
+        {
+            for(int i=0;i<mb.length();i++)
+            {
+                if(mb.charAt(i)>='0' && mb.charAt(i)<='9')
+                    in=-1;
+                else
+                {
+                    in=1;
+                    break;
+                }
+            }
+            if(in==1)
+                JOptionPane.showMessageDialog(this,"MBs should be in Digits","Wrong Input",JOptionPane.ERROR_MESSAGE);
+            else
+            {
+                in=-1;
+                for(int i=0;i<minutes.length();i++)
+                {
+                    if(minutes.charAt(i)>='0' && minutes.charAt(i)<='9')
+                        in=-1;
+                    else
+                    {
+                        in=1;
+                        break;
+                    }
+                }
+                if(in==1)
+                JOptionPane.showMessageDialog(this,"Minutes should be in Digits","Wrong Input",JOptionPane.ERROR_MESSAGE);
+                else
+                {
+                    in=-1;
+                    for(int i=0;i<sms.length();i++)
+                    {
+                        if(sms.charAt(i)>='0' && sms.charAt(i)<='9')
+                            in=-1;
+                        else
+                        {
+                            in=1;
+                            break;
+                        }
+                    }
+                    if(in==1)
+                    JOptionPane.showMessageDialog(this,"SMS should be in Digits","Wrong Input",JOptionPane.ERROR_MESSAGE);
+                    else
+                    {
+                        boolean flag=false;
+                        flag=pack.setName(name);
+                        if(!flag)
+                            str+="Name\n";
+                        
+                        flag=pack.setCode(code);
+                        if(!flag)
+                            str+="Code\n";
+                        
+                        flag=pack.setMbs(Integer.parseInt(mb));
+                        if(!flag)
+                            str+="MBs\n";
+                        
+                        flag=pack.setMessages(Integer.parseInt(sms));
+                        if(!flag)
+                            str+="SMS\n";
+                        
+                        flag=pack.setMinutes(Integer.parseInt(minutes));
+                        if(!flag)
+                            str+="SMS\n";
+                        
+                        if(v==0)
+                            pack.setValidity(1);
+                        else if(v==1)
+                            pack.setValidity(7);
+                        else if(v==2)
+                            pack.setValidity(30);
+                        
+                        if(str.equals("") || str.equals(null))
+                        {
+                            pack.generateID();
+                            JazzWorld.worldInstance().getPack().add(pack);
+                            SetTable();
+                            addDatatoRow();
+                            nameText.setText("");
+                            codeText.setText("");
+                            mbText.setText("");
+                            minuteText.setText("");
+                            smsText.setText("");
+                        }
+                        else
+                            JOptionPane.showMessageDialog(this,"The following data is incorrect :\n"+str,"Error",JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_addButtonActionPerformed
 
     /**
      * @param args the command line arguments

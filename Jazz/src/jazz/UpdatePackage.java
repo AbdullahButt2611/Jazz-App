@@ -6,7 +6,9 @@
 package jazz;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,16 +16,42 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class UpdatePackage extends javax.swing.JFrame {
 
+    int index = -1;
+    
     /**
      * Creates new form UpdatePackage
      */
     public UpdatePackage() {
         initComponents();
+        SetTable();
+        if(JazzWorld.worldInstance().getPack().size()>0)
+            addDatatoRow();
+        else
+            JOptionPane.showMessageDialog(this, "No Data to display","Null data",JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public void SetTable()
+    {
         jScrollPane1.setBackground(new Color(0,0,0,0));
         jScrollPane1.setOpaque(false);
         jTable1.setOpaque(false);
         ((DefaultTableCellRenderer)jTable1.getDefaultRenderer(Object.class)).setOpaque(false);
         jScrollPane1.getViewport().setOpaque(false);
+    }
+    
+    public void addDatatoRow()
+    {
+        DefaultTableModel model = new DefaultTableModel();
+        Object rowData[] = new Object[4];
+        model.setRowCount(0);
+        for(int i=0;i<JazzWorld.worldInstance().getPack().size();i++)
+        {
+            rowData[0]=i+1;
+            rowData[1]=JazzWorld.worldInstance().getPack().get(i).getID();
+            rowData[2]=JazzWorld.worldInstance().getPack().get(i).getName();
+            rowData[3]=JazzWorld.worldInstance().getPack().get(i).getCode();
+            model.addRow(rowData);
+        }
     }
 
     /**
@@ -72,9 +100,10 @@ public class UpdatePackage extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(251, 255, 0));
         jLabel2.setText("Management System");
 
+        jTable1.setBackground(new java.awt.Color(0, 0, 0));
         jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
-        jTable1.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
+        jTable1.setFont(new java.awt.Font("Calibri", 0, 17)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(255, 204, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -113,6 +142,11 @@ public class UpdatePackage extends javax.swing.JFrame {
         checkButton.setText("Search");
         checkButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 2));
         checkButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        checkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -199,14 +233,20 @@ public class UpdatePackage extends javax.swing.JFrame {
 
         priceText.setBackground(new java.awt.Color(0, 0, 0));
         priceText.setFont(new java.awt.Font("Calibri", 0, 22)); // NOI18N
-        priceText.setForeground(new java.awt.Color(204, 204, 204));
+        priceText.setForeground(new java.awt.Color(255, 204, 0));
         priceText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
+        priceText.setEnabled(false);
 
         updateButton.setBackground(new java.awt.Color(0, 0, 204));
         updateButton.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         updateButton.setForeground(new java.awt.Color(255, 255, 255));
         updateButton.setText("Update");
         updateButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
 
         cancelButton.setBackground(new java.awt.Color(204, 0, 0));
         cancelButton.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
@@ -337,6 +377,110 @@ public class UpdatePackage extends javax.swing.JFrame {
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
+        // TODO add your handling code here:
+        String id=idText.getText();
+        if(id.equals("") || id.equals(null))
+            JOptionPane.showMessageDialog(this,"The Input is Empty","Null Input",JOptionPane.ERROR_MESSAGE);
+        else
+        {
+            for(int i =0;i<JazzWorld.worldInstance().getPack().size();i++)
+            {
+                if(JazzWorld.worldInstance().getPack().get(i).getID().equals(id))
+                {
+                    index=i;
+                    nameText.setText(JazzWorld.worldInstance().getPack().get(i).getName());
+                    codeText.setText(JazzWorld.worldInstance().getPack().get(i).getCode());
+                    mbText.setText(JazzWorld.worldInstance().getPack().get(i).getMbs()+"");
+                    minutesText.setText(JazzWorld.worldInstance().getPack().get(i).getMinutes()+"");
+                    smsText.setText(JazzWorld.worldInstance().getPack().get(i).getMessages()+"");
+                    if(JazzWorld.worldInstance().getPack().get(i).getValidity()==1)
+                        priceText.setText(30+"");
+                    else if(JazzWorld.worldInstance().getPack().get(i).getValidity()==7)
+                        priceText.setText(200+"");
+                    else if(JazzWorld.worldInstance().getPack().get(i).getValidity()==30)
+                        priceText.setText(620+"");
+                    break;
+                }
+            }
+            if(index==-1)
+                JOptionPane.showMessageDialog(this,"The ID not found","Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_checkButtonActionPerformed
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // TODO add your handling code here:
+        if(index==-1)
+            JOptionPane.showMessageDialog(this,"The ID input is Empty\nYou need to first search the ID","Null Input",JOptionPane.ERROR_MESSAGE);
+        else
+        {
+            String name=nameText.getText();
+            String code=codeText.getText();
+            String mb=mbText.getText();
+            String minutes=minutesText.getText();
+            String sms=smsText.getText();
+            String str = "";
+            boolean flag=false;
+            
+            Packages pack= new Packages();
+            if( name.equals("") || name.equals(null))
+                pack.setName(JazzWorld.worldInstance().getPack().get(index).getName());
+            else
+            {
+                flag=pack.setName(name);
+                if(!flag)
+                    str+="Name\n";
+            }
+            if( code.equals("") || code.equals(null))
+                pack.setCode(JazzWorld.worldInstance().getPack().get(index).getCode());
+            else
+            {
+                flag=pack.setCode(code);
+                if(!flag)
+                    str+="Code\n";
+            }
+            if( mb.equals("") || mb.equals(null))
+                pack.setMbs(JazzWorld.worldInstance().getPack().get(index).getMbs());
+            else
+            {
+                flag=pack.setMbs(Integer.parseInt(mb));
+                if(!flag)
+                    str+="MBs\n";
+            }
+            if( minutes.equals("") || minutes.equals(null))
+                pack.setMinutes(JazzWorld.worldInstance().getPack().get(index).getMinutes());
+            else
+            {
+                flag=pack.setMinutes(Integer.parseInt(minutes));
+                if(!flag)
+                    str+="Minutes\n";
+            }
+            if( sms.equals("") || sms.equals(null))
+                pack.setMessages(JazzWorld.worldInstance().getPack().get(index).getMessages());
+            else
+            {
+                flag=pack.setMessages(Integer.parseInt(sms));
+                if(!flag)
+                    str+="SMS\n";
+            }
+            
+            if(str.equals("") || str.equals(null))
+            {
+                pack.setID(JazzWorld.worldInstance().getPack().get(index).getID());
+                pack.setSubscribers(JazzWorld.worldInstance().getPack().get(index).getSubscribers());
+                pack.setValidity(JazzWorld.worldInstance().getPack().get(index).getValidity());
+                JazzWorld.worldInstance().getPack().set(index, pack);
+                JOptionPane.showMessageDialog(this,"Data has been Updated","Updation completed", JOptionPane.INFORMATION_MESSAGE);
+                WorldAdminMenu menu=new WorldAdminMenu();
+                menu.setVisible(true);
+                this.dispose();
+            }
+                
+        }
+        
+        
+    }//GEN-LAST:event_updateButtonActionPerformed
 
     /**
      * @param args the command line arguments

@@ -6,7 +6,9 @@
 package jazz;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,11 +21,35 @@ public class DeletePackage extends javax.swing.JFrame {
      */
     public DeletePackage() {
         initComponents();
+        SetTable();
+        if(JazzWorld.worldInstance().getPack().size()>0)
+            addDatatoRow();
+        else
+            JOptionPane.showMessageDialog(this, "No Data to display","Null data",JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public void SetTable()
+    {
         jScrollPane1.setBackground(new Color(0,0,0,0));
         jScrollPane1.setOpaque(false);
         jTable1.setOpaque(false);
         ((DefaultTableCellRenderer)jTable1.getDefaultRenderer(Object.class)).setOpaque(false);
         jScrollPane1.getViewport().setOpaque(false);
+    }
+    
+    public void addDatatoRow()
+    {
+        DefaultTableModel model = new DefaultTableModel();
+        Object rowData[] = new Object[4];
+        model.setRowCount(0);
+        for(int i=0;i<JazzWorld.worldInstance().getPack().size();i++)
+        {
+            rowData[0]=i+1;
+            rowData[1]=JazzWorld.worldInstance().getPack().get(i).getID();
+            rowData[2]=JazzWorld.worldInstance().getPack().get(i).getName();
+            rowData[3]=JazzWorld.worldInstance().getPack().get(i).getCode();
+            model.addRow(rowData);
+        }
     }
 
     /**
@@ -57,9 +83,10 @@ public class DeletePackage extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(251, 255, 0));
         jLabel2.setText("Management System");
 
+        jTable1.setBackground(new java.awt.Color(0, 0, 0));
         jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 51), 2));
         jTable1.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
+        jTable1.setForeground(new java.awt.Color(255, 204, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -191,6 +218,30 @@ public class DeletePackage extends javax.swing.JFrame {
 
     private void delButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delButtonActionPerformed
         // TODO add your handling code here:
+        String id=idText.getText();
+        int in =-1;
+        if(id.equals("") || id.equals(null))
+        {
+            JOptionPane.showMessageDialog(this,"Inout is Empty","Null input",JOptionPane.ERROR_MESSAGE);
+        }   
+        else
+        {
+            for(int i=0;i<JazzWorld.worldInstance().getPack().size();i++)
+            {
+                if(JazzWorld.worldInstance().getPack().get(i).getID().equals(id))
+                {
+                    JazzWorld.worldInstance().getPack().remove(i);
+                    SetTable();
+                    addDatatoRow();
+                    in=1;
+                    idText.setText("");
+                    break;
+                }
+            }
+            if(in==-1)
+                JOptionPane.showMessageDialog(this,"The ID not found","Error",JOptionPane.ERROR_MESSAGE);
+                
+        }
     }//GEN-LAST:event_delButtonActionPerformed
 
     /**

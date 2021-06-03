@@ -5,6 +5,8 @@
  */
 package jazz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DEll
@@ -201,9 +203,59 @@ public class Recharge extends javax.swing.JFrame {
 
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
         // TODO add your handling code here:
-        WorldAdminMenu menu=new WorldAdminMenu();
-        menu.setVisible(true);
-        this.dispose();
+
+          String contact = contactText.getText();
+          String amount = amountText.getText();
+          if(contact.equals("") || contact.equals(null) || amount.equals("") || amount.equals(null))
+          {
+              JOptionPane.showMessageDialog(this,"Input Fields are empty","Input Failure!",JOptionPane.ERROR_MESSAGE);
+          }
+          else
+          {
+              int in=-1;
+              for(int i=0;i<amount.length();i++)
+              {
+                  if(amount.charAt(i)>='0' && amount.charAt(i)<='9')
+                      in=-1;
+                  else
+                  {
+                      in=1;
+                      break;
+                  }
+              }
+              if(in==1)
+                  JOptionPane.showMessageDialog(this,"Amount shoud be Digits","Input Failure!",JOptionPane.ERROR_MESSAGE);
+              else
+              {
+                  double am=Double.parseDouble(amount);
+                  if(am>20 && am<=2000)
+                  {
+                      in = -1;
+                      for(int i =0;i<RegisteredAccounts.getUsersInstance().getUsers().size();i++)
+                      {
+                          if(RegisteredAccounts.getUsersInstance().getUsers().get(i).getContact().equals(contact))
+                          {
+                              in=i;
+                              break;
+                          }
+                      }
+                      if(in==-1)
+                      {
+                          JOptionPane.showMessageDialog(this,"The user should be registered to the system to whom the recharge is being sent","Unregistered Contact",JOptionPane.ERROR_MESSAGE);
+                      }
+                      else
+                      {
+                          JazzWorld.worldInstance().getBalance().get(in).Balance+=am;
+                          JOptionPane.showMessageDialog(this,"Recharge Done Successfully","Congratulations!",JOptionPane.INFORMATION_MESSAGE);
+                            WorldAdminMenu menu=new WorldAdminMenu();
+                            menu.setVisible(true);
+                            this.dispose();
+                      }
+                  }
+                  else
+                      JOptionPane.showMessageDialog(this,"Amount shoud be in range","Input Failure!",JOptionPane.ERROR_MESSAGE);
+              }
+          }
     }//GEN-LAST:event_loadButtonActionPerformed
 
     /**
