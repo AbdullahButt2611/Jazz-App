@@ -11,11 +11,24 @@ package jazz;
  */
 public class Gifts extends javax.swing.JFrame {
 
+    int index = -1;
+    
     /**
      * Creates new form Gifts
      */
     public Gifts() {
         initComponents();
+    }
+    
+    public Gifts(int index) {
+        initComponents();
+        this.index=index;
+        if(RegisteredAccounts.getUsersInstance().getUsers().get(index).getLogins()%3==0)
+        {
+            receiveButton.setEnabled(true);
+        }
+        else
+            receiveButton.setEnabled(false);
     }
 
     /**
@@ -154,7 +167,7 @@ public class Gifts extends javax.swing.JFrame {
 
     private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
         // TODO add your handling code here:
-        WorldCustomerMenu menu = new WorldCustomerMenu();
+        WorldCustomerMenu menu = new WorldCustomerMenu(index);
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_menuButtonActionPerformed

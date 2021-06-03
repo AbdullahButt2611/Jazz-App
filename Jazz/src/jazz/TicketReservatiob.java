@@ -11,11 +11,18 @@ package jazz;
  */
 public class TicketReservatiob extends javax.swing.JFrame {
 
+    int index = -1;
+    
     /**
      * Creates new form TicketReservatiob
      */
     public TicketReservatiob() {
         initComponents();
+    }
+    
+    public TicketReservatiob(int index) {
+        initComponents();
+        this.index = index;
     }
 
     /**
@@ -158,21 +165,21 @@ public class TicketReservatiob extends javax.swing.JFrame {
 
     private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
         // TODO add your handling code here:
-        CustomerCashMenu menu=new CustomerCashMenu();
+        CustomerCashMenu menu=new CustomerCashMenu(index);
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_menuButtonActionPerformed
 
     private void bussbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bussbuttonActionPerformed
         // TODO add your handling code here:
-        BussReservation reserve = new BussReservation();
+        BussReservation reserve = new BussReservation(index);
         reserve.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bussbuttonActionPerformed
 
     private void movieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_movieButtonActionPerformed
         // TODO add your handling code here:
-        MovieReservation reserve = new MovieReservation();
+        MovieReservation reserve = new MovieReservation(index);
         reserve.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_movieButtonActionPerformed

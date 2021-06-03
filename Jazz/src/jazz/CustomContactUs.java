@@ -10,12 +10,19 @@ package jazz;
  * @author DEll
  */
 public class CustomContactUs extends javax.swing.JFrame {
-
+    
+    int index = -1;
+    
     /**
      * Creates new form CustomContactUs
      */
     public CustomContactUs() {
         initComponents();
+    }
+    
+    public CustomContactUs(int index) {
+        initComponents();
+        this.index=index;
     }
 
     /**
@@ -177,7 +184,7 @@ public class CustomContactUs extends javax.swing.JFrame {
 
     private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
         // TODO add your handling code here:
-        ChoosePortal portal=new ChoosePortal();
+        ChoosePortal portal=new ChoosePortal(this.index);
         portal.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_menuButtonActionPerformed

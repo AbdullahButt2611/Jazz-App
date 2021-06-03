@@ -5,17 +5,38 @@
  */
 package jazz;
 
+import java.awt.Color;
+import javax.swing.table.DefaultTableCellRenderer;
+
 /**
  *
  * @author DEll
  */
 public class OrderFood extends javax.swing.JFrame {
 
+    int index = -1;
+    
     /**
      * Creates new form OrderFood
      */
     public OrderFood() {
         initComponents();
+        tableSet();
+    }
+    
+    public OrderFood(int index) {
+        initComponents();
+        tableSet();
+        this.index = index;
+    }
+    
+    public void tableSet()
+    {
+        jScrollPane1.setBackground(new Color(0,0,0,0));
+        jScrollPane1.setOpaque(false);
+        jTable1.setOpaque(false);
+        ((DefaultTableCellRenderer)jTable1.getDefaultRenderer(Object.class)).setOpaque(false);
+        jScrollPane1.getViewport().setOpaque(false);
     }
 
     /**
@@ -60,6 +81,10 @@ public class OrderFood extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 0, 0));
         jLabel3.setText("ORDER FOOD");
 
+        jTable1.setBackground(new java.awt.Color(0, 0, 0));
+        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0)));
+        jTable1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -265,14 +290,14 @@ public class OrderFood extends javax.swing.JFrame {
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
-        WorldCustomerMenu menu = new WorldCustomerMenu();
+        WorldCustomerMenu menu = new WorldCustomerMenu(index);
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void orderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderButtonActionPerformed
         // TODO add your handling code here:
-        WorldCustomerMenu menu = new WorldCustomerMenu();
+        WorldCustomerMenu menu = new WorldCustomerMenu(index);
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_orderButtonActionPerformed

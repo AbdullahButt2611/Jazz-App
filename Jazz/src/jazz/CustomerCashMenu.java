@@ -11,11 +11,20 @@ package jazz;
  */
 public class CustomerCashMenu extends javax.swing.JFrame {
 
+    int index = -1;
+    
     /**
      * Creates new form CustomerCashMenu
      */
     public CustomerCashMenu() {
         initComponents();
+    }
+    
+    public CustomerCashMenu(int index) {
+        initComponents();
+        this.index=index;
+        contactText.setText(RegisteredAccounts.getUsersInstance().getUsers().get(index).getContact());
+        nameText.setText(RegisteredAccounts.getUsersInstance().getUsers().get(index).getUsername());
     }
 
     /**
@@ -40,7 +49,7 @@ public class CustomerCashMenu extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         contactText = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        nameText = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         sendmoneyButton = new javax.swing.JButton();
@@ -69,9 +78,10 @@ public class CustomerCashMenu extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(250, 4, 4));
         jLabel3.setText("Rs:");
 
-        creditText.setBackground(new java.awt.Color(204, 204, 204));
-        creditText.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        creditText.setForeground(new java.awt.Color(255, 255, 255));
+        creditText.setBackground(new java.awt.Color(0, 0, 0));
+        creditText.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
+        creditText.setForeground(new java.awt.Color(255, 255, 0));
+        creditText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 51, 0), 2));
         creditText.setEnabled(false);
 
         jLabel4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
@@ -123,15 +133,18 @@ public class CustomerCashMenu extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(235, 2, 2));
         jLabel7.setText("Username :");
 
-        contactText.setBackground(new java.awt.Color(204, 204, 204));
-        contactText.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        contactText.setBackground(new java.awt.Color(0, 0, 0));
+        contactText.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
+        contactText.setForeground(new java.awt.Color(255, 255, 0));
         contactText.setToolTipText("");
+        contactText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
         contactText.setEnabled(false);
 
-        jTextField2.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField2.setEnabled(false);
+        nameText.setBackground(new java.awt.Color(0, 0, 0));
+        nameText.setFont(new java.awt.Font("Calibri", 1, 20)); // NOI18N
+        nameText.setForeground(new java.awt.Color(255, 255, 0));
+        nameText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
+        nameText.setEnabled(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -150,7 +163,7 @@ public class CustomerCashMenu extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(contactText, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                            .addComponent(jTextField2))))
+                            .addComponent(nameText))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -166,7 +179,7 @@ public class CustomerCashMenu extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nameText, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -388,56 +401,56 @@ public class CustomerCashMenu extends javax.swing.JFrame {
 
     private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
         // TODO add your handling code here:
-        ChoosePortal portal = new ChoosePortal();
+        ChoosePortal portal = new ChoosePortal(index);
         portal.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_closeButtonActionPerformed
 
     private void sendmoneyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendmoneyButtonActionPerformed
         // TODO add your handling code here:
-        SendMoney money = new SendMoney();
+        SendMoney money = new SendMoney(index);
         money.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_sendmoneyButtonActionPerformed
 
     private void paybillsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paybillsButtonActionPerformed
         // TODO add your handling code here:
-        PayBills bills = new PayBills();
+        PayBills bills = new PayBills(index);
         bills.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_paybillsButtonActionPerformed
 
     private void subscribeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subscribeButtonActionPerformed
         // TODO add your handling code here:
-        SubcribePackage pack = new SubcribePackage();
+        SubcribePackage pack = new SubcribePackage(index);
         pack.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_subscribeButtonActionPerformed
 
     private void rechargeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rechargeButtonActionPerformed
         // TODO add your handling code here:
-        RechargeBalance balance = new RechargeBalance();
+        RechargeBalance balance = new RechargeBalance(index);
         balance.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_rechargeButtonActionPerformed
 
     private void reservationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservationButtonActionPerformed
         // TODO add your handling code here:
-        TicketReservatiob ticket = new TicketReservatiob();
+        TicketReservatiob ticket = new TicketReservatiob(index);
         ticket.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_reservationButtonActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
-        UpdateAccount update = new UpdateAccount();
+        UpdateAccount update = new UpdateAccount(index);
         update.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
-        DeleteOwnAccount del = new DeleteOwnAccount();
+        DeleteOwnAccount del = new DeleteOwnAccount(index);
         del.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_deleteButtonActionPerformed
@@ -498,7 +511,7 @@ public class CustomerCashMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField nameText;
     private javax.swing.JButton paybillsButton;
     private javax.swing.JButton rechargeButton;
     private javax.swing.JButton reservationButton;

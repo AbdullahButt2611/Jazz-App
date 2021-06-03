@@ -11,11 +11,18 @@ package jazz;
  */
 public class Usage extends javax.swing.JFrame {
 
+    int index = -1;
+    
     /**
      * Creates new form Usage
      */
     public Usage() {
         initComponents();
+    }
+    
+    public Usage(int index) {
+        initComponents();
+        this.index = index;
     }
 
     /**
@@ -286,28 +293,28 @@ public class Usage extends javax.swing.JFrame {
 
     private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
         // TODO add your handling code here:
-        WorldCustomerMenu menu = new WorldCustomerMenu();
+        WorldCustomerMenu menu = new WorldCustomerMenu(index);
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_menuButtonActionPerformed
 
     private void mbButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mbButtonActionPerformed
         // TODO add your handling code here:
-        InternetForm mb = new InternetForm();
+        InternetForm mb = new InternetForm(index);
         mb.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_mbButtonActionPerformed
 
     private void smsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_smsButtonActionPerformed
         // TODO add your handling code here:
-        MessageForm sms = new MessageForm();
+        MessageForm sms = new MessageForm(index);
         sms.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_smsButtonActionPerformed
 
     private void minutesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minutesButtonActionPerformed
         // TODO add your handling code here:
-        CallForm call = new CallForm();
+        CallForm call = new CallForm(index);
         call.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_minutesButtonActionPerformed

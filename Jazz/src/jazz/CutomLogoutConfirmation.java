@@ -13,11 +13,18 @@ import javax.swing.JOptionPane;
  */
 public class CutomLogoutConfirmation extends javax.swing.JFrame {
 
+    int index = -1;
+    
     /**
      * Creates new form CutomLogoutConfirmation
      */
     public CutomLogoutConfirmation() {
         initComponents();
+    }
+    
+    public CutomLogoutConfirmation(int index) {
+        initComponents();
+        this.index=index;
     }
 
     /**
@@ -150,7 +157,7 @@ public class CutomLogoutConfirmation extends javax.swing.JFrame {
 
     private void yesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesButtonActionPerformed
         // TODO add your handling code here:
-        Review first = new Review();
+        Review first = new Review(index);
         first.setVisible(true);
         this.dispose();
 
@@ -158,7 +165,7 @@ public class CutomLogoutConfirmation extends javax.swing.JFrame {
 
     private void noButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noButtonActionPerformed
         // TODO add your handling code here:
-        ChoosePortal portal= new ChoosePortal();
+        ChoosePortal portal= new ChoosePortal(index);
         portal.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_noButtonActionPerformed

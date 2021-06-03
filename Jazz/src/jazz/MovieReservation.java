@@ -14,13 +14,26 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class MovieReservation extends javax.swing.JFrame {
 
+    int index = -1;
+    
     /**
      * Creates new form MovieReservation
      */
     public MovieReservation() {
         initComponents();
-        
-       jScrollPane1.setBackground(new Color(0,0,0,0));
+        tableSet();
+       
+    }
+    
+    public MovieReservation(int index) {
+        initComponents();
+        tableSet();
+       this.index=index;
+    }
+    
+    public void tableSet()
+    {
+        jScrollPane1.setBackground(new Color(0,0,0,0));
        jScrollPane1.setOpaque(false);
        jTable1.setOpaque(false);
        ((DefaultTableCellRenderer)jTable1.getDefaultRenderer(Object.class)).setOpaque(false);
@@ -217,14 +230,14 @@ public class MovieReservation extends javax.swing.JFrame {
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
-        TicketReservatiob ticket = new TicketReservatiob();
+        TicketReservatiob ticket = new TicketReservatiob(index);
         ticket.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void bookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookButtonActionPerformed
         // TODO add your handling code here:
-        CustomerCashMenu menu=new CustomerCashMenu();
+        CustomerCashMenu menu=new CustomerCashMenu(index);
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bookButtonActionPerformed

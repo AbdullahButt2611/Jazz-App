@@ -11,11 +11,18 @@ package jazz;
  */
 public class ChoosePortal extends javax.swing.JFrame {
 
+    int index = -1;
+    
     /**
      * Creates new form ChoosePortal
      */
     public ChoosePortal() {
         initComponents();
+    }
+    
+    public ChoosePortal(int index) {
+        initComponents();
+        this.index=index;
     }
 
     /**
@@ -205,7 +212,7 @@ public class ChoosePortal extends javax.swing.JFrame {
 
     private void cntactusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cntactusButtonActionPerformed
         // TODO add your handling code here:
-        CustomContactUs contact= new CustomContactUs();
+        CustomContactUs contact= new CustomContactUs(this.index);
         contact.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cntactusButtonActionPerformed
@@ -213,21 +220,21 @@ public class ChoosePortal extends javax.swing.JFrame {
     private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
         // TODO add your handling code here:
         
-        CutomLogoutConfirmation log = new CutomLogoutConfirmation();
+        CutomLogoutConfirmation log = new CutomLogoutConfirmation(index);
         log.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_closeButtonActionPerformed
 
     private void cashButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashButtonActionPerformed
         // TODO add your handling code here:
-        CustomerCashMenu menu=new CustomerCashMenu();
+        CustomerCashMenu menu=new CustomerCashMenu(index);
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cashButtonActionPerformed
 
     private void worldButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_worldButtonActionPerformed
         // TODO add your handling code here:
-        WorldCustomerMenu menu = new WorldCustomerMenu();
+        WorldCustomerMenu menu = new WorldCustomerMenu(index);
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_worldButtonActionPerformed

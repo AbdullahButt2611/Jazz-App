@@ -302,9 +302,9 @@ public class Regiter extends javax.swing.JFrame {
                     if(field.equals(""))
                     {
                         us.setTPN();
-                        us.setLogins(1);
+                        us.setLogins(0);
                         RegisteredAccounts.getUsersInstance().getUsers().add(us);
-                        JOptionPane.showMessageDialog(this,"Data has been Addded Successfully\n You TPN coode is : "+RegisteredAccounts.getUsersInstance().getUsers().get(RegisteredAccounts.getUsersInstance().getUsers().size()-1).getTPN()+"\n You must remember this code to login to the system","Congratulations",JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(this,"Data has been Added Successfully\n You TPN coode is : "+RegisteredAccounts.getUsersInstance().getUsers().get(RegisteredAccounts.getUsersInstance().getUsers().size()-1).getTPN()+"\n You must remember this code to login to the system","Congratulations",JOptionPane.INFORMATION_MESSAGE);
 
 
                         Login log= new Login();

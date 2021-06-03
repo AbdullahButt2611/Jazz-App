@@ -11,11 +11,23 @@ package jazz;
  */
 public class UpdateAccount extends javax.swing.JFrame {
 
+    int index = -1;
+    
     /**
      * Creates new form UpdateAccount
      */
     public UpdateAccount() {
         initComponents();
+    }
+    
+    public UpdateAccount(int index) {
+        initComponents();
+        this.index=index;
+        contactLabel.setText(RegisteredAccounts.getUsersInstance().getUsers().get(index).getContact());
+        nameText.setText(RegisteredAccounts.getUsersInstance().getUsers().get(index).getUsername());
+        cnicLabel1.setText(RegisteredAccounts.getUsersInstance().getUsers().get(index).getCnic());
+        tpnText.setText(RegisteredAccounts.getUsersInstance().getUsers().get(index).getTPN()+"");
+        
     }
 
     /**
@@ -256,14 +268,14 @@ public class UpdateAccount extends javax.swing.JFrame {
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
-        CustomerCashMenu menu=new CustomerCashMenu();
+        CustomerCashMenu menu=new CustomerCashMenu(index);
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
-        CustomerCashMenu menu=new CustomerCashMenu();
+        CustomerCashMenu menu=new CustomerCashMenu(index);
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_updateButtonActionPerformed

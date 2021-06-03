@@ -11,6 +11,8 @@ package jazz;
  */
 public class WorldCustomerMenu extends javax.swing.JFrame {
 
+    int index = -1;
+    
     /**
      * Creates new form WorldCustomerMenu
      */
@@ -18,6 +20,11 @@ public class WorldCustomerMenu extends javax.swing.JFrame {
         initComponents();
     }
 
+    public WorldCustomerMenu(int index) {
+        initComponents();
+        this.index=index;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -328,28 +335,28 @@ public class WorldCustomerMenu extends javax.swing.JFrame {
 
     private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
         // TODO add your handling code here:
-        ChoosePortal portal = new ChoosePortal();
+        ChoosePortal portal = new ChoosePortal(index);
         portal.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_closeButtonActionPerformed
 
     private void orderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderButtonActionPerformed
         // TODO add your handling code here:
-        OrderFood food = new OrderFood();
+        OrderFood food = new OrderFood(index);
         food.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_orderButtonActionPerformed
 
     private void giftButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_giftButtonActionPerformed
         // TODO add your handling code here:
-        Gifts gift = new Gifts();
+        Gifts gift = new Gifts(index);
         gift.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_giftButtonActionPerformed
 
     private void usageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usageButtonActionPerformed
         // TODO add your handling code here:
-        Usage use = new Usage();
+        Usage use = new Usage(index);
         use.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_usageButtonActionPerformed

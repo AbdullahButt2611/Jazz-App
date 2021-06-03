@@ -11,11 +11,18 @@ package jazz;
  */
 public class DeleteOwnAccountConfirmation extends javax.swing.JFrame {
 
+    int index = -1;
+    
     /**
      * Creates new form DeleteOwnAccountConfirmation
      */
     public DeleteOwnAccountConfirmation() {
         initComponents();
+    }
+    
+    public DeleteOwnAccountConfirmation(int index) {
+        initComponents();
+        this.index = index;
     }
 
     /**
@@ -138,14 +145,14 @@ public class DeleteOwnAccountConfirmation extends javax.swing.JFrame {
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
-        DeleteOwnAccount del = new DeleteOwnAccount();
+        DeleteOwnAccount del = new DeleteOwnAccount(index);
         del.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
-        CustomerCashMenu menu=new CustomerCashMenu();
+        CustomerCashMenu menu=new CustomerCashMenu(index);
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_deleteButtonActionPerformed

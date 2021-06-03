@@ -11,11 +11,18 @@ package jazz;
  */
 public class RechargeBalance extends javax.swing.JFrame {
 
+    int index = -1;
+    
     /**
      * Creates new form RechargeBalance
      */
     public RechargeBalance() {
         initComponents();
+    }
+    
+    public RechargeBalance(int idex) {
+        initComponents();
+        this.index=index;
     }
 
     /**
@@ -206,14 +213,14 @@ public class RechargeBalance extends javax.swing.JFrame {
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
-        CustomerCashMenu menu=new CustomerCashMenu();
+        CustomerCashMenu menu=new CustomerCashMenu(index);
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
         // TODO add your handling code here:
-        CustomerCashMenu menu=new CustomerCashMenu();
+        CustomerCashMenu menu=new CustomerCashMenu(index);
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_loadButtonActionPerformed

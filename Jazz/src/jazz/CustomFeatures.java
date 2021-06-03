@@ -11,11 +11,18 @@ package jazz;
  */
 public class CustomFeatures extends javax.swing.JFrame {
 
+    int index = -1;
+    
     /**
      * Creates new form CustomFeatures
      */
     public CustomFeatures() {
         initComponents();
+    }
+    
+    public CustomFeatures(int index) {
+        initComponents();
+        this.index=index;
     }
 
     /**
@@ -185,7 +192,7 @@ public class CustomFeatures extends javax.swing.JFrame {
 
     private void menuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuButtonActionPerformed
         // TODO add your handling code here:
-        ChoosePortal portal=new ChoosePortal();
+        ChoosePortal portal=new ChoosePortal(index);
         portal.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_menuButtonActionPerformed

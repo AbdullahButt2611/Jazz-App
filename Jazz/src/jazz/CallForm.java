@@ -11,11 +11,18 @@ package jazz;
  */
 public class CallForm extends javax.swing.JFrame {
 
+    int index = -1;
+    
     /**
      * Creates new form CallForm
      */
     public CallForm() {
         initComponents();
+    }
+    
+    public CallForm(int index) {
+        initComponents();
+        this.index = index;
     }
 
     /**
@@ -155,14 +162,14 @@ public class CallForm extends javax.swing.JFrame {
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
-        Usage use = new Usage();
+        Usage use = new Usage(index);
         use.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void usebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usebuttonActionPerformed
         // TODO add your handling code here:
-        WorldCustomerMenu menu = new WorldCustomerMenu();
+        WorldCustomerMenu menu = new WorldCustomerMenu(index);
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_usebuttonActionPerformed

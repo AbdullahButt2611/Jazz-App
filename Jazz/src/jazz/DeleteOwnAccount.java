@@ -11,6 +11,8 @@ package jazz;
  */
 public class DeleteOwnAccount extends javax.swing.JFrame {
 
+    int index = -1;
+    
     /**
      * Creates new form DeleteOwnAccount
      */
@@ -18,6 +20,11 @@ public class DeleteOwnAccount extends javax.swing.JFrame {
         initComponents();
     }
 
+    public DeleteOwnAccount(int index) {
+        initComponents();
+        this.index = index;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -190,14 +197,14 @@ public class DeleteOwnAccount extends javax.swing.JFrame {
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
-        CustomerCashMenu menu=new CustomerCashMenu();
+        CustomerCashMenu menu=new CustomerCashMenu(index);
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
-        DeleteOwnAccountConfirmation confirm = new DeleteOwnAccountConfirmation();
+        DeleteOwnAccountConfirmation confirm = new DeleteOwnAccountConfirmation(index);
         confirm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_deleteButtonActionPerformed

@@ -6,6 +6,8 @@
 package jazz;
 
 import javax.swing.JOptionPane;
+    
+    
 
 /**
  *
@@ -13,11 +15,18 @@ import javax.swing.JOptionPane;
  */
 public class Review extends javax.swing.JFrame {
 
+    int index = -1;
+    
     /**
      * Creates new form Review
      */
     public Review() {
         initComponents();
+    }
+    
+    public Review(int index) {
+        initComponents();
+        this.index=index;
     }
 
     /**
@@ -237,6 +246,9 @@ public class Review extends javax.swing.JFrame {
     private void noButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noButtonActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(this, "We'll Remind you later", "Reminder",JOptionPane.INFORMATION_MESSAGE);
+         FirstScreen first = new FirstScreen();
+            first.setVisible(true);
+            this.dispose();
     }//GEN-LAST:event_noButtonActionPerformed
 
     private void rateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rateButtonActionPerformed

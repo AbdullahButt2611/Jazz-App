@@ -14,11 +14,25 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class SubcribePackage extends javax.swing.JFrame {
 
+    int index = -1;
+    
     /**
      * Creates new form SubcribePackage
      */
     public SubcribePackage() {
         initComponents();
+        tableSet();
+        
+    }
+    
+    public SubcribePackage(int index) {
+        initComponents();
+        tableSet();
+        this.index= index;
+    }
+    
+    public void tableSet()
+    {
         jScrollPane1.setBackground(new Color(0,0,0,0));
         jScrollPane1.setOpaque(false);
         jTable1.setOpaque(false);
@@ -277,14 +291,14 @@ public class SubcribePackage extends javax.swing.JFrame {
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
-        CustomerCashMenu menu=new CustomerCashMenu();
+        CustomerCashMenu menu=new CustomerCashMenu(index);
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void SubscribeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubscribeButtonActionPerformed
         // TODO add your handling code here:
-        CustomerCashMenu menu=new CustomerCashMenu();
+        CustomerCashMenu menu=new CustomerCashMenu(index);
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_SubscribeButtonActionPerformed

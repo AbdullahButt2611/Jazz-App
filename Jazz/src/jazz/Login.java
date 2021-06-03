@@ -250,7 +250,9 @@ public class Login extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(this,"Credentials not found\nIf you have not registered yourself then you need to regitser yourself first","Error",JOptionPane.ERROR_MESSAGE);
                     else
                     {
-                        ChoosePortal portal = new ChoosePortal();
+
+                        RegisteredAccounts.getUsersInstance().getUsers().get(id).setLogins(RegisteredAccounts.getUsersInstance().getUsers().get(id).getLogins()+1);
+                        ChoosePortal portal = new ChoosePortal(id);
                             portal.setVisible(true);
                             this.dispose();
                     }

@@ -11,11 +11,18 @@ package jazz;
  */
 public class BussReservation extends javax.swing.JFrame {
 
+    int index = -1;
+    
     /**
      * Creates new form BussReservation
      */
     public BussReservation() {
         initComponents();
+    }
+    
+    public BussReservation(int index) {
+        initComponents();
+        this.index = index;
     }
 
     /**
@@ -311,14 +318,14 @@ public class BussReservation extends javax.swing.JFrame {
 
     private void cacelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cacelButtonActionPerformed
         // TODO add your handling code here:
-        TicketReservatiob ticket = new TicketReservatiob();
+        TicketReservatiob ticket = new TicketReservatiob(index);
         ticket.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cacelButtonActionPerformed
 
     private void receiptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receiptButtonActionPerformed
         // TODO add your handling code here:
-        CustomerCashMenu menu=new CustomerCashMenu();
+        CustomerCashMenu menu=new CustomerCashMenu(index);
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_receiptButtonActionPerformed

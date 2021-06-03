@@ -11,11 +11,18 @@ package jazz;
  */
 public class PayBills extends javax.swing.JFrame {
 
+    int index = -1;
+    
     /**
      * Creates new form PayBills
      */
     public PayBills() {
         initComponents();
+    }
+    
+    public PayBills(int index) {
+        initComponents();
+        this.index = index;
     }
 
     /**
@@ -233,14 +240,14 @@ public class PayBills extends javax.swing.JFrame {
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
-        CustomerCashMenu menu=new CustomerCashMenu();
+        CustomerCashMenu menu=new CustomerCashMenu(index);
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void payButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payButton1ActionPerformed
         // TODO add your handling code here:
-        CustomerCashMenu menu=new CustomerCashMenu();
+        CustomerCashMenu menu=new CustomerCashMenu(index);
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_payButton1ActionPerformed

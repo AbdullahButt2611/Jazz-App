@@ -7,6 +7,7 @@ package jazz;
 
 import java.awt.Color;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,11 +20,33 @@ public class DisplayRegisteredAccounts extends javax.swing.JFrame {
      */
     public DisplayRegisteredAccounts() {
         initComponents();
+        tableSet();
+        setDataToRow();
+    }
+    
+    public void tableSet()
+    {
         jScrollPane1.setBackground(new Color(0,0,0,0));
        jScrollPane1.setOpaque(false);
        registerTable.setOpaque(false);
        ((DefaultTableCellRenderer)registerTable.getDefaultRenderer(Object.class)).setOpaque(false);
        jScrollPane1.getViewport().setOpaque(false);
+    }
+    
+    public void setDataToRow()
+    {
+        DefaultTableModel model = (DefaultTableModel)registerTable.getModel();
+        Object rowData[] = new Object[5];
+        model.setRowCount(0);
+        for(int i =0;i<RegisteredAccounts.getUsersInstance().getUsers().size();i++)
+        {
+            rowData[0]=i+1;
+            rowData[1]=RegisteredAccounts.getUsersInstance().getUsers().get(i).getUsername();
+            rowData[2]=RegisteredAccounts.getUsersInstance().getUsers().get(i).getContact();
+            rowData[3]=RegisteredAccounts.getUsersInstance().getUsers().get(i).getCnic();
+            rowData[4]=RegisteredAccounts.getUsersInstance().getUsers().get(i).getEmail();
+            model.addRow(rowData);
+        }
     }
 
     /**
@@ -58,8 +81,9 @@ public class DisplayRegisteredAccounts extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 0, 0));
         jLabel3.setText("REGISTERED ACCOUNTS");
 
-        registerTable.setBackground(new java.awt.Color(204, 204, 204));
-        registerTable.setFont(new java.awt.Font("Calibri", 1, 15)); // NOI18N
+        registerTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0)));
+        registerTable.setFont(new java.awt.Font("Calibri", 1, 17)); // NOI18N
+        registerTable.setForeground(new java.awt.Color(255, 255, 0));
         registerTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
