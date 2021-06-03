@@ -106,6 +106,11 @@ public class RechargeBalance extends javax.swing.JFrame {
         showCheck.setFont(new java.awt.Font("Calibri", 0, 22)); // NOI18N
         showCheck.setForeground(new java.awt.Color(204, 0, 0));
         showCheck.setText("Show TPN/Code");
+        showCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showCheckActionPerformed(evt);
+            }
+        });
 
         loadButton.setBackground(new java.awt.Color(204, 0, 0));
         loadButton.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
@@ -270,6 +275,18 @@ public class RechargeBalance extends javax.swing.JFrame {
     private void contactTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_contactTextActionPerformed
+
+    private void showCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showCheckActionPerformed
+        // TODO add your handling code here:
+        if(showCheck.isSelected())
+        {
+            passText.setEchoChar((char)0);
+        }
+        else
+        {
+            passText.setEchoChar('*');
+        }
+    }//GEN-LAST:event_showCheckActionPerformed
 
     /**
      * @param args the command line arguments

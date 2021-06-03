@@ -26,6 +26,10 @@ public class JazzWorld {
     private List<Packages> pack;
     
     private List<RechargeAmount> balance;
+
+    public Order getOrder() {
+        return order;
+    }
     
     
     
