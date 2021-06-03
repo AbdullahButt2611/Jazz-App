@@ -10,8 +10,9 @@ package jazz;
  * @author it
  */
 public class RechargeAmount {
-    int Balance;
+     double Balance;
     Credit c=new Credit();
+    
     public boolean isBalanceVaild()
     {
         if(Balance>=0)

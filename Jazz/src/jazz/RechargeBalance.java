@@ -5,6 +5,8 @@
  */
 package jazz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DEll
@@ -22,7 +24,7 @@ public class RechargeBalance extends javax.swing.JFrame {
     
     public RechargeBalance(int idex) {
         initComponents();
-        this.index=index;
+        this.index=idex;
     }
 
     /**
@@ -80,6 +82,11 @@ public class RechargeBalance extends javax.swing.JFrame {
         contactText.setFont(new java.awt.Font("Calibri", 0, 22)); // NOI18N
         contactText.setForeground(new java.awt.Color(255, 255, 255));
         contactText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
+        contactText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contactTextActionPerformed(evt);
+            }
+        });
 
         amountText.setBackground(new java.awt.Color(0, 0, 0));
         amountText.setFont(new java.awt.Font("Calibri", 0, 22)); // NOI18N
@@ -220,10 +227,46 @@ public class RechargeBalance extends javax.swing.JFrame {
 
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
         // TODO add your handling code here:
+        Credit d=new Credit();
+        boolean flag=false;
+        String a=contactText.getText();
+        int u=Integer.parseInt(amountText.getName());
+        String e=passText.getName();
+        int y=Integer.parseInt(e);
+        for(int i=0;i<RegisteredAccounts.getUsersInstance().getUsers().size();i++)
+        {
+            if(RegisteredAccounts.getUsersInstance().getUsers().get(i).getContact().equals(a))
+                
+            {
+                if(RegisteredAccounts.getUsersInstance().getUsers().get(i).getTPN()==y)
+                {
+                    
+                flag=d.isMoneyAvaialbe(u);
+                if(flag==true)
+                {
+                    d.Amount=d.Amount-u;
+                }
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(this,"You have Entered wrong TPN code" , "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this,"Your Contact Number is Not Registered Register it First" , "ERROR", JOptionPane.ERROR_MESSAGE);
+                
+            }
+        }
+        
         CustomerCashMenu menu=new CustomerCashMenu(index);
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_loadButtonActionPerformed
+
+    private void contactTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contactTextActionPerformed
 
     /**
      * @param args the command line arguments
