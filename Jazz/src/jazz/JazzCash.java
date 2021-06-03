@@ -16,12 +16,17 @@ public class JazzCash {
     
     private List<Credit> credit;
     
+    Queue<Movies> movie ;
+    
+    
     /**
      * This is a constructor for the JAzzCash class
      */
     public JazzCash()
     {
        credit = new ArrayList<Credit>(); 
+       movie = new LinkedList<>();
+       
     }
 
     public List<Credit> getCredit() {
