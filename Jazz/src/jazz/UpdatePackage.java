@@ -476,6 +476,8 @@ public class UpdatePackage extends javax.swing.JFrame {
                 menu.setVisible(true);
                 this.dispose();
             }
+            else
+                JOptionPane.showMessageDialog(this,"The following Data is incorrect\n"+str,"Error",JOptionPane.ERROR_MESSAGE);
                 
         }
         

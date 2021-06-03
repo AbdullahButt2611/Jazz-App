@@ -74,6 +74,10 @@ public class Users {
     public int getTPN() {
         return TPN;
     }
+    
+    public void setFTPN(int tpn) {
+        TPN=tpn;
+    }
       
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                             //  GETTER FOR FILE HANDLING

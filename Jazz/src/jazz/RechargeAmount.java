@@ -11,7 +11,6 @@ package jazz;
  */
 public class RechargeAmount {
      double Balance;
-    Credit c=new Credit(0);
     public RechargeAmount(double b)
             
     {
@@ -25,14 +24,5 @@ public class RechargeAmount {
             return true;
         }
     return false;
-    }
-    public boolean RechargeBalance()
-      
-    {
-        if(Balance<=c.getAmount())
-        {
-            return true;
-        }
-        return false;
     }
 }

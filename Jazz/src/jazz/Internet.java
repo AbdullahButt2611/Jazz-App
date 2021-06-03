@@ -11,28 +11,14 @@ package jazz;
  */
 public class Internet {
     private int numberOfMBS;
-    private int numberOfUsedMBS;
-    private int numberOfRemainingMBS;
-    private String Expiry;
-    public Internet(int n,int u, int h)
+    public Internet(int n)
     {
         this.numberOfMBS=n;
-        this.numberOfRemainingMBS=u;
-        this.numberOfUsedMBS=h;
         
     }
     public int GetNumberOfMBS()
     {
         return this.numberOfMBS;
-    }
-    public int GetNumberOfUsedMBS()
-    {
-        return this.numberOfUsedMBS;
-    }
-    
-    public int GetNumberOfRemainingMBS()
-    {
-        return this.numberOfRemainingMBS;
     }
     public boolean SetNumberOfMBS(int n)
     {
@@ -42,32 +28,6 @@ public class Internet {
         return true;
         }
         return false;
-    }
-    public boolean SetNumberOfUsedMBS(int m)
-    {
-         if(m>=0)
-        {
-        this.numberOfMBS=m;
-        return true;
-        }
-        return false;
-    }
-    public boolean SetNumberOfRemainingMBS(int i)
-    {
-         if(i>=0)
-        {
-        this.numberOfMBS=i;
-        return true;
-        }
-        return false;
-    }
-    public String GetExpiry()
-    {
-      return  this.Expiry;
-    }
-    public void SetExpiry(String d)
-    {
-        this.Expiry=d;
     }
     
     

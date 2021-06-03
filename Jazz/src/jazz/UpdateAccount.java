@@ -5,6 +5,8 @@
  */
 package jazz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DEll
@@ -27,7 +29,7 @@ public class UpdateAccount extends javax.swing.JFrame {
         nameText.setText(RegisteredAccounts.getUsersInstance().getUsers().get(index).getUsername());
         cnicLabel1.setText(RegisteredAccounts.getUsersInstance().getUsers().get(index).getCnic());
         tpnText.setText(RegisteredAccounts.getUsersInstance().getUsers().get(index).getTPN()+"");
-        
+        creditLabel2.setText(JazzCash.cashInstance().getCredit().get(index).getAmount()+"");
     }
 
     /**
@@ -275,9 +277,60 @@ public class UpdateAccount extends javax.swing.JFrame {
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
-        CustomerCashMenu menu=new CustomerCashMenu(index);
-        menu.setVisible(true);
-        this.dispose();
+        String name = nameText.getText();
+        String code = tpnText.getText();
+        boolean flag=false;
+        String str = "";
+        if(name.equals("") || name.equals(null))
+        {}
+        else
+        {
+            flag=RegisteredAccounts.getUsersInstance().getUsers().get(index).setUsername(name);
+            if(!flag)
+                str+="Name\n";
+        }
+        if(code.equals("") || code.equals(null))
+        {}
+        else
+        {
+            if(code.length()==4)
+            {
+                int in=-1;
+                for(int i =0;i<code.length();i++)
+                {
+                    if(code.charAt(i)>='0' && code.charAt(i)<='9')
+                        in=-1;
+                    else
+                    {
+                        in=1;
+                        break;
+                    }
+                }
+                if(in == 1)
+                {
+                    JOptionPane.showMessageDialog(this, "The TPN should be didits","Digits MisMatched",JOptionPane.ERROR_MESSAGE);
+                }
+                else
+                {
+                    if(str.equals("") || str.equals(null))
+                    {
+                        int tpn = Integer.parseInt(code);
+                        RegisteredAccounts.getUsersInstance().getUsers().get(index).setFTPN(tpn);
+                        JOptionPane.showConfirmDialog(this,"Updated Successfully","Congratulations",JOptionPane.INFORMATION_MESSAGE);
+                        CustomerCashMenu menu=new CustomerCashMenu(index);
+                        menu.setVisible(true);
+                        this.dispose();
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(this, "Name is invalid","Nme Failure",JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+            else
+                JOptionPane.showMessageDialog(this, "The TPN should be 4 didits code","Digits Length Failure",JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_updateButtonActionPerformed
 
     /**

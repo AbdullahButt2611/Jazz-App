@@ -80,7 +80,7 @@ public class RegisteredAccounts {
     {
         try
         {
-            FileReader fr=new FileReader("Advisors.txt");
+            FileReader fr=new FileReader("User.txt");
             BufferedReader br=new BufferedReader(fr);
             String line=br.readLine();
             line=br.readLine();

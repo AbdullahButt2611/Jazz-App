@@ -5,6 +5,8 @@
  */
 package jazz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DEll
@@ -80,6 +82,11 @@ public class DeleteOwnAccount extends javax.swing.JFrame {
         jCheckBox1.setFont(new java.awt.Font("Calibri", 1, 16)); // NOI18N
         jCheckBox1.setForeground(new java.awt.Color(102, 102, 102));
         jCheckBox1.setText("Show TPN/Code");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -204,10 +211,46 @@ public class DeleteOwnAccount extends javax.swing.JFrame {
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
-        DeleteOwnAccountConfirmation confirm = new DeleteOwnAccountConfirmation(index);
-        confirm.setVisible(true);
-        this.dispose();
+        
+        String code = passwordText.getText(); 
+        int in = -1;
+        for(int i=0;i<code.length();i++)
+        {
+            if(code.charAt(i)>='0' && code.charAt(i)<='9')
+                in=-1;
+            else
+            {
+                in=1;
+                break;
+            }
+        }
+        if(in==1)
+            JOptionPane.showConfirmDialog(this,"TPN should be digits", "Wrong Password",JOptionPane.ERROR_MESSAGE);
+        else
+        {
+            int tpn=Integer.parseInt(code);
+            if(tpn==RegisteredAccounts.getUsersInstance().getUsers().get(index).getTPN())
+            {
+                DeleteOwnAccountConfirmation confirm = new DeleteOwnAccountConfirmation(index);
+                confirm.setVisible(true);
+                this.dispose();
+            }
+            else
+                JOptionPane.showConfirmDialog(this,"The password is wrongs", "Wrong Password",JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+        if(jCheckBox1.isSelected())
+        {
+            passwordText.setEchoChar((char)0);
+        }
+        else
+        {
+            passwordText.setEchoChar('*');
+        }
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     /**
      * @param args the command line arguments

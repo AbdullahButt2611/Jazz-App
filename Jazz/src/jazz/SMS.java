@@ -11,28 +11,14 @@ package jazz;
  */
 public class SMS {
     private int numberOfSMS;
-    private int numberOfUsedSMS;
-    private int numberOfRemainingSMS;
-    private String Expiry;
-    public SMS(int n,int u, int h)
+    public SMS(int n)
     {
         this.numberOfSMS=n;
-        this.numberOfRemainingSMS=u;
-        this.numberOfUsedSMS=h;
        
     }
     public int GetNumberOfSMS()
     {
         return this.numberOfSMS;
-    }
-    public int GetNumberOfUsedSMS()
-    {
-        return this.numberOfUsedSMS;
-    }
-    
-    public int GetNumberOfRemainingSMS()
-    {
-        return this.numberOfRemainingSMS;
     }
     public boolean SetNumberOfSMS(int n)
     {
@@ -43,30 +29,5 @@ public class SMS {
         }
         return false;
     }
-    public boolean SetNumberOfUsedSMS(int m)
-    {
-         if(m>=0)
-        {
-        this.numberOfSMS=m;
-        return true;
-        }
-        return false;
-    }
-    public boolean SetNumberOfRemainingSMS(int i)
-    {
-         if(i>=0)
-        {
-        this.numberOfSMS=i;
-        return true;
-        }
-        return false;
-    }
-    public String GetExpiry()
-    {
-      return  this.Expiry;
-    }
-    public void SetExpiry(String d)
-    {
-        this.Expiry=d;
-    }
+    
 }

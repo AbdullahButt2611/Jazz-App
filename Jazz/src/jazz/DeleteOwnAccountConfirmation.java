@@ -5,6 +5,8 @@
  */
 package jazz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DEll
@@ -152,7 +154,13 @@ public class DeleteOwnAccountConfirmation extends javax.swing.JFrame {
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
-        CustomerCashMenu menu=new CustomerCashMenu(index);
+        RegisteredAccounts.getUsersInstance().getUsers().remove(index);
+        JazzCash.cashInstance().getCredit().remove(index);
+        JazzWorld.worldInstance().getInternet().remove(index);
+        JazzWorld.worldInstance().getMin().remove(index);
+        JazzWorld.worldInstance().getSms().remove(index);
+        JOptionPane.showMessageDialog(this, "User Deleted Successfully", "Deletion Complete", JOptionPane.INFORMATION_MESSAGE);
+        FirstScreen menu=new FirstScreen();
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_deleteButtonActionPerformed
