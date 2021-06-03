@@ -57,6 +57,13 @@ public class Packages {
         this.subscribers = subscribers;
     }
     
-    
+
+/**
+ *
+ * @author it
+ */
+public class Packages {
+    String type="";
+    String packages;
     
 }
