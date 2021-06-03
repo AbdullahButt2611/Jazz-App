@@ -13,11 +13,7 @@ import java.util.*;
  */
 public class Packages {
     
-    List<Minutes> min = new ArrayList<Minutes>();
     
-    List<Internet> internet = new ArrayList<Internet>();
-    
-    List<SMS> sms = new ArrayList<SMS>();
     
     private int subscribers;
     
@@ -35,10 +31,18 @@ public class Packages {
         return messages;
     }
 
+    /**
+     * This is a getter for the number f minutes  in a particular package
+     * @return int return the number of minutes in a package
+     */
     public int getMinutes() {
         return minutes;
     }
 
+    /**
+     * This is a getter for the number of MBs available in the package
+     * @return int containing the count of MBs
+     */
     public int getMbs() {
         return mbs;
     }
@@ -53,9 +57,61 @@ public class Packages {
         return subscribers;
     }
 
+    /**
+     * This is a setter for the subscribers value as it will be implemented in order to be incremented
+     * @param subscribers int containing the 
+     */
     public void setSubscribers(int subscribers) {
         this.subscribers = subscribers;
     }
+    
+    /**
+     * This is a setter for the number of messages in a package
+     * @param message int the value that needs to be checked
+     * @return Boolean return true if the value is greater than 0
+     */
+    public boolean setMessages(int message)
+    {
+        if(messages>0)
+        {
+            this.messages=messages;
+            return true;
+        }
+        else
+            return false;
+    }
+
+    /**
+     * This is a setter for the number of minutes in a package
+     * @param minutes int the value that needs to be checked
+     * @return Boolean return true if the value is greater than 0
+     */
+    public boolean setMinutes(int minutes) {
+        if(minutes>0)
+        {
+            this.minutes = minutes;
+            return true;
+        }
+        else 
+            return false;
+    }
+
+    /**
+     * This is a setter for the number of MBs in a package
+     * @param mbs int the value that needs to be checked
+     * @return Boolean return true if the value is greater than 0
+     */
+    public boolean setMbs(int mbs) {
+        if(mbs>0)
+        {
+            this.mbs = mbs;
+            return true;
+        }
+        else
+            return false;
+    }
+    
+    
     
 }
 

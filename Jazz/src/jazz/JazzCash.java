@@ -5,10 +5,33 @@
  */
 package jazz;
 
+import java.util.*;
+
 /**
  *
  * @author it
  */
 public class JazzCash {
+    private static JazzCash instance;
     
+    private List<Credit> credit;
+    
+    /**
+     * This is a constructor for the JAzzCash class
+     */
+    public JazzCash()
+    {
+       credit = new ArrayList<Credit>(); 
+    }
+    
+    /**
+     * This is a getter for the instance of the method
+     * @return JazzCash reference to this class     */
+    public static JazzCash cashInstance()
+    {
+        if(instance==null)
+            instance = new JazzCash();
+        
+        return instance;
+    }
 }
