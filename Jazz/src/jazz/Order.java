@@ -18,5 +18,5 @@ public class Order {
     
     Set<Hardeez> hardeez = new HashSet<>();
     
-    LinkedList<McDonlads> mc = new LinkedList<>();
+    LinkedList<McDonalds> mc = new LinkedList<>();
 }

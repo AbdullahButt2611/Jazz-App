@@ -6,11 +6,10 @@
 package jazz;
 
 /**
- *This is a class for the McDonalds order pack
- * @author 2020-CS-72
- * @author 2020-CS-63
+ *
+ * @author DEll
  */
-public class McDonlads {
+public class McDonalds {
     
     private String ID;
     

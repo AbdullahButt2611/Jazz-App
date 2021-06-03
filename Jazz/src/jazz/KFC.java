@@ -6,9 +6,9 @@
 package jazz;
 
 /**
- *This is the class that hold the data of the KFC ordering packs
+ *This class contains the KFC package of the orders
  * @author 2020-CS-72
- * @author 2020-CS-63
+ * @2020-CS-63
  */
 public class KFC {
     
@@ -61,6 +61,4 @@ public class KFC {
     public int getPrice() {
         return price;
     }
-    
-    
 }

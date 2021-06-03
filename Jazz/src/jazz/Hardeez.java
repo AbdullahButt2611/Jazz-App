@@ -6,7 +6,7 @@
 package jazz;
 
 /**
- *This is the class that will hold that ordering packs of Hardeez
+ *This class contains the Hardeez package of the orders
  * @author 2020-CS-63
  * @author 2020-CS-72
  */
