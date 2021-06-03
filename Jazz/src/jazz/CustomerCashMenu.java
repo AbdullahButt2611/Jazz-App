@@ -25,6 +25,7 @@ public class CustomerCashMenu extends javax.swing.JFrame {
         this.index=index;
         contactText.setText(RegisteredAccounts.getUsersInstance().getUsers().get(index).getContact());
         nameText.setText(RegisteredAccounts.getUsersInstance().getUsers().get(index).getUsername());
+        creditText.setText(JazzCash.cashInstance().getCredit().get(index).getAmount()+"");
     }
 
     /**
@@ -83,6 +84,11 @@ public class CustomerCashMenu extends javax.swing.JFrame {
         creditText.setForeground(new java.awt.Color(255, 255, 0));
         creditText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 51, 0), 2));
         creditText.setEnabled(false);
+        creditText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                creditTextActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(251, 255, 0));
@@ -454,6 +460,11 @@ public class CustomerCashMenu extends javax.swing.JFrame {
         del.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void creditTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditTextActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_creditTextActionPerformed
 
     /**
      * @param args the command line arguments
