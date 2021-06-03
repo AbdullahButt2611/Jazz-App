@@ -6,12 +6,11 @@
 package jazz;
 
 import java.util.ArrayList;
-import java.util.*;
+import java.util.List;
 
 /**
- *This is the class that will hold all the data related to JazzWorld
- * @author 2020-CS-63
- * @author 2020-CS-72
+ *
+ * @author it
  */
 public class JazzWorld {
     
@@ -26,10 +25,6 @@ public class JazzWorld {
     private List<Packages> pack;
     
     private List<RechargeAmount> balance;
-    
-    
-    
-    private Order order;
 
     public List<Minutes> getMin() {
         return min;
@@ -61,8 +56,6 @@ public class JazzWorld {
         sms = new ArrayList<SMS>();
         pack = new ArrayList<Packages>();
         balance = new ArrayList<RechargeAmount>();
-        
-        order = new Order();
     }
     
     
