@@ -6,7 +6,11 @@
 package jazz;
 
 import java.awt.Color;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -38,6 +42,30 @@ public class SubcribePackage extends javax.swing.JFrame {
         jTable1.setOpaque(false);
         ((DefaultTableCellRenderer)jTable1.getDefaultRenderer(Object.class)).setOpaque(false);
         jScrollPane1.getViewport().setOpaque(false);
+    }
+    
+    public void addDatatoRow(int val)
+    {
+        DefaultTableModel model = new DefaultTableModel();
+        Object rowData[] = new Object[4];
+        model.setRowCount(0);
+        for(int i=0;i<JazzWorld.worldInstance().getPack().size();i++)
+        {
+            if(JazzWorld.worldInstance().getPack().get(i).getValidity()==val)
+            {
+                rowData[0]= i+1;
+                rowData[1]=JazzWorld.worldInstance().getPack().get(i).getName();
+                rowData[2]=JazzWorld.worldInstance().getPack().get(i).getCode();
+                if(val==1)
+                    rowData[3]=30;
+                else if(val==7)
+                    rowData[3]=200;
+                else if(val==30)  
+                    rowData[3]=620;
+                
+                model.addRow(rowData);
+            }
+        }
     }
 
     /**
@@ -85,7 +113,7 @@ public class SubcribePackage extends javax.swing.JFrame {
         jTable1.setBackground(new java.awt.Color(0, 0, 0));
         jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0)));
         jTable1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
+        jTable1.setForeground(new java.awt.Color(255, 204, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -110,6 +138,11 @@ public class SubcribePackage extends javax.swing.JFrame {
         weeklyButton.setText("Weekly");
         weeklyButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
         weeklyButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        weeklyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                weeklyButtonActionPerformed(evt);
+            }
+        });
 
         monthlyButton.setBackground(new java.awt.Color(0, 0, 0));
         monthlyButton.setFont(new java.awt.Font("Calibri", 1, 30)); // NOI18N
@@ -117,6 +150,11 @@ public class SubcribePackage extends javax.swing.JFrame {
         monthlyButton.setText("Monthly");
         monthlyButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
         monthlyButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        monthlyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                monthlyButtonActionPerformed(evt);
+            }
+        });
 
         dailyButton.setBackground(new java.awt.Color(0, 0, 0));
         dailyButton.setFont(new java.awt.Font("Calibri", 1, 30)); // NOI18N
@@ -124,6 +162,11 @@ public class SubcribePackage extends javax.swing.JFrame {
         dailyButton.setText("Daily");
         dailyButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
         dailyButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        dailyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dailyButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -294,14 +337,111 @@ public class SubcribePackage extends javax.swing.JFrame {
         CustomerCashMenu menu=new CustomerCashMenu(index);
         menu.setVisible(true);
         this.dispose();
+        
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void SubscribeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubscribeButtonActionPerformed
         // TODO add your handling code here:
-        CustomerCashMenu menu=new CustomerCashMenu(index);
-        menu.setVisible(true);
-        this.dispose();
+
+        String code = codeText.getText();
+        if(code.equals("") || code.equals(null))
+        {
+            JOptionPane.showMessageDialog(this,"The input field is Empty","Empty Text field",JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            int in=-1;
+            for(int i=0;i<JazzWorld.worldInstance().getPack().size();i++)
+            {
+                if(JazzWorld.worldInstance().getPack().get(i).getCode().equals(code))
+                {
+                    in=i;
+                    break;
+                }
+                else
+                    in=-1;
+                
+                if(in==-1)
+                {
+                    JOptionPane.showMessageDialog(this,"Package not found","Unidentified Package",JOptionPane.ERROR_MESSAGE);
+                }
+                else
+                {
+                    int price = -1;
+                    if(JazzWorld.worldInstance().getPack().get(in).getValidity()==1)
+                        price = 30;
+                    else if(JazzWorld.worldInstance().getPack().get(in).getValidity()==7)
+                        price = 200;
+                    else if(JazzWorld.worldInstance().getPack().get(in).getValidity()==30)
+                        price = 620;
+                        
+                    if(JazzWorld.worldInstance().getBalance().get(index).isBalanceAvailable(price))
+                    {
+                        JazzWorld.worldInstance().getPack().get(in).setSubscribers(JazzWorld.worldInstance().getPack().get(in).getSubscribers()+1);
+                        JazzWorld.worldInstance().getBalance().get(index).retreiveBalance(price);
+                        JazzWorld.worldInstance().getInternet().get(index).SetNumberOfMBS(JazzWorld.worldInstance().getPack().get(in).getMbs());
+                        JazzWorld.worldInstance().getMin().get(index).SetNumberOfMBS(JazzWorld.worldInstance().getPack().get(in).getMinutes());
+                        if(price==30)
+                        {
+                            DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                            LocalDateTime now = LocalDateTime.now();
+                            LocalDateTime then = now.minusDays(-1);
+                            JazzWorld.worldInstance().getMin().get(index).SetExpiry(code);
+                            String b= then.format(format);
+                            JazzWorld.worldInstance().getMin().get(index).SetExpiry(b);
+                        }
+                        else if(price == 200)
+                        {
+                            DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                            LocalDateTime now = LocalDateTime.now();
+                            LocalDateTime then = now.minusDays(-7);
+                            JazzWorld.worldInstance().getMin().get(index).SetExpiry(code);
+                            String b= then.format(format);
+                            JazzWorld.worldInstance().getMin().get(index).SetExpiry(b);
+                        }
+                        else if(price == 620)   
+                        {
+                            DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                            LocalDateTime now = LocalDateTime.now();
+                            LocalDateTime then = now.minusDays(-30);
+                            JazzWorld.worldInstance().getMin().get(index).SetExpiry(code);
+                            String b= then.format(format);
+                            JazzWorld.worldInstance().getMin().get(index).SetExpiry(b);
+                        }
+                        
+                        JazzWorld.worldInstance().getSms().get(index).SetNumberOfSMS(JazzWorld.worldInstance().getPack().get(in).getMessages());
+                        JOptionPane.showMessageDialog(this,"Package has been subscribed","Congratulations",JOptionPane.INFORMATION_MESSAGE);
+                        CustomerCashMenu menu=new CustomerCashMenu(index);
+                        menu.setVisible(true);
+                        this.dispose();
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(this,"You dont have Enough balance to subscribe to this offer","Balance Exception",JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+        }
     }//GEN-LAST:event_SubscribeButtonActionPerformed
+
+    private void dailyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dailyButtonActionPerformed
+        // TODO add your handling code here:
+        tableSet();
+        addDatatoRow(1);
+        
+    }//GEN-LAST:event_dailyButtonActionPerformed
+
+    private void weeklyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weeklyButtonActionPerformed
+        // TODO add your handling code here:
+        tableSet();
+        addDatatoRow(7);
+    }//GEN-LAST:event_weeklyButtonActionPerformed
+
+    private void monthlyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monthlyButtonActionPerformed
+        // TODO add your handling code here:
+        tableSet();
+        addDatatoRow(30);
+    }//GEN-LAST:event_monthlyButtonActionPerformed
 
     /**
      * @param args the command line arguments

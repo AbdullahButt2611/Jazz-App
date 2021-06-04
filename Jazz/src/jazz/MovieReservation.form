@@ -142,7 +142,7 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="idText" max="32767" attributes="0"/>
                               <Component id="seatsBox" max="32767" attributes="0"/>
-                              <Component id="jComboBox1" alignment="0" pref="190" max="32767" attributes="0"/>
+                              <Component id="typeBox" alignment="0" pref="190" max="32767" attributes="0"/>
                               <Component id="amountText" alignment="0" max="32767" attributes="0"/>
                               <Component id="checkButton" alignment="0" max="32767" attributes="0"/>
                           </Group>
@@ -175,7 +175,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jComboBox1" max="32767" attributes="0"/>
+                      <Component id="typeBox" max="32767" attributes="0"/>
                       <Component id="jLabel6" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
@@ -290,7 +290,7 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="typeBox">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Calibri" size="18" style="0"/>
@@ -342,6 +342,9 @@
               <Color id="Hand Cursor"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bookButton">
           <Properties>

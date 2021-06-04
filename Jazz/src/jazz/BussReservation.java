@@ -5,6 +5,10 @@
  */
 package jazz;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
 /**
@@ -35,6 +39,26 @@ public class BussReservation extends javax.swing.JFrame {
         this.index = index;
         mradio.setSelected(true);
         acRadio.setSelected(true);
+    }
+    
+    public void writeBusData()
+    {
+        try
+        {
+            FileWriter fr = new FileWriter("Bus.txt",true);
+            BufferedWriter br = new BufferedWriter(fr);
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDateTime now = LocalDateTime.now();
+            String a=now.format(format);
+            br.write(a+","+RegisteredAccounts.getUsersInstance().getUsers().get(index).getUsername()+","+RegisteredAccounts.getUsersInstance().getUsers().get(index).getContact()+","+company+","+route+","+timing+","+type+","+seats+","+amount+"\n");
+            br.flush();
+            br.close();
+            fr.close();
+        }
+        catch(Exception ex)
+        {
+            System.out.println("Null");
+        }
     }
 
     /**
@@ -347,13 +371,33 @@ public class BussReservation extends javax.swing.JFrame {
 
     private void receiptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receiptButtonActionPerformed
         // TODO add your handling code here:
-//        CustomerCashMenu menu=new CustomerCashMenu(index);
-//        menu.setVisible(true);
-//        this.dispose();
+       
 
             if(company.equals("") || company.equals(null) || route.equals("") ||route.equals(null) || timing.equals("") || timing.equals(null) || type.equals("") || (company.equals("") || company.equals(null) || route.equals("") ||route.equals(null) || timing.equals("") || timing.equals(null) || type.equals("") || type.equals(null) || seats == -1))
             {
                 JOptionPane.showMessageDialog(this,"You have unfilled boxes","Error",JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+                writeBusData();
+                DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                LocalDateTime now = LocalDateTime.now();
+                String a=now.format(format);
+                String receipt="";
+                receipt+="*******************************************************************************\n";
+                receipt+="                          BUS RESERVATION RECEIPT\n";
+                receipt+="*******************************************************************************\n";
+                receipt+=a+"\n\n";
+                receipt+="Company:         "+company+"\n";
+                receipt+="Route: "+route+"           Timing:"+timing+"\n";
+                receipt+="Type: "+type+"              No. of Seats: "+seats+"\n\n\n";
+                receipt+="Your Bill is : "+amount;
+                
+                JOptionPane.showMessageDialog(this,receipt,"Receipt",JOptionPane.INFORMATION_MESSAGE);
+                CustomerCashMenu menu=new CustomerCashMenu(index);
+                menu.setVisible(true);
+                this.dispose();
+                
             }
     }//GEN-LAST:event_receiptButtonActionPerformed
 
@@ -397,7 +441,7 @@ public class BussReservation extends javax.swing.JFrame {
         
         price = seats*price;
         amountText.setText(price+"");
-            
+            this.amount=price;
             
             
     }//GEN-LAST:event_reserveButtonActionPerformed

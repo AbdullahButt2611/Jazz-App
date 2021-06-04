@@ -5,6 +5,8 @@
  */
 package jazz;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 /**
@@ -77,6 +79,7 @@ public class Users {
     
     public void setFTPN(int tpn) {
         TPN=tpn;
+        
     }
       
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

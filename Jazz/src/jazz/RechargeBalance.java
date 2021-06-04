@@ -232,7 +232,8 @@ public class RechargeBalance extends javax.swing.JFrame {
 
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
         // TODO add your handling code here:
-        
+        int check1 = -1;
+        int check2 = -1;
         boolean flag=false;
         String a=contactText.getText();
         int u=Integer.parseInt(amountText.getText());
@@ -241,19 +242,24 @@ public class RechargeBalance extends javax.swing.JFrame {
         int o=JazzCash.cashInstance().getCredit().get(index).getAmount();
         for(int i=0;i<RegisteredAccounts.getUsersInstance().getUsers().size();i++)
         {
-            if(RegisteredAccounts.getUsersInstance().getUsers().get(i).getContact().equals(a))
-                
+            if(RegisteredAccounts.getUsersInstance().getUsers().get(i).getContact().equals(a))   
             {
+                check1=1;
                 if(RegisteredAccounts.getUsersInstance().getUsers().get(i).getTPN()==y)
                 {
                     
-                flag=JazzCash.cashInstance().getCredit().get(index).isMoneyAvaialbe(u);
-                if(flag==true)
-                {
-                o=o-u;
-                JOptionPane.showMessageDialog(this,"Money Sent" , "ERROR", JOptionPane.INFORMATION_MESSAGE);
-                
-                }
+                    flag=JazzCash.cashInstance().getCredit().get(index).isMoneyAvaialbe(u);
+                    if(flag==true)
+                    {
+                        check2=1;
+                         JazzCash.cashInstance().getCredit().get(index).retrieveAmount(u);
+                         JazzWorld.worldInstance().getBalance().get(i).Balance=(double)u;
+                         break;
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null,"You dont have Enough Money");
+                    }
                 }
                 else
                 {
@@ -266,10 +272,21 @@ public class RechargeBalance extends javax.swing.JFrame {
                 
             }
         }
-        
-        CustomerCashMenu menu=new CustomerCashMenu(index);
-        menu.setVisible(true);
-        this.dispose();
+        if(check1==-1)
+        {
+            JOptionPane.showMessageDialog(null,"Contact not found");
+        }
+        else if(check2==-1)
+        {
+            
+        }
+        else if(check1==1 && check2==1)
+        {
+            JOptionPane.showMessageDialog(null,"Balance Recharged Successfully");
+            CustomerCashMenu menu=new CustomerCashMenu(index);
+            menu.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_loadButtonActionPerformed
 
     private void contactTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactTextActionPerformed

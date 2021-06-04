@@ -25,4 +25,25 @@ public class RechargeAmount {
         }
     return false;
     }
+    
+    public void addBalance(int amount)
+    {
+        double d = (double)amount;
+        Balance+=d;
+    }
+    
+    public void retreiveBalance(int amount)
+    {
+        double d = (double)amount;
+        Balance-=d;
+    }
+    
+    public boolean isBalanceAvailable(int val)
+    {
+        double d=(double)val;
+        if(Balance>=val)
+            return true;
+        else
+            return false;
+    }
 }

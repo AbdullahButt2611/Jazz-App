@@ -5,6 +5,8 @@
  */
 package jazz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DEll
@@ -92,6 +94,11 @@ public class SendMoney extends javax.swing.JFrame {
         showCheck.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         showCheck.setForeground(new java.awt.Color(204, 204, 204));
         showCheck.setText("Show TPN/Code");
+        showCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showCheckActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(204, 204, 204));
@@ -212,10 +219,108 @@ public class SendMoney extends javax.swing.JFrame {
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
         // TODO add your handling code here:
-        CustomerCashMenu menu=new CustomerCashMenu(index);
-        menu.setVisible(true);
-        this.dispose();
+
+        int in = -1;
+        String contact = contactText.getText();
+        String amount = amountText.getText();
+        String code = tpnText.getText();
+        if(contact.equals(null)|| contact.equals("") || amount.equals(null) || amount.equals("") || code.equals("") || code.equals(null))
+        {
+            JOptionPane.showMessageDialog(this,"You inputted boxes are Empty","Empty Boxes",JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            for(int i=0;i<RegisteredAccounts.getUsersInstance().getUsers().size();i++)
+            {
+                if(RegisteredAccounts.getUsersInstance().getUsers().get(i).getContact().equals(contact))
+                {
+                    in = i;
+                    break;
+                }
+                else
+                {
+                  in=-1;  
+                }
+            }
+            if(in==-1)
+            {
+                JOptionPane.showMessageDialog(this,"The Contact does not seem to be registered","Unregistered Contact",JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+                boolean flag=false;
+                for(int i=0;i<amount.length();i++)
+                {
+                    if(amount.charAt(i)>='0' && amount.charAt(i)<='9')
+                    {
+                        flag=true;
+                    }
+                    else
+                    {
+                        flag=false;
+                        break;
+                    }
+                }
+                if(!flag)
+                {
+                    JOptionPane.showMessageDialog(this,"Amount should be in Digits","Digits Exception",JOptionPane.ERROR_MESSAGE);
+                }
+                else
+                {
+                    int am=Integer.parseInt(amount);
+                    if(am>=20 && am<=20000)
+                    {
+                        flag=false;
+                        for(int i=0;i<code.length();i++)
+                        {
+                            if(code.charAt(i)>='0' && code.charAt(i)<='9')
+                                flag=true;
+                            else
+                            {
+                                flag=false;
+                                break;
+                            }
+                        }
+                        if(!flag)
+                        {
+                            JOptionPane.showMessageDialog(this,"TPN should be in Digits","Digits Exception",JOptionPane.ERROR_MESSAGE);
+                        }
+                        else
+                        {
+                            int tpn = Integer.parseInt(code);
+                            if(tpn==RegisteredAccounts.getUsersInstance().getUsers().get(index).getTPN())
+                            {
+                                if(JazzCash.cashInstance().getCredit().get(index).isMoneyAvaialbe(am))
+                                {
+                                    JazzCash.cashInstance().getCredit().get(in).addAmount(am);
+                                    JazzCash.cashInstance().getCredit().get(index).retrieveAmount(am);
+                                    JOptionPane.showMessageDialog(this,"Amount Added Successfully","Congratulations!",JOptionPane.INFORMATION_MESSAGE);
+                                    CustomerCashMenu menu=new CustomerCashMenu(index);
+                                    menu.setVisible(true);
+                                    this.dispose();
+                                }
+                                JOptionPane.showMessageDialog(this,"Your wallet does not contain enough balance","Credit Error",JOptionPane.ERROR_MESSAGE);
+                            }
+                        }
+                    }
+                    else
+                        JOptionPane.showMessageDialog(this,"Amount should be in range of 20 to 20,000","Amount failure",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
     }//GEN-LAST:event_sendButtonActionPerformed
+
+    private void showCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showCheckActionPerformed
+        // TODO add your handling code here:
+        if(showCheck.isSelected())
+        {
+            tpnText.setEchoChar((char)0);
+        }
+        else
+        {
+            tpnText.setEchoChar('*');
+        }
+    }//GEN-LAST:event_showCheckActionPerformed
 
     /**
      * @param args the command line arguments

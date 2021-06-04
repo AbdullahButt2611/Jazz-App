@@ -6,7 +6,11 @@
 package jazz;
 
 import java.awt.Color;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,19 +20,41 @@ public class MovieReservation extends javax.swing.JFrame {
 
     int index = -1;
     
+    String ID="";
+    int seats = -1;
+    String type = "";
+    int amount =-1;
+    String movieName="";
+    
     /**
      * Creates new form MovieReservation
      */
     public MovieReservation() {
         initComponents();
         tableSet();
-       
+       addDatatoRow();
     }
     
     public MovieReservation(int index) {
         initComponents();
         tableSet();
        this.index=index;
+    }
+    
+    public void addDatatoRow()
+    {
+        DefaultTableModel model = new DefaultTableModel();
+        Object rowData[] = new Object[4];
+        model.setRowCount(0);
+        for(int i=0;i<JazzCash.cashInstance().movie.size();i++)
+        {
+            Movies m = JazzCash.cashInstance().movie.remove();
+            rowData[0]=m.getID();
+            rowData[1]=m.getName();
+            rowData[2]=m.getTiming();
+            rowData[3]=m.getSeats();
+            model.addRow(rowData);
+        }
     }
     
     public void tableSet()
@@ -60,7 +86,7 @@ public class MovieReservation extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         idText = new javax.swing.JTextField();
         seatsBox = new javax.swing.JComboBox<>();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        typeBox = new javax.swing.JComboBox<>();
         amountText = new javax.swing.JTextField();
         checkButton = new javax.swing.JButton();
         bookButton = new javax.swing.JButton();
@@ -121,8 +147,8 @@ public class MovieReservation extends javax.swing.JFrame {
 
         seatsBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6" }));
 
-        jComboBox1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Silver", "Gold", "Platinum" }));
+        typeBox.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        typeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Silver", "Gold", "Platinum" }));
 
         amountText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
         amountText.setEnabled(false);
@@ -133,6 +159,11 @@ public class MovieReservation extends javax.swing.JFrame {
         checkButton.setText("Check");
         checkButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 4));
         checkButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        checkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkButtonActionPerformed(evt);
+            }
+        });
 
         bookButton.setBackground(new java.awt.Color(204, 0, 0));
         bookButton.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
@@ -179,7 +210,7 @@ public class MovieReservation extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(idText)
                             .addComponent(seatsBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, 0, 190, Short.MAX_VALUE)
+                            .addComponent(typeBox, 0, 190, Short.MAX_VALUE)
                             .addComponent(amountText)
                             .addComponent(checkButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -204,7 +235,7 @@ public class MovieReservation extends javax.swing.JFrame {
                     .addComponent(seatsBox, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox1)
+                    .addComponent(typeBox)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(13, 13, 13)
                 .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -237,10 +268,88 @@ public class MovieReservation extends javax.swing.JFrame {
 
     private void bookButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookButtonActionPerformed
         // TODO add your handling code here:
-        CustomerCashMenu menu=new CustomerCashMenu(index);
-        menu.setVisible(true);
-        this.dispose();
+
+        if(ID.equals("") || ID.equals(null) || seats==-1 || type.equals("") || type.equals(null) || amount==-1 || movieName.equals("") || movieName.equals(null))
+        {
+            JOptionPane.showMessageDialog(this,"The input fields must be filled first","Wrong input",JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDateTime now = LocalDateTime.now();
+            String a=now.format(format);
+            String receipt = "";
+            receipt+="********************************************************************************\n";
+            receipt+="                        Movie Reservation Receipt\n";
+            receipt+="********************************************************************************\n";
+            receipt+=a+"\n\n\n";
+            receipt+="Name: "+RegisteredAccounts.getUsersInstance().getUsers().get(index).getUsername()+"                         Contact: "+RegisteredAccounts.getUsersInstance().getUsers().get(index).getContact()+"\n";
+            receipt+="Movie Name: "+movieName+"                  Movie-ID: "+ID+"\n";
+            receipt+="No of Seats: "+seats+"("+type+") type\n\n\n";
+            receipt+="Total Bill: "+amount;
+            if(JazzCash.cashInstance().getCredit().get(index).isMoneyAvaialbe(amount))
+            {
+                JazzCash.cashInstance().getCredit().get(index).retrieveAmount(amount);
+                JOptionPane.showMessageDialog(this,receipt,"Receipt",JOptionPane.INFORMATION_MESSAGE);
+                CustomerCashMenu menu=new CustomerCashMenu(index);
+                menu.setVisible(true);
+                this.dispose();
+            }
+            else
+                JOptionPane.showMessageDialog(this,"You Dont have Enough Money in your Wallet","Error",JOptionPane.ERROR_MESSAGE);
+            
+        }
     }//GEN-LAST:event_bookButtonActionPerformed
+
+    private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
+        // TODO add your handling code here:
+        String ID=idText.getText();
+        int seats = Integer.parseInt(seatsBox.getSelectedItem().toString());
+        this.seats=seats;
+        String type = typeBox.getSelectedItem().toString();
+        this.type=type;
+        int price =500;
+        int in=-1;
+        int inc=-1;
+        if(ID.equals(null) || ID.equals(""))
+            JOptionPane.showMessageDialog(this,"Input Box is Empty","Empty Input",JOptionPane.ERROR_MESSAGE);
+        else
+        {
+            for(int i = 0; i<JazzCash.cashInstance().movie.size();i++)
+            {
+                Movies m=JazzCash.cashInstance().movie.remove();
+                if(m.getID().equals(ID))
+                {
+                    in=1;
+                    this.ID=ID;
+                    this.movieName=m.getName();
+                    price+=(typeBox.getSelectedIndex()*200);
+                    price=price*(seatsBox.getSelectedIndex()+1);
+                    if(m.getSeats()>=seats)
+                        inc=1;
+                    else
+                        inc=-1;
+                    
+                    break;
+                }
+                else
+                    in=-1;
+            }
+            if(in==-1)
+            {
+                JOptionPane.showMessageDialog(this,"Movie not found","Error",JOptionPane.ERROR_MESSAGE);
+            }
+            else if(in==1 && inc==1)
+            {
+                
+                this.amount=price;
+                amountText.setText(price+"");
+            }
+            else if(inc==-1)
+                JOptionPane.showMessageDialog(this,"Seats are not available","Seats Occupied",JOptionPane.ERROR_MESSAGE);
+                
+        }
+    }//GEN-LAST:event_checkButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,7 +392,6 @@ public class MovieReservation extends javax.swing.JFrame {
     private javax.swing.JButton cancelButton;
     private javax.swing.JButton checkButton;
     private javax.swing.JTextField idText;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -295,5 +403,6 @@ public class MovieReservation extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JComboBox<String> seatsBox;
+    private javax.swing.JComboBox<String> typeBox;
     // End of variables declaration//GEN-END:variables
 }

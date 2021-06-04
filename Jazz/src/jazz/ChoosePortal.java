@@ -5,6 +5,9 @@
  */
 package jazz;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author DEll
@@ -23,6 +26,19 @@ public class ChoosePortal extends javax.swing.JFrame {
     public ChoosePortal(int index) {
         initComponents();
         this.index=index;
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDateTime now = LocalDateTime.now();
+        String a=now.format(format);
+        if(JazzWorld.worldInstance().getMin().get(index).GetExpiry().equals("") || JazzWorld.worldInstance().getMin().get(index).GetExpiry().equals(null))
+        {
+            if(JazzWorld.worldInstance().getMin().get(index).GetExpiry().equals(a))
+            {
+                JazzWorld.worldInstance().getMin().get(index).SetExpiry("");
+                JazzWorld.worldInstance().getMin().get(index).SetNumberOfMBS(0);
+                JazzWorld.worldInstance().getSms().get(index).SetNumberOfSMS(0);
+                JazzWorld.worldInstance().getInternet().get(index).SetNumberOfMBS(0);
+            }
+        }
     }
 
     /**

@@ -15,6 +15,7 @@ public class Minutes {
     public Minutes (int n)
     {
         this.numberOfMinutes=n;
+        Expiry="";
         
     }
     public int GetNumberOfMinutes()

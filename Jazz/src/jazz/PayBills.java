@@ -5,6 +5,12 @@
  */
 package jazz;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DEll
@@ -12,6 +18,9 @@ package jazz;
 public class PayBills extends javax.swing.JFrame {
 
     int index = -1;
+    String type="";
+    int amount =-1;
+    int pin = -1;
     
     /**
      * Creates new form PayBills
@@ -23,6 +32,27 @@ public class PayBills extends javax.swing.JFrame {
     public PayBills(int index) {
         initComponents();
         this.index = index;
+    }
+    
+    public void writeData()
+    {
+        try
+        {
+            FileWriter fr = new FileWriter("Bills.txt",true);
+            BufferedWriter br = new BufferedWriter(fr);
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+            Date date = new Date(); 
+            String dat=formatter.format(date);
+            br.write(RegisteredAccounts.getUsersInstance().getUsers().get(index).getUsername()+","+RegisteredAccounts.getUsersInstance().getUsers().get(index).getContact()+","+this.type+","+this.amount+","+this.pin+"\n");
+            br.flush();
+            br.close();
+            fr.close();
+        }
+        catch(Exception ex)
+        {
+            System.out.println("Null Exception");
+        }
+                
     }
 
     /**
@@ -43,7 +73,7 @@ public class PayBills extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        amountText = new javax.swing.JTextField();
         invalidAmount = new javax.swing.JLabel();
         pinText = new javax.swing.JTextField();
         invalidPin = new javax.swing.JLabel();
@@ -88,9 +118,9 @@ public class PayBills extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(251, 255, 0));
         jLabel7.setText("TPN/Code :");
 
-        jTextField1.setBackground(new java.awt.Color(153, 153, 153));
-        jTextField1.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
+        amountText.setBackground(new java.awt.Color(153, 153, 153));
+        amountText.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        amountText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0)));
 
         invalidAmount.setBackground(new java.awt.Color(0, 0, 0));
         invalidAmount.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
@@ -167,7 +197,7 @@ public class PayBills extends javax.swing.JFrame {
                             .addComponent(invalidPin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(invalidAmount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(billBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField1)
+                            .addComponent(amountText)
                             .addComponent(pinText)
                             .addComponent(passText)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -196,7 +226,7 @@ public class PayBills extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(amountText, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(invalidAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -247,9 +277,84 @@ public class PayBills extends javax.swing.JFrame {
 
     private void payButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payButton1ActionPerformed
         // TODO add your handling code here:
-        CustomerCashMenu menu=new CustomerCashMenu(index);
-        menu.setVisible(true);
-        this.dispose();
+//        CustomerCashMenu menu=new CustomerCashMenu(index);
+//        menu.setVisible(true);
+//        this.dispose();
+        String type = billBox.getSelectedItem().toString();
+        this.type=type;
+        String amount = amountText.getText();
+        String pin = pinText.getText();
+        String code = passText.getText();
+        if(amount.equals("") || amount.equals(null) || pin.equals("") ||pin.equals(null) || code.equals(null) || code.equals(""))
+        {
+            JOptionPane.showMessageDialog(this,"Input fields are empty","Empty Inputs",JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            boolean flag=false;
+            for(int i=0;i<amount.length();i++)
+            {
+                if(amount.charAt(i)>='0' && amount.charAt(i)<='9')
+                {
+                    flag= true;
+                }
+                else
+                {
+                    flag=false;
+                    break;
+                }
+            }
+            if(flag==false)
+                JOptionPane.showMessageDialog(this,"Amount should be in Digits","Digits Exceptions",JOptionPane.ERROR_MESSAGE);
+            else
+            {
+                int am=Integer.parseInt(amount);
+                if(JazzCash.cashInstance().getCredit().get(index).isMoneyAvaialbe(am))
+                {
+                    flag=false;
+                    this.amount=am;
+                    if(pin.length()==9)
+                    {
+                        for(int i=0;i<9;i++)
+                        {
+                            if(pin.charAt(i)>='0' && pin.charAt(i)<='9')
+                                flag=true;
+                            else
+                            {
+                                flag=false;
+                                break;
+                            }
+                        }
+                        if(!flag)
+                            JOptionPane.showMessageDialog(this,"Pin should be in Digits","Digits Exceptions",JOptionPane.ERROR_MESSAGE);
+                        else
+                        {
+                            int pn= Integer.parseInt(pin);
+                            this.pin=pn;
+                            int tpn=Integer.parseInt(code);
+                            if(RegisteredAccounts.getUsersInstance().getUsers().get(index).getTPN()==tpn)
+                            {
+                                JazzCash.cashInstance().getCredit().get(index).retrieveAmount(am);
+                                JOptionPane.showMessageDialog(this,"Bill Paid Successfully","Congratulations",JOptionPane.INFORMATION_MESSAGE);
+                                writeData();
+                                CustomerCashMenu menu=new CustomerCashMenu(index);
+                                menu.setVisible(true);
+                                this.dispose();
+                            }
+                            else
+                                JOptionPane.showMessageDialog(this,"Incorrect Password","TPN Exception",JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                    else
+                        JOptionPane.showMessageDialog(this,"Pin length should be 9 digits","Digits Exceptions",JOptionPane.ERROR_MESSAGE);
+                    
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(this,"Your wallet does not have enough credit","Credit Error",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
     }//GEN-LAST:event_payButton1ActionPerformed
 
     /**
@@ -288,6 +393,7 @@ public class PayBills extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField amountText;
     private javax.swing.JComboBox<String> billBox;
     private javax.swing.JButton cancelButton;
     private javax.swing.JLabel invalidAmount;
@@ -300,7 +406,6 @@ public class PayBills extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPasswordField passText;
     private javax.swing.JButton payButton1;
     private javax.swing.JTextField pinText;
