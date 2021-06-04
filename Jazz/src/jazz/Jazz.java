@@ -18,7 +18,17 @@ public class Jazz {
         // TODO code application logic here
         
         //
-        
+        RegisteredAccounts.getUsersInstance().readData();
+        JazzCash.cashInstance().readCreditData();
+        JazzCash.cashInstance().readMoviesData();
+        JazzWorld.worldInstance().readBalanceData();
+        JazzWorld.worldInstance().readIntData();
+        JazzWorld.worldInstance().readMinData();
+        JazzWorld.worldInstance().readPackData();
+        JazzWorld.worldInstance().readSmsData();
+        JazzWorld.worldInstance().getOrder().readHardeezdata();
+        JazzWorld.worldInstance().getOrder().readKfcdata();
+        JazzWorld.worldInstance().getOrder().readMcdata();
         FirstScreen first = new FirstScreen();
         first.setVisible(true);
         

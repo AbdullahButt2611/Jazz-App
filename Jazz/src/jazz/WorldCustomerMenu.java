@@ -23,6 +23,10 @@ public class WorldCustomerMenu extends javax.swing.JFrame {
     public WorldCustomerMenu(int index) {
         initComponents();
         this.index=index;
+        balanceText.setText(JazzWorld.worldInstance().getBalance().get(index).Balance+"");
+        mbtext.setText(JazzWorld.worldInstance().getInternet().get(index).GetNumberOfMBS()+"");
+        minuteText.setText(JazzWorld.worldInstance().getMin().get(index).GetNumberOfMinutes()+"");
+        smsText.setText(JazzWorld.worldInstance().getSms().get(index).GetNumberOfSMS()+"");
     }
     
     /**
@@ -81,9 +85,10 @@ public class WorldCustomerMenu extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(238, 3, 3));
         jLabel4.setText("Rs :");
 
-        balanceText.setBackground(new java.awt.Color(204, 204, 204));
-        balanceText.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        balanceText.setForeground(new java.awt.Color(255, 255, 255));
+        balanceText.setBackground(new java.awt.Color(0, 0, 0));
+        balanceText.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        balanceText.setForeground(new java.awt.Color(255, 204, 0));
+        balanceText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
         balanceText.setEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -130,19 +135,22 @@ public class WorldCustomerMenu extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(251, 3, 3));
         jLabel8.setText("SMS :");
 
-        mbtext.setBackground(new java.awt.Color(204, 204, 204));
-        mbtext.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        mbtext.setForeground(new java.awt.Color(255, 255, 255));
+        mbtext.setBackground(new java.awt.Color(0, 0, 0));
+        mbtext.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        mbtext.setForeground(new java.awt.Color(255, 204, 0));
+        mbtext.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
         mbtext.setEnabled(false);
 
-        minuteText.setBackground(new java.awt.Color(204, 204, 204));
-        minuteText.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        minuteText.setForeground(new java.awt.Color(255, 255, 255));
+        minuteText.setBackground(new java.awt.Color(0, 0, 0));
+        minuteText.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        minuteText.setForeground(new java.awt.Color(255, 204, 0));
+        minuteText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 2));
         minuteText.setEnabled(false);
 
-        smsText.setBackground(new java.awt.Color(204, 204, 204));
-        smsText.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        smsText.setForeground(new java.awt.Color(255, 255, 255));
+        smsText.setBackground(new java.awt.Color(0, 0, 0));
+        smsText.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        smsText.setForeground(new java.awt.Color(255, 204, 0));
+        smsText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
         smsText.setEnabled(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -292,7 +300,7 @@ public class WorldCustomerMenu extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
@@ -349,6 +357,7 @@ public class WorldCustomerMenu extends javax.swing.JFrame {
 
     private void giftButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_giftButtonActionPerformed
         // TODO add your handling code here:
+        
         Gifts gift = new Gifts(index);
         gift.setVisible(true);
         this.dispose();

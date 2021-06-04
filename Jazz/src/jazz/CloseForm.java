@@ -271,6 +271,13 @@ public class CloseForm extends javax.swing.JFrame {
 
     private void yesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesButtonActionPerformed
         // TODO add your handling code here:
+        RegisteredAccounts.getUsersInstance().saveData();
+        JazzCash.cashInstance().writeCreditData();
+        JazzWorld.worldInstance().writeBalanceData();
+        JazzWorld.worldInstance().writeIntData();
+        JazzWorld.worldInstance().writeMinData();
+        JazzWorld.worldInstance().writePackData();
+        JazzWorld.worldInstance().writeSmsData();
         System.exit(0);
     }//GEN-LAST:event_yesButtonActionPerformed
 

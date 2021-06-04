@@ -5,6 +5,8 @@
  */
 package jazz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DEll
@@ -83,6 +85,11 @@ public class Gifts extends javax.swing.JFrame {
         receiveButton.setText("Receive Gifts");
         receiveButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
         receiveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        receiveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                receiveButtonActionPerformed(evt);
+            }
+        });
 
         menuButton.setBackground(new java.awt.Color(0, 0, 0));
         menuButton.setFont(new java.awt.Font("Calibri", 1, 30)); // NOI18N
@@ -171,6 +178,15 @@ public class Gifts extends javax.swing.JFrame {
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_menuButtonActionPerformed
+
+    private void receiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receiveButtonActionPerformed
+        // TODO add your handling code here:
+        JazzWorld.worldInstance().getInternet().get(index).SetNumberOfMBS(JazzWorld.worldInstance().getInternet().get(index).GetNumberOfMBS()+50);
+        JOptionPane.showMessageDialog(this,"You have been gifted with 25 MBs","Congratulations :)",JOptionPane.INFORMATION_MESSAGE);
+        WorldCustomerMenu menu = new WorldCustomerMenu(index);
+        menu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_receiveButtonActionPerformed
 
     /**
      * @param args the command line arguments

@@ -78,11 +78,11 @@ public class Usage extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel5.setText("1- The Whatsapp will cause 1.3 MBs per minute usage");
+        jLabel5.setText("1- The Whatsapp will cause 13 MBs per minute usage");
 
         jLabel6.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel6.setText("2- The Instagram app will cause downtrom of 1.5 MBs per minute");
+        jLabel6.setText("2- The Instagram app will cause downtrom of 15 MBs per minute");
 
         jLabel7.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(204, 204, 204));
@@ -90,11 +90,11 @@ public class Usage extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel8.setText("3- The Facebook app will reduce your Mbs by 1.7 per minute rate");
+        jLabel8.setText("3- The Facebook app will reduce your Mbs by 17 per minute rate");
 
         jLabel9.setFont(new java.awt.Font("Calibri", 0, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel9.setText("5- Surfing on the Google will take your 15.5 MBs per minute of data");
+        jLabel9.setText("5- Surfing on the Google will take your  25 MBs per minute of data");
 
         jLabel10.setFont(new java.awt.Font("Calibri", 0, 22)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(204, 204, 204));

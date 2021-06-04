@@ -5,6 +5,8 @@
  */
 package jazz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DEll
@@ -169,9 +171,55 @@ public class CallForm extends javax.swing.JFrame {
 
     private void usebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usebuttonActionPerformed
         // TODO add your handling code here:
-        WorldCustomerMenu menu = new WorldCustomerMenu(index);
-        menu.setVisible(true);
-        this.dispose();
+        String count = calls.getText();
+            if(count.equals("") || count.equals(null))
+            {
+                invalidCalls.setText("Box is Empty");
+            }
+            else
+            {
+                boolean flag=false;
+                for(int i=0;i<count.length();i++)
+                {
+                    if(count.charAt(i)>='0' && count.charAt(i)<='9')
+                        flag=true;
+                    else
+                    {
+                        flag=false;
+                        break;
+                    }
+                }
+                if(!flag)
+                    invalidCalls.setText("The Count should be in Digits");
+                else
+                {
+                    int msg=Integer.parseInt(count);
+                    int msgBalance=msg*5;
+                    if(msg>=0 && msg<=50)
+                    {
+                        if(JazzWorld.worldInstance().getMin().get(index).GetNumberOfMinutes()>=msg)
+                        {
+                            JazzWorld.worldInstance().getMin().get(index).SetNumberOfMBS(JazzWorld.worldInstance().getMin().get(index).GetNumberOfMinutes()-msg);
+                            JOptionPane.showMessageDialog(this,"You used "+msg+" Messages of the Data","Timeline",JOptionPane.INFORMATION_MESSAGE);
+                            WorldCustomerMenu menu = new WorldCustomerMenu(index);
+                            menu.setVisible(true);
+                            this.dispose();
+                        }
+                        else if(JazzWorld.worldInstance().getBalance().get(index).isBalanceAvailable(msgBalance))
+                        {
+                            JazzWorld.worldInstance().getBalance().get(index).retreiveBalance(msgBalance);
+                            JOptionPane.showMessageDialog(this,"You used "+msg+" Messages of the Balance","Timeline",JOptionPane.INFORMATION_MESSAGE);
+                            WorldCustomerMenu menu = new WorldCustomerMenu(index);
+                            menu.setVisible(true);
+                            this.dispose();
+                        }
+                        else
+                            JOptionPane.showMessageDialog(this,"You Dont have Enough SMS/Balance","Timeline",JOptionPane.ERROR_MESSAGE);  
+                    }
+                    else
+                        invalidCalls.setText("It should be between 0  to 50");
+                }
+            }
     }//GEN-LAST:event_usebuttonActionPerformed
 
     /**

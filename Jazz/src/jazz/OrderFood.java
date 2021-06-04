@@ -6,7 +6,16 @@
 package jazz;
 
 import java.awt.Color;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Iterator;
+import java.util.ListIterator;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,7 +24,10 @@ import javax.swing.table.DefaultTableCellRenderer;
 public class OrderFood extends javax.swing.JFrame {
 
     int index = -1;
-    
+    String ID="";
+    String foodName="";
+    int bill=-1;
+    int quan=-1;
     /**
      * Creates new form OrderFood
      */
@@ -30,6 +42,55 @@ public class OrderFood extends javax.swing.JFrame {
         this.index = index;
     }
     
+    public void addDatatoRow(int ind)
+    {
+        DefaultTableModel model = new DefaultTableModel();
+        Object rowData[] = new Object[5];
+        model.setRowCount(0);
+        if(ind==1)
+        {
+            for(int i =0;i<JazzWorld.worldInstance().getOrder().kfc.size();i++)
+            {
+                KFC k = JazzWorld.worldInstance().getOrder().kfc.pop();
+                rowData[0]=k.getID();
+                rowData[1]=k.getName();
+                rowData[2]=k.getDeal();
+                rowData[3]=k.getPersons();
+                rowData[4]=k.getPrice();
+                model.addRow(rowData);
+            }
+            
+        }
+        else if(ind==2)
+        {
+            ListIterator<McDonalds> iter = JazzWorld.worldInstance().getOrder().mc.listIterator();
+            while(iter.hasNext())
+            {
+                McDonalds k = iter.next();
+                rowData[0]=k.getID();
+                rowData[1]=k.getName();
+                rowData[2]=k.getDeal();
+                rowData[3]=k.getPersons();
+                rowData[4]=k.getPrice();
+                model.addRow(rowData);
+            }
+        }
+        else if(ind==3)
+        {
+            Iterator<Hardeez> iter = JazzWorld.worldInstance().getOrder().hardeez.iterator();
+            while(iter.hasNext())
+            {
+                Hardeez k = iter.next();
+                rowData[0]=k.getID();
+                rowData[1]=k.getName();
+                rowData[2]=k.getDeal();
+                rowData[3]=k.getPersons();
+                rowData[4]=k.getPrice();
+                model.addRow(rowData);
+            }
+        }
+    }
+    
     public void tableSet()
     {
         jScrollPane1.setBackground(new Color(0,0,0,0));
@@ -37,6 +98,23 @@ public class OrderFood extends javax.swing.JFrame {
         jTable1.setOpaque(false);
         ((DefaultTableCellRenderer)jTable1.getDefaultRenderer(Object.class)).setOpaque(false);
         jScrollPane1.getViewport().setOpaque(false);
+    }
+    
+    public void WriteData()
+    {
+        try
+        { 
+            FileWriter fr = new FileWriter("Orders.txt",true);
+            BufferedWriter br = new BufferedWriter(fr);
+            br.write(RegisteredAccounts.getUsersInstance().getUsers().get(index).getUsername()+","+RegisteredAccounts.getUsersInstance().getUsers().get(index).getContact()+","+this.ID+","+this.foodName+","+this.bill+","+this.quan+"\n");   
+            br.flush();
+            br.close();
+            fr.close();
+        }
+        catch(Exception ex)
+        {
+            System.out.println("Exception");
+        }
     }
 
     /**
@@ -84,7 +162,7 @@ public class OrderFood extends javax.swing.JFrame {
         jTable1.setBackground(new java.awt.Color(0, 0, 0));
         jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0)));
         jTable1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
+        jTable1.setForeground(new java.awt.Color(255, 204, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -297,9 +375,143 @@ public class OrderFood extends javax.swing.JFrame {
 
     private void orderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderButtonActionPerformed
         // TODO add your handling code here:
-        WorldCustomerMenu menu = new WorldCustomerMenu(index);
-        menu.setVisible(true);
-        this.dispose();
+//        WorldCustomerMenu menu = new WorldCustomerMenu(index);
+//        menu.setVisible(true);
+//        this.dispose();
+        String id= idText.getText();
+        int quantity = Integer.parseInt(quantityBox.getSelectedItem().toString());
+        this.quan=quantity;
+        if(id.equals("") || id.equals(null))
+            JOptionPane.showMessageDialog(this,"You textbox is empty","Empty ID",JOptionPane.ERROR_MESSAGE);
+        else
+        {
+            boolean flag=false;
+            if(id.charAt(0)=='K')
+            {
+                for(int i =0;i<JazzWorld.worldInstance().getOrder().kfc.size();i++)
+                {
+                    KFC k = JazzWorld.worldInstance().getOrder().kfc.pop();
+                    if(k.getID().equals(id))
+                    {
+                        this.ID=k.getID();
+                        this.foodName=k.getName();
+                        int price=k.getPrice();
+                        price=price*quantity;
+                        if(JazzCash.cashInstance().getCredit().get(index).isMoneyAvaialbe(price))
+                        {
+                            DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                            LocalDateTime now = LocalDateTime.now();
+                            String a=now.format(format);
+                            JazzCash.cashInstance().getCredit().get(index).retrieveAmount(price);
+                            this.bill=price;
+                            String receipt="*********************************************************************************\n";
+                            receipt+="                          Food Receipt\n";
+                            receipt="*********************************************************************************\n";
+                            receipt+=a+"\n\n";
+                            receipt+= RegisteredAccounts.getUsersInstance().getUsers().get(index).getUsername()+"                     "+RegisteredAccounts.getUsersInstance().getUsers().get(index).getContact()+"\n";
+                            receipt+="Meal: "+this.foodName+"("+this.ID+")\n";
+                            receipt+="Your bill is : "+this.bill+"\n\n\n";
+                            receipt+="                  Thank you for your cooperation!\n                  Its been Nice dealing with you :)";
+                            JOptionPane.showMessageDialog(null, receipt);
+                            WriteData();
+                        }
+                        else
+                            JOptionPane.showMessageDialog(this,"Your Wallet does contain enough credit","Credit Error",JOptionPane.ERROR_MESSAGE);
+                        flag=true;
+                        break;        
+                    }
+                    else
+                        flag=false;
+                }
+                if(flag==false)
+                    JOptionPane.showMessageDialog(this,"ID not found","invalid ID",JOptionPane.ERROR_MESSAGE);
+            }
+            else if(id.charAt(0)=='M')
+            {
+                ListIterator<McDonalds> iter = JazzWorld.worldInstance().getOrder().mc.listIterator();
+                while(iter.hasNext())
+                {
+                    McDonalds k = iter.next();
+                    if(k.getID().equals(id))
+                    {
+                        this.ID=k.getID();
+                        this.foodName=k.getName();
+                        int price=k.getPrice();
+                        price=price*quantity;
+                        if(JazzCash.cashInstance().getCredit().get(index).isMoneyAvaialbe(price))
+                        {
+                            DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                            LocalDateTime now = LocalDateTime.now();
+                            String a=now.format(format);
+                            JazzCash.cashInstance().getCredit().get(index).retrieveAmount(price);
+                            this.bill=price;
+                            String receipt="*********************************************************************************\n";
+                            receipt+="                          Food Receipt\n";
+                            receipt="*********************************************************************************\n";
+                            receipt+=a+"\n\n";
+                            receipt+= RegisteredAccounts.getUsersInstance().getUsers().get(index).getUsername()+"                     "+RegisteredAccounts.getUsersInstance().getUsers().get(index).getContact()+"\n";
+                            receipt+="Meal: "+this.foodName+"("+this.ID+")\n";
+                            receipt+="Your bill is : "+this.bill+"\n\n\n";
+                            receipt+="                  Thank you for your cooperation!\n                  Its been Nice dealing with you :)";
+                            JOptionPane.showMessageDialog(null, receipt);
+                            WriteData();
+                        }
+                        else
+                            JOptionPane.showMessageDialog(this,"Your Wallet does contain enough credit","Credit Error",JOptionPane.ERROR_MESSAGE);
+                        flag=true;
+                        break;        
+                    }
+                    else
+                        flag=false;
+                }
+                if(flag==false)
+                    JOptionPane.showMessageDialog(this,"ID not found","invalid ID",JOptionPane.ERROR_MESSAGE);
+            }
+            else if(id.charAt(0)=='H')
+            {
+                Iterator<Hardeez> iter = JazzWorld.worldInstance().getOrder().hardeez.iterator();
+                while(iter.hasNext())
+                {
+                    Hardeez k = iter.next();
+                    if(k.getID().equals(id))
+                    {
+                        this.ID=k.getID();
+                        this.foodName=k.getName();
+                        int price=k.getPrice();
+                        price=price*quantity;
+                        if(JazzCash.cashInstance().getCredit().get(index).isMoneyAvaialbe(price))
+                        {
+                            DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                            LocalDateTime now = LocalDateTime.now();
+                            String a=now.format(format);
+                            JazzCash.cashInstance().getCredit().get(index).retrieveAmount(price);
+                            this.bill=price;
+                            String receipt="*********************************************************************************\n";
+                            receipt+="                          Food Receipt\n";
+                            receipt="*********************************************************************************\n";
+                            receipt+=a+"\n\n";
+                            receipt+= RegisteredAccounts.getUsersInstance().getUsers().get(index).getUsername()+"                     "+RegisteredAccounts.getUsersInstance().getUsers().get(index).getContact()+"\n";
+                            receipt+="Meal: "+this.foodName+"("+this.ID+")\n";
+                            receipt+="Your bill is : "+this.bill+"\n\n\n";
+                            receipt+="                  Thank you for your cooperation!\n                  Its been Nice dealing with you :)";
+                            JOptionPane.showMessageDialog(null, receipt);
+                            WriteData();
+                        }
+                        else
+                            JOptionPane.showMessageDialog(this,"Your Wallet does contain enough credit","Credit Error",JOptionPane.ERROR_MESSAGE);
+                        flag=true;
+                        break;        
+                    }
+                    else
+                        flag=false;
+                    
+                }
+                if(flag==false)
+                    JOptionPane.showMessageDialog(this,"ID not found","invalid ID",JOptionPane.ERROR_MESSAGE);
+            }
+            else
+                JOptionPane.showMessageDialog(this,"ID not Found","Unrecognized ID",JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_orderButtonActionPerformed
 
     /**

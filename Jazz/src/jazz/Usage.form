@@ -216,7 +216,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="1- The Whatsapp will cause 1.3 MBs per minute usage"/>
+            <Property name="text" type="java.lang.String" value="1- The Whatsapp will cause 13 MBs per minute usage"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
@@ -227,7 +227,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="2- The Instagram app will cause downtrom of 1.5 MBs per minute"/>
+            <Property name="text" type="java.lang.String" value="2- The Instagram app will cause downtrom of 15 MBs per minute"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
@@ -249,7 +249,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="3- The Facebook app will reduce your Mbs by 1.7 per minute rate"/>
+            <Property name="text" type="java.lang.String" value="3- The Facebook app will reduce your Mbs by 17 per minute rate"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
@@ -260,7 +260,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="5- Surfing on the Google will take your 15.5 MBs per minute of data"/>
+            <Property name="text" type="java.lang.String" value="5- Surfing on the Google will take your  25 MBs per minute of data"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">

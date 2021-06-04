@@ -5,6 +5,8 @@
  */
 package jazz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DEll
@@ -272,9 +274,205 @@ public class InternetForm extends javax.swing.JFrame {
 
     private void usebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usebuttonActionPerformed
         // TODO add your handling code here:
-        WorldCustomerMenu menu = new WorldCustomerMenu(index);
-        menu.setVisible(true);
-        this.dispose();
+        String Whatsapp=wtsapp.getText();
+        String insta=instagram.getText();
+        String fb=facebook.getText();
+        String you=youtube.getText();
+        String gogle=google.getText();
+        String check="";
+        if(Whatsapp.equals("") || Whatsapp.equals(null))
+        {
+            invalidWtsapp.setText("(You Box is Empty)");
+            check="a";
+        }
+        if(insta.equals("") || insta.equals(null))
+        {
+            invalidInstagram.setText("(You Box is Empty)");
+            check="a";
+        }
+        if(fb.equals("") || fb.equals(null))
+        {
+            invalidFacebook.setText("(You Box is Empty)");
+            check="a";
+        }
+        if(you.equals("") || you.equals(null))
+        {
+            invalidYoutube.setText("(You Box is Empty)");
+            check="a";
+        }
+        if(google.equals("") || google.equals(null))
+        {
+            invalidGoogle.setText("(You Box is Empty)");
+            check="a";
+        }
+   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+   
+        if(check.equals(""))
+        {
+            boolean flag=false;
+            check="";
+            for(int i=0;i<Whatsapp.length();i++)
+            {
+                if(Whatsapp.charAt(i)>='0' && Whatsapp.charAt(i)<='9')
+                {
+                    flag=true;
+                }
+                else
+                {
+                    flag=false;
+                    check="a";
+                    break;
+                }
+            }
+            if(!flag)
+            {
+                invalidWtsapp.setText("Count should be in Digits");
+            }
+            
+            flag=false;
+            for(int i=0;i<insta.length();i++)
+            {
+                if(insta.charAt(i)>='0' && insta.charAt(i)<='9')
+                {
+                    flag=true;
+                }
+                else
+                {
+                    flag=false;
+                    check="a";
+                    break;
+                }
+            }
+            if(!flag)
+            {
+                invalidInstagram.setText("Count should be in Digits");
+            }
+            
+            flag=false;
+            for(int i=0;i<fb.length();i++)
+            {
+                if(fb.charAt(i)>='0' && fb.charAt(i)<='9')
+                {
+                    flag=true;
+                }
+                else
+                {
+                    flag=false;
+                    check="a";
+                    break;
+                }
+            }
+            if(!flag)
+            {
+                invalidFacebook.setText("Count should be in Digits");
+            }
+            
+            flag=false;
+            for(int i=0;i<you.length();i++)
+            {
+                if(you.charAt(i)>='0' && you.charAt(i)<='9')
+                {
+                    flag=true;
+                }
+                else
+                {
+                    flag=false;
+                    check="a";
+                    break;
+                }
+            }
+            if(!flag)
+            {
+                invalidYoutube.setText("Count should be in Digits");
+            }
+            
+            flag=false;
+            for(int i=0;i<gogle.length();i++)
+            {
+                if(gogle.charAt(i)>='0' && gogle.charAt(i)<='9')
+                {
+                    flag=true;
+                }
+                else
+                {
+                    flag=false;
+                    check="a";
+                    break;
+                }
+            }
+            if(!flag)
+            {
+                invalidGoogle.setText("Count should be in Digits");
+            }
+            
+            if(check.equals(""))
+            {
+                int wAmount=Integer.parseInt(Whatsapp);
+                int iAmount=Integer.parseInt(insta);
+                int fAmount=Integer.parseInt(fb);
+                int uAmount=Integer.parseInt(you);
+                int gAmount=Integer.parseInt(gogle);
+                check="";
+                if(wAmount>=0 && wAmount<=50)
+                {}
+                else
+                {
+                    check="a";
+                    invalidWtsapp.setText("It shoud be in from 0 to 50");
+                }
+                if(iAmount>=0 && iAmount<=50)
+                {}
+                else
+                {
+                    check="a";
+                    invalidInstagram.setText("It shoud be in from 0 to 50");
+                }
+                if(fAmount>=0 && fAmount<=50)
+                {}
+                else
+                {
+                    check="a";
+                    invalidFacebook.setText("It shoud be in from 0 to 50");
+                }
+                if(uAmount>=0 && uAmount<=50)
+                {}
+                else
+                {
+                    check="a";
+                    invalidYoutube.setText("It shoud be in from 0 to 50");
+                }
+                if(gAmount>=0 && gAmount<=50)
+                {}
+                else
+                {
+                    check="a";
+                    invalidGoogle.setText("It shoud be in from 0 to 50");
+                }
+                
+                if(check.equals(""))
+                {
+                    wAmount=wAmount*13;
+                    iAmount=wAmount*15;
+                    fAmount=wAmount*17;
+                    uAmount=wAmount*20;
+                    gAmount=wAmount*25;
+                    int total=wAmount+iAmount+fAmount+uAmount+gAmount;
+                    if(JazzWorld.worldInstance().getInternet().get(index).GetNumberOfMBS()>=total)
+                    {
+                        JazzWorld.worldInstance().getInternet().get(index).SetNumberOfMBS(JazzWorld.worldInstance().getInternet().get(index).GetNumberOfMBS()-total);
+                        JOptionPane.showMessageDialog(this,"You used "+total+" MBs of the Data","Timeline",JOptionPane.INFORMATION_MESSAGE);
+                        WorldCustomerMenu menu = new WorldCustomerMenu(index);
+                        menu.setVisible(true);
+                        this.dispose();
+                    }
+                    else
+                      JOptionPane.showMessageDialog(this,"You Dont have Enough MBs","Timeline",JOptionPane.ERROR_MESSAGE);  
+                    
+                    
+                }
+            }
+        }
+        
     }//GEN-LAST:event_usebuttonActionPerformed
 
     /**
