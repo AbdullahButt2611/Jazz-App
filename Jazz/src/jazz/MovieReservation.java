@@ -38,6 +38,7 @@ public class MovieReservation extends javax.swing.JFrame {
     public MovieReservation(int index) {
         initComponents();
         tableSet();
+        addDatatoRow();
        this.index=index;
     }
     
