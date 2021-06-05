@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  * @author 2020-CS-72
  * @author 2020-CS-63
  */
-import java.awt.EventQueue;
+
 public class UserReview {
     
     public void AddComments(int n)
@@ -26,7 +26,6 @@ public class UserReview {
 }
 class Ratings extends UserReview{
     
-    Ratings q=new Ratings();
     @Override
     public void AddComments(int g){
         if(g==1)

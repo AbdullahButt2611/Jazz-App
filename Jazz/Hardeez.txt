@@ -1,4 +1,5 @@
 ID,     Name,      Deal,      Persons,    Price
 H-1124,Kids Meal 2,2 pieces+hand made breads+coke,1,449
 H-2021,Super Box,Fries+Spring rolls+pieces+nuggets+cold drinks,4,1499
-H-4202,Burger,Anugs Thug Burger, 1,999
+H-4202,Burger,Anugs Thug Burger,1,999
+H-4233,Burger,Apna Wehshi Burger,1,777
