@@ -44,11 +44,12 @@ public class OrderFood extends javax.swing.JFrame {
     
     public void addDatatoRow(int ind)
     {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         Object rowData[] = new Object[5];
         model.setRowCount(0);
         if(ind==1)
         {
+            System.out.println(JazzWorld.worldInstance().getOrder().kfc.size());
             for(int i =0;i<JazzWorld.worldInstance().getOrder().kfc.size();i++)
             {
                 KFC k = JazzWorld.worldInstance().getOrder().kfc.pop();
@@ -63,6 +64,7 @@ public class OrderFood extends javax.swing.JFrame {
         }
         else if(ind==2)
         {
+            System.out.println(JazzWorld.worldInstance().getOrder().mc.size());
             ListIterator<McDonalds> iter = JazzWorld.worldInstance().getOrder().mc.listIterator();
             while(iter.hasNext())
             {
@@ -77,6 +79,7 @@ public class OrderFood extends javax.swing.JFrame {
         }
         else if(ind==3)
         {
+            System.out.println(JazzWorld.worldInstance().getOrder().hardeez.size());
             Iterator<Hardeez> iter = JazzWorld.worldInstance().getOrder().hardeez.iterator();
             while(iter.hasNext())
             {
@@ -171,6 +174,7 @@ public class OrderFood extends javax.swing.JFrame {
                 "ID", "Name", "Deal", "Person", "Price"
             }
         ));
+        jTable1.setEnabled(false);
         jScrollPane1.setViewportView(jTable1);
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
@@ -186,6 +190,11 @@ public class OrderFood extends javax.swing.JFrame {
         kfcButton.setText("KFC");
         kfcButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
         kfcButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        kfcButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kfcButtonActionPerformed(evt);
+            }
+        });
 
         mcButton.setBackground(new java.awt.Color(0, 0, 0));
         mcButton.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
@@ -193,6 +202,11 @@ public class OrderFood extends javax.swing.JFrame {
         mcButton.setText("Mc Donald's");
         mcButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
         mcButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        mcButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mcButtonActionPerformed(evt);
+            }
+        });
 
         hardeezButton.setBackground(new java.awt.Color(0, 0, 0));
         hardeezButton.setFont(new java.awt.Font("Calibri", 1, 26)); // NOI18N
@@ -200,6 +214,11 @@ public class OrderFood extends javax.swing.JFrame {
         hardeezButton.setText("Hardeez");
         hardeezButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 255, 0), 3));
         hardeezButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        hardeezButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hardeezButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -513,6 +532,21 @@ public class OrderFood extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this,"ID not Found","Unrecognized ID",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_orderButtonActionPerformed
+
+    private void kfcButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kfcButtonActionPerformed
+        // TODO add your handling code here:
+        addDatatoRow(1);
+    }//GEN-LAST:event_kfcButtonActionPerformed
+
+    private void mcButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mcButtonActionPerformed
+        // TODO add your handling code here:
+        addDatatoRow(2);
+    }//GEN-LAST:event_mcButtonActionPerformed
+
+    private void hardeezButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hardeezButtonActionPerformed
+        // TODO add your handling code here:
+        addDatatoRow(3);
+    }//GEN-LAST:event_hardeezButtonActionPerformed
 
     /**
      * @param args the command line arguments

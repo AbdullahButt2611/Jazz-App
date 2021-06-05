@@ -39,7 +39,7 @@ public class DeletePackage extends javax.swing.JFrame {
     
     public void addDatatoRow()
     {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         Object rowData[] = new Object[4];
         model.setRowCount(0);
         for(int i=0;i<JazzWorld.worldInstance().getPack().size();i++)

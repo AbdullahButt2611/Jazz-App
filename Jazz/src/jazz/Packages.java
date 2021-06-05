@@ -33,7 +33,7 @@ public class Packages {
         Random rand = new Random();
         for(int i =0;i<4;i++)
         {
-            s+=rand.nextInt();
+            s+=rand.nextInt(10);
         }
         this.ID=s;
     }
@@ -161,7 +161,7 @@ public class Packages {
      */
     public boolean setMessages(int message)
     {
-        if(messages>0)
+        if(message>0)
         {
             this.messages=messages;
             return true;
