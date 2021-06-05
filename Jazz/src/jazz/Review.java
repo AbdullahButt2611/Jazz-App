@@ -5,7 +5,9 @@
  */
 package jazz;
 
+import java.io.FileWriter;
 import javax.swing.JOptionPane;
+import javax.swing.JSlider;
     
     
 
@@ -253,12 +255,34 @@ public class Review extends javax.swing.JFrame {
 
     private void rateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rateButtonActionPerformed
         // TODO add your handling code here:
+        UserReview l=new Ratings();
         String f=reviewText.getText();
-        System.out.println(f);
+       
+        int k=jSlider2.getValue();
+        
+        try{
+        FileWriter fr=new FileWriter("ReviewRating.txt",true);
+        for(int i=0;i<RegisteredAccounts.getUsersInstance().getUsers().size();i++)
+        {
+            fr.write("Name: "+RegisteredAccounts.getUsersInstance().getUsers().get(i).getUsername()+"\n");
+            fr.write("Contact Number: "+RegisteredAccounts.getUsersInstance().getUsers().get(i).getContact()+"\n");
+            fr.write("Comments: "+f+"\n"+"Rating Given: "+k+"\n"+"\n");
+        }
+        System.out.println("File  Written");
+        fr.close();
+        }catch(Exception ex)
+        {
+            System.out.println("File not Written");
+        }
+        
+        l.AddComments(0);
+        l.Action();
         JOptionPane.showMessageDialog(this, "Logged out Successfully", "Success",JOptionPane.INFORMATION_MESSAGE);
         FirstScreen first = new FirstScreen();
         first.setVisible(true);
         this.dispose();
+        
+        
     }//GEN-LAST:event_rateButtonActionPerformed
 
     /**
