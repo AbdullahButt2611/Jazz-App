@@ -9,22 +9,24 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author it
+ * @author 2020-CS-72
+ * @author 2020-CS-63
  */
+import java.awt.EventQueue;
 public class UserReview {
-    private String Comments;
+    
     public void AddComments(int n)
     {
         
     }
-    public void Action()
+    public void Action(String Comments)
     {
-        JOptionPane.showMessageDialog(null," We have recorded your message and we will make us quallty better in Future ");
+        JOptionPane.showMessageDialog(null," We have recorded your message"+" "+Comments+ " and we will make us quallty better in Future ");
     }
 }
 class Ratings extends UserReview{
     
-    UserReview q=new Ratings();
+    Ratings q=new Ratings();
     @Override
     public void AddComments(int g){
         if(g==1)

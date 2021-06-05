@@ -255,7 +255,7 @@ public class Review extends javax.swing.JFrame {
 
     private void rateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rateButtonActionPerformed
         // TODO add your handling code here:
-        UserReview l=new Ratings();
+         UserReview l=new Ratings();
         String f=reviewText.getText();
        
         int k=jSlider2.getValue();
@@ -267,6 +267,8 @@ public class Review extends javax.swing.JFrame {
             fr.write("Name: "+RegisteredAccounts.getUsersInstance().getUsers().get(i).getUsername()+"\n");
             fr.write("Contact Number: "+RegisteredAccounts.getUsersInstance().getUsers().get(i).getContact()+"\n");
             fr.write("Comments: "+f+"\n"+"Rating Given: "+k+"\n"+"\n");
+            l.Action(f);
+            l.AddComments(k);
         }
         System.out.println("File  Written");
         fr.close();
@@ -275,8 +277,7 @@ public class Review extends javax.swing.JFrame {
             System.out.println("File not Written");
         }
         
-        l.AddComments(0);
-        l.Action();
+        
         JOptionPane.showMessageDialog(this, "Logged out Successfully", "Success",JOptionPane.INFORMATION_MESSAGE);
         FirstScreen first = new FirstScreen();
         first.setVisible(true);
