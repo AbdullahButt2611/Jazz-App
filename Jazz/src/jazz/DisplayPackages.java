@@ -39,8 +39,8 @@ public class DisplayPackages extends javax.swing.JFrame {
     
     public void addDatatoRow()
     {
-        DefaultTableModel model = new DefaultTableModel();
-        Object rowData[] = new Object[4];
+        DefaultTableModel model = (DefaultTableModel)displaytable.getModel();
+        Object rowData[] = new Object[7];
         model.setRowCount(0);
         for(int i=0;i<JazzWorld.worldInstance().getPack().size();i++)
         {

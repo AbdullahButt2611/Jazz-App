@@ -87,7 +87,7 @@ public class Order {
     {
         try 
         {
-            FileReader fr = new FileReader("KFC.txt");
+            FileReader fr = new FileReader("McDonald.txt");
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
             line=br.readLine();

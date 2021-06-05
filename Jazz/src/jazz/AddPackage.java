@@ -39,9 +39,10 @@ public class AddPackage extends javax.swing.JFrame {
     
     public void addDatatoRow()
     {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         Object rowData[] = new Object[4];
         model.setRowCount(0);
+        System.out.println(JazzWorld.worldInstance().getPack().size());
         for(int i=0;i<JazzWorld.worldInstance().getPack().size();i++)
         {
             rowData[0]=i+1;
@@ -389,7 +390,7 @@ public class AddPackage extends javax.swing.JFrame {
                         
                         flag=pack.setMinutes(Integer.parseInt(minutes));
                         if(!flag)
-                            str+="SMS\n";
+                            str+="Minutes\n";
                         
                         if(v==0)
                             pack.setValidity(1);

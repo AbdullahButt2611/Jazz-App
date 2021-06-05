@@ -1,0 +1,8 @@
+ID,      Name,      Timing,      Seats
+M-1220,Avenger Age of Ultron,Morning,13
+M-7542,Black Widow,Evening,24
+M-7005,Fast 9,Evening,4
+M-1007,No Time to Die,Morning,31
+M-7015,Fast 9,Morning,14
+M-1520,Kung Fu Panda,Evening,25
+M-1254,Avenger Age of Ultron,Evening,27

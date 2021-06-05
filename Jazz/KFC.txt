@@ -1,0 +1,4 @@
+ID,     Name,      Deal,      Persons,    Price
+K-1124,Family festival,4 Crunch Bugers+4 Pieces of chicken+2 Dinner rolls+cold Drinks,4,1499
+K-2021,Buffalo,4 Sausy Wings,1,399
+K-4202,Value Bucket,9 chieck pieces,2,1250 

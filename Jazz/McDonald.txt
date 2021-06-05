@@ -1,0 +1,4 @@
+ID,     Name,      Deal,      Persons,    Price
+M-4211,The Nation,Chicken Burger+cold drink,1,250
+M-1202,Behtareen Deal Iftar,3 burgers+3 milk shakes,3,1350
+M-2024,Share Box,4 burgers+4 nuggets+2 fries+cold drink,4,1195
