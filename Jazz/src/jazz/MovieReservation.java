@@ -50,6 +50,7 @@ public class MovieReservation extends javax.swing.JFrame {
         for(int i=0;i<JazzCash.cashInstance().movie.size();i++)
         {
             Movies m = JazzCash.cashInstance().movie.remove();
+            
             rowData[0]=m.getID();
             rowData[1]=m.getName();
             rowData[2]=m.getTiming();

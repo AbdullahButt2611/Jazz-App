@@ -1,1 +1,2 @@
 Username,                CNIC,                 Contact,                   Email,                  logins,                   TPN
+ab,3520113291437,03344381565,abdullah@gmail.com,1,9989
