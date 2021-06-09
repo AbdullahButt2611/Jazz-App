@@ -102,8 +102,9 @@ public class RegisteredAccounts {
         }
         catch(Exception ex)
         {
-            System.out.println("Null identified");
+            System.out.println("Registered Accounts Read");
         }
+        System.out.println("Size :"+RegisteredAccounts.getUsersInstance().users.size());
     }
     
     

@@ -303,6 +303,7 @@ public class Regiter extends javax.swing.JFrame {
                     {
                         Credit c = new Credit(0);
                         Minutes min= new Minutes(0);
+                        min.SetExpiry(null);
                         Internet in = new Internet(0);
                         SMS s= new SMS(0);
                         RechargeAmount rec= new RechargeAmount(0);

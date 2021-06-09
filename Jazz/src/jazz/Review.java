@@ -5,6 +5,7 @@
  */
 package jazz;
 
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import javax.swing.JOptionPane;
 import javax.swing.JSlider;
@@ -263,13 +264,15 @@ public class Review extends javax.swing.JFrame {
        
         int k=jSlider2.getValue();
         FileWriter fr=new FileWriter("ReviewRating.txt",true);
-            fr.write("Name: "+RegisteredAccounts.getUsersInstance().getUsers().get(index).getUsername()+"\n");
-            fr.write("Contact Number: "+RegisteredAccounts.getUsersInstance().getUsers().get(index).getContact()+"\n");
-            fr.write("Comments: "+f+"\n"+"Rating Given: "+k+"\n"+"\n");
+        BufferedWriter br = new BufferedWriter(fr);
+            br.write("Name: "+RegisteredAccounts.getUsersInstance().getUsers().get(index).getUsername()+"\n");
+            br.write("Contact Number: "+RegisteredAccounts.getUsersInstance().getUsers().get(index).getContact()+"\n");
+            br.write("Comments: "+f+"\n"+"Rating Given: "+k+"\n"+"\n");
             l.Action(f);
             l.AddComments(k);
         System.out.println("File  Written");
         fr.close();
+        br.close();
         }catch(Exception ex)
         {
             System.out.println("File not Written");

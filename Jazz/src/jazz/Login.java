@@ -252,6 +252,7 @@ public class Login extends javax.swing.JFrame {
                     {
 
                         RegisteredAccounts.getUsersInstance().getUsers().get(id).setLogins(RegisteredAccounts.getUsersInstance().getUsers().get(id).getLogins()+1);
+                        System.out.println("Logged in");
                         ChoosePortal portal = new ChoosePortal(id);
                             portal.setVisible(true);
                             this.dispose();

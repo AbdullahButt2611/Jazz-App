@@ -1,1 +1,2 @@
 Username,                CNIC,                 Contact,                   Email,                  logins,                   TPN
+abdullah ,3520106485889,03084316271,abutt2210@gmail.com,1,8175
