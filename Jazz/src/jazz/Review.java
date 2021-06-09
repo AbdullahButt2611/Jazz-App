@@ -270,7 +270,7 @@ public class Review extends javax.swing.JFrame {
             br.write("Comments: "+f+"\n"+"Rating Given: "+k+"\n"+"\n");
             l.Action(f);
             l.AddComments(k);
-        System.out.println("File  Written");
+        
         fr.close();
         br.close();
         }catch(Exception ex)

@@ -1,1 +1,0 @@
-ID,       Subscribers,        messages,       minutes,     mbs,     name,     validity,     code
