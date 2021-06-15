@@ -29,16 +29,15 @@ public class ChoosePortal extends javax.swing.JFrame {
         DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDateTime now = LocalDateTime.now();
         String a=now.format(format);
-        if(JazzWorld.worldInstance().getMin().get(index).GetExpiry().equals("") || JazzWorld.worldInstance().getMin().get(index).GetExpiry().equals(null))
-        {
-            if(JazzWorld.worldInstance().getMin().get(index).GetExpiry().equals(a))
+        System.out.println("The size is "+JazzWorld.worldInstance().getMin().size());
+        
+            if(a.equals(JazzWorld.worldInstance().getMin().get(index).GetExpiry()))
             {
-                JazzWorld.worldInstance().getMin().get(index).SetExpiry("");
+                JazzWorld.worldInstance().getMin().get(index).SetExpiry(null);
                 JazzWorld.worldInstance().getMin().get(index).SetNumberOfMBS(0);
                 JazzWorld.worldInstance().getSms().get(index).SetNumberOfSMS(0);
                 JazzWorld.worldInstance().getInternet().get(index).SetNumberOfMBS(0);
             }
-        }
     }
 
     /**
