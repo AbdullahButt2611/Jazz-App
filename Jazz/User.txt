@@ -1,0 +1,2 @@
+Username,                CNIC,                 Contact,                   Email,                  logins,                   TPN
+aneeza,3520113291437,03054749096,an@gmail.com,2,350

@@ -5,7 +5,7 @@
  */
 package jazz;
 
-import java.io.BufferedWriter;
+
 import java.io.FileWriter;
 import javax.swing.JOptionPane;
 import javax.swing.JSlider;
@@ -257,27 +257,27 @@ public class Review extends javax.swing.JFrame {
     private void rateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rateButtonActionPerformed
         // TODO add your handling code here:
          
-        
-        try{
-            UserReview l=new Ratings();
+        UserReview l=new Ratings();
         String f=reviewText.getText();
-       
         int k=jSlider2.getValue();
-        FileWriter fr=new FileWriter("ReviewRating.txt",true);
-        BufferedWriter br = new BufferedWriter(fr);
-            br.write("Name: "+RegisteredAccounts.getUsersInstance().getUsers().get(index).getUsername()+"\n");
-            br.write("Contact Number: "+RegisteredAccounts.getUsersInstance().getUsers().get(index).getContact()+"\n");
-            br.write("Comments: "+f+"\n"+"Rating Given: "+k+"\n"+"\n");
-            l.Action(f);
-            l.AddComments(k);
+        try{
+            
         
-        fr.close();
-        br.close();
-        }catch(Exception ex)
+            FileWriter fr=new FileWriter("ReviewRating.txt",true);
+            fr.write("Name: "+RegisteredAccounts.getUsersInstance().getUsers().get(index).getUsername()+"\n");
+            fr.write("Contact Number: "+RegisteredAccounts.getUsersInstance().getUsers().get(index).getContact()+"\n");
+            fr.write("Comments: "+f+"\n"+"Rating Given: "+k+"\n"+"\n");
+            System.out.println("Written!!!");
+            fr.close();
+            
+        }
+        catch(Exception ex)
         {
             System.out.println("File not Written");
         }
         
+            l.Action(f);
+            l.AddComments(k);
         
         JOptionPane.showMessageDialog(this, "Logged out Successfully", "Success",JOptionPane.INFORMATION_MESSAGE);
         FirstScreen first = new FirstScreen();
