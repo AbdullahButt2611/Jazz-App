@@ -24,7 +24,7 @@ public class RegisteredAccounts {
     /**
      * This is a constructor for this class and will be called only to initialize the arrays in the method of getInstance
      */
-    public RegisteredAccounts()
+    private RegisteredAccounts()
     {
         users = new ArrayList<Users>();
     }

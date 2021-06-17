@@ -20,16 +20,16 @@ public class JazzCash {
     
     private List<Credit> credit;
     
-    Queue<Movies> movie ;
+    ArrayList<Movies> movie ;
     
     
     /**
      * This is a constructor for the JAzzCash class
      */
-    public JazzCash()
+    private JazzCash()
     {
        credit = new ArrayList<Credit>(); 
-       movie = new LinkedList<>();
+       movie = new ArrayList<>();
        
     }
 

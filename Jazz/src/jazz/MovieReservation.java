@@ -49,7 +49,7 @@ public class MovieReservation extends javax.swing.JFrame {
         model.setRowCount(0);
         for(int i=0;i<JazzCash.cashInstance().movie.size();i++)
         {
-            Movies m = JazzCash.cashInstance().movie.remove();
+            Movies m = JazzCash.cashInstance().movie.get(i);
             
             rowData[0]=m.getID();
             rowData[1]=m.getName();
@@ -152,6 +152,8 @@ public class MovieReservation extends javax.swing.JFrame {
         typeBox.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         typeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Silver", "Gold", "Platinum" }));
 
+        amountText.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        amountText.setForeground(new java.awt.Color(0, 0, 102));
         amountText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
         amountText.setEnabled(false);
 
@@ -255,7 +257,7 @@ public class MovieReservation extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 480, 430));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jazz/F9.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 600));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1060, 600));
 
         setSize(new java.awt.Dimension(1088, 647));
         setLocationRelativeTo(null);
@@ -319,7 +321,7 @@ public class MovieReservation extends javax.swing.JFrame {
         {
             for(int i = 0; i<JazzCash.cashInstance().movie.size();i++)
             {
-                Movies m=JazzCash.cashInstance().movie.remove();
+                Movies m=JazzCash.cashInstance().movie.get(i);
                 if(m.getID().equals(ID))
                 {
                     in=1;

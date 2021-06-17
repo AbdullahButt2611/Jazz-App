@@ -16,7 +16,7 @@ import java.util.*;
  */
 public class Order {
     
-    Stack<KFC> kfc= new Stack<KFC>();
+    ArrayList<KFC> kfc= new ArrayList<KFC>();
     
     Set<Hardeez> hardeez = new HashSet<>();
     
@@ -33,6 +33,7 @@ public class Order {
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
             line=br.readLine();
+            
             while((line!=null) || line!="")
             {
                 KFC k = new KFC();
@@ -42,7 +43,7 @@ public class Order {
                 k.setDeal(toks[2]);
                 k.setPersons(Integer.parseInt(toks[3]));
                 k.setPrice(Integer.parseInt(toks[4]));
-                JazzWorld.worldInstance().getOrder().kfc.push(k);
+                JazzWorld.worldInstance().getOrder().kfc.add(k);
                 line = br.readLine();
             }
             br.close();

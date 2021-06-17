@@ -62,7 +62,7 @@ public class JazzWorld {
     /**
      * This is a constructor for the JazzWorld class
      */
-    public JazzWorld()
+    private JazzWorld()
     {
         min = new ArrayList<Minutes>();
         internet = new ArrayList<Internet>();

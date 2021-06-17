@@ -52,7 +52,7 @@ public class OrderFood extends javax.swing.JFrame {
             System.out.println(JazzWorld.worldInstance().getOrder().kfc.size());
             for(int i =0;i<JazzWorld.worldInstance().getOrder().kfc.size();i++)
             {
-                KFC k = JazzWorld.worldInstance().getOrder().kfc.pop();
+                KFC k = JazzWorld.worldInstance().getOrder().kfc.get(i);
                 rowData[0]=k.getID();
                 rowData[1]=k.getName();
                 rowData[2]=k.getDeal();
@@ -409,7 +409,7 @@ public class OrderFood extends javax.swing.JFrame {
             {
                 for(int i =0;i<JazzWorld.worldInstance().getOrder().kfc.size();i++)
                 {
-                    KFC k = JazzWorld.worldInstance().getOrder().kfc.pop();
+                    KFC k = JazzWorld.worldInstance().getOrder().kfc.get(i);
                     if(k.getID().equals(id))
                     {
                         this.ID=k.getID();
