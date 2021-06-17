@@ -13,7 +13,23 @@ import java.util.*;
  */
 public class Packages {
     
+    private int messages;
     
+    private int minutes;
+    
+    private int mbs;
+    
+    private String name;
+    
+    private int validity;
+    
+    public String code;
+
+    
+    public Packages(int messages)
+    {
+        this.messages=messages;
+    }
     
     private int subscribers;
     
@@ -37,18 +53,7 @@ public class Packages {
         }
         this.ID=s;
     }
-    private int messages;
     
-    private int minutes;
-    
-    private int mbs;
-    
-    private String name;
-    
-    private int validity;
-    
-    public String code;
-
     public String getCode() {
         return code;
     }

@@ -5,19 +5,30 @@
  */
 package jazz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DEll
  */
 public class RetrieveMoneyConfirmation extends javax.swing.JFrame {
 
+    
+    int index =-1;
+    int amount=-1;
     /**
      * Creates new form RetrieveMoneyConfirmation
      */
-    public RetrieveMoneyConfirmation() {
+    public RetrieveMoneyConfirmation(int index,int amount) {
         initComponents();
+        this.index=index;
+        this.amount=amount;
     }
 
+     public RetrieveMoneyConfirmation() {
+        initComponents();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -151,6 +162,8 @@ public class RetrieveMoneyConfirmation extends javax.swing.JFrame {
 
     private void yesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesButtonActionPerformed
         // TODO add your handling code here:
+        JazzCash.cashInstance().getCredit().get(index).retrieveAmount(amount);
+        JOptionPane.showMessageDialog(this,"Amount Retrieved Successfully","Congratulations!!!",JOptionPane.INFORMATION_MESSAGE);
         AdminCashMenu menu=new AdminCashMenu();
         menu.setVisible(true);
         this.dispose();

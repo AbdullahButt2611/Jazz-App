@@ -42,7 +42,7 @@ public class DeleteAccont extends javax.swing.JFrame {
     
     public void addDataToRow()
     {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = (DefaultTableModel)deleteTable.getModel();
         Object rowData[] = new Object[5];
         model.setRowCount(0);
         for(int i=0;i<RegisteredAccounts.getUsersInstance().getUsers().size();i++)

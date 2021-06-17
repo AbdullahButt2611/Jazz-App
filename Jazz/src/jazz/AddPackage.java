@@ -315,7 +315,6 @@ public class AddPackage extends javax.swing.JFrame {
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
         String str="";
-        Packages pack = new Packages();
         String name= nameText.getText();
         String code = codeText.getText();
         String mb = mbText.getText();
@@ -371,6 +370,7 @@ public class AddPackage extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this,"SMS should be in Digits","Wrong Input",JOptionPane.ERROR_MESSAGE);
                     else
                     {
+                        Packages pack = new Packages(Integer.parseInt(sms));
                         boolean flag=false;
                         flag=pack.setName(name);
                         if(!flag)
@@ -384,9 +384,9 @@ public class AddPackage extends javax.swing.JFrame {
                         if(!flag)
                             str+="MBs\n";
                         
-                        flag=pack.setMessages(Integer.parseInt(sms));
-                        if(!flag)
-                            str+="SMS\n";
+//                        flag=pack.setMessages(Integer.parseInt(sms));
+//                        if(!flag)
+//                            str+="SMS\n";
                         
                         flag=pack.setMinutes(Integer.parseInt(minutes));
                         if(!flag)

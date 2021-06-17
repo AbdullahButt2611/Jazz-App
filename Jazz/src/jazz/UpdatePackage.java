@@ -423,7 +423,7 @@ public class UpdatePackage extends javax.swing.JFrame {
             String str = "";
             boolean flag=false;
             
-            Packages pack= new Packages();
+            Packages pack= new Packages(0);
             if( name.equals("") || name.equals(null))
                 pack.setName(JazzWorld.worldInstance().getPack().get(index).getName());
             else

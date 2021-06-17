@@ -15,7 +15,7 @@ public class RetrieveMoney extends javax.swing.JFrame {
 
     
     int index = -1;
-    
+    int in =-1;
     String contact="";
     
     /**
@@ -208,9 +208,17 @@ public class RetrieveMoney extends javax.swing.JFrame {
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         // TODO add your handling code here:
+        AdminCashMenu menu=new AdminCashMenu();
+        menu.setVisible(true);
+        this.dispose();
+         
+          
+    }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
+        // TODO add your handling code here:
         
-         int in =-1;
-          if(contact.equals("") || contact.equals(null) || amountText.getText().equals(null) || amountText.getText().equals(null))
+        if(contact.equals("") || contact.equals(null) || amountText.getText().equals(null) || amountText.getText().equals(null))
           {
               JOptionPane.showMessageDialog(this,"You input box is Empty\nYou first need to enter the account and click on the search button\nThen enter the amount and click on the Send button","Empty Input",JOptionPane.ERROR_MESSAGE);
           }
@@ -235,10 +243,9 @@ public class RetrieveMoney extends javax.swing.JFrame {
                   {
                     if(JazzCash.cashInstance().getCredit().get(index).isMoneyAvaialbe(amount)) 
                     {
-                        JazzCash.cashInstance().getCredit().get(index).retrieveAmount(amount);
-                        JOptionPane.showMessageDialog(this,"Amount Added Successfully","Congratulations!!!",JOptionPane.INFORMATION_MESSAGE);
-                        AdminCashMenu menu=new AdminCashMenu();
-                        menu.setVisible(true);
+                        
+                        RetrieveMoneyConfirmation confirm = new RetrieveMoneyConfirmation(index,amount);
+                        confirm.setVisible(true);
                         this.dispose();
                     }
                     else
@@ -250,13 +257,6 @@ public class RetrieveMoney extends javax.swing.JFrame {
               else
                   JOptionPane.showMessageDialog(this,"Only digits are allowed in Amount box","Digits Exception",JOptionPane.ERROR_MESSAGE);
           }
-    }//GEN-LAST:event_cancelButtonActionPerformed
-
-    private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
-        // TODO add your handling code here:
-        RetrieveMoneyConfirmation confirm = new RetrieveMoneyConfirmation();
-        confirm.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_sendButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
