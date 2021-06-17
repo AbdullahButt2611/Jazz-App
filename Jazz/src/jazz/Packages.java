@@ -26,9 +26,10 @@ public class Packages {
     public String code;
 
     
-    public Packages(int messages)
+    public Packages(int messages,int val)
     {
         this.messages=messages;
+        this.validity=val;
     }
     
     private int subscribers;

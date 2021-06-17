@@ -299,8 +299,11 @@ public class SendMoney extends javax.swing.JFrame {
                                     menu.setVisible(true);
                                     this.dispose();
                                 }
+                                else
                                 JOptionPane.showMessageDialog(this,"Your wallet does not contain enough balance","Credit Error",JOptionPane.ERROR_MESSAGE);
                             }
+                            else
+                                JOptionPane.showMessageDialog(this,"Invalid TPN","Credential Error",JOptionPane.ERROR_MESSAGE);
                         }
                     }
                     else

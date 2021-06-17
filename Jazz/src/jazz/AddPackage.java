@@ -321,6 +321,7 @@ public class AddPackage extends javax.swing.JFrame {
         String minutes = minuteText.getText();
         String sms = smsText.getText();
         int v=validationBox.getSelectedIndex();
+        System.out.println("Index = "+v);
         int in =-1;
         if(name.equals(null) || name.equals("") ||code.equals(null) || code.equals("") || mb.equals(null) || mb.equals("") || minutes.equals(null) || minutes.equals("") || sms.equals(null) || sms.equals(""))
             JOptionPane.showMessageDialog(this,"Some of the Boxes are Empty","Null Input",JOptionPane.ERROR_MESSAGE);
@@ -370,7 +371,14 @@ public class AddPackage extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this,"SMS should be in Digits","Wrong Input",JOptionPane.ERROR_MESSAGE);
                     else
                     {
-                        Packages pack = new Packages(Integer.parseInt(sms));
+                        int val=-1;
+                        if(v==0)
+                            val=1;
+                        else if(v==1)
+                            val=7;
+                        else if(v==2)
+                            val=30;
+                        Packages pack = new Packages(Integer.parseInt(sms),val);
                         boolean flag=false;
                         flag=pack.setName(name);
                         if(!flag)
@@ -392,12 +400,7 @@ public class AddPackage extends javax.swing.JFrame {
                         if(!flag)
                             str+="Minutes\n";
                         
-                        if(v==0)
-                            pack.setValidity(1);
-                        else if(v==1)
-                            pack.setValidity(7);
-                        else if(v==2)
-                            pack.setValidity(30);
+                        
                         
                         if(str.equals("") || str.equals(null))
                         {

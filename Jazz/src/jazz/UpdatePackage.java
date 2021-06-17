@@ -423,62 +423,64 @@ public class UpdatePackage extends javax.swing.JFrame {
             String str = "";
             boolean flag=false;
             
-            Packages pack= new Packages(0);
-            if( name.equals("") || name.equals(null))
-                pack.setName(JazzWorld.worldInstance().getPack().get(index).getName());
-            else
-            {
-                flag=pack.setName(name);
-                if(!flag)
-                    str+="Name\n";
-            }
-            if( code.equals("") || code.equals(null))
-                pack.setCode(JazzWorld.worldInstance().getPack().get(index).getCode());
-            else
-            {
-                flag=pack.setCode(code);
-                if(!flag)
-                    str+="Code\n";
-            }
-            if( mb.equals("") || mb.equals(null))
-                pack.setMbs(JazzWorld.worldInstance().getPack().get(index).getMbs());
-            else
-            {
-                flag=pack.setMbs(Integer.parseInt(mb));
-                if(!flag)
-                    str+="MBs\n";
-            }
-            if( minutes.equals("") || minutes.equals(null))
-                pack.setMinutes(JazzWorld.worldInstance().getPack().get(index).getMinutes());
-            else
-            {
-                flag=pack.setMinutes(Integer.parseInt(minutes));
-                if(!flag)
-                    str+="Minutes\n";
-            }
+           
             if( sms.equals("") || sms.equals(null))
-                pack.setMessages(JazzWorld.worldInstance().getPack().get(index).getMessages());
+            {
+//                pack.setValidity(JazzWorld.worldInstance().getPack().get(index).getValidity());
+                 Packages pack= new Packages(JazzWorld.worldInstance().getPack().get(index).getMessages(),JazzWorld.worldInstance().getPack().get(index).getValidity());
+            }
             else
             {
-                flag=pack.setMessages(Integer.parseInt(sms));
-                if(!flag)
-                    str+="SMS\n";
-            }
+                Packages pack= new Packages(Integer.parseInt(minutes),JazzWorld.worldInstance().getPack().get(index).getValidity());
             
-            if(str.equals("") || str.equals(null))
-            {
-                pack.setID(JazzWorld.worldInstance().getPack().get(index).getID());
-                pack.setSubscribers(JazzWorld.worldInstance().getPack().get(index).getSubscribers());
-                pack.setValidity(JazzWorld.worldInstance().getPack().get(index).getValidity());
-                JazzWorld.worldInstance().getPack().set(index, pack);
-                JOptionPane.showMessageDialog(this,"Data has been Updated","Updation completed", JOptionPane.INFORMATION_MESSAGE);
-                WorldAdminMenu menu=new WorldAdminMenu();
-                menu.setVisible(true);
-                this.dispose();
+                if( name.equals("") || name.equals(null))
+                    pack.setName(JazzWorld.worldInstance().getPack().get(index).getName());
+                else
+                {
+                    flag=pack.setName(name);
+                    if(!flag)
+                        str+="Name\n";
+                }
+                if( code.equals("") || code.equals(null))
+                    pack.setCode(JazzWorld.worldInstance().getPack().get(index).getCode());
+                else
+                {
+                    flag=pack.setCode(code);
+                    if(!flag)
+                        str+="Code\n";
+                }
+                if( mb.equals("") || mb.equals(null))
+                    pack.setMbs(JazzWorld.worldInstance().getPack().get(index).getMbs());
+                else
+                {
+                    flag=pack.setMbs(Integer.parseInt(mb));
+                    if(!flag)
+                        str+="MBs\n";
+                }
+                if( minutes.equals("") || minutes.equals(null))
+                    pack.setMinutes(JazzWorld.worldInstance().getPack().get(index).getMinutes());
+                else
+                {
+                    flag=pack.setMinutes(Integer.parseInt(minutes));
+                    if(!flag)
+                        str+="Minutes\n";
+                }
+
+
+                if(str.equals("") || str.equals(null))
+                {
+                    pack.setID(JazzWorld.worldInstance().getPack().get(index).getID());
+                    pack.setSubscribers(JazzWorld.worldInstance().getPack().get(index).getSubscribers());
+                    
+                    JazzWorld.worldInstance().getPack().set(index, pack);
+                    JOptionPane.showMessageDialog(this,"Data has been Updated","Updation completed", JOptionPane.INFORMATION_MESSAGE);
+                    WorldAdminMenu menu=new WorldAdminMenu();
+                    menu.setVisible(true);
+                    this.dispose();
+                }
+                else
+                    JOptionPane.showMessageDialog(this,"The following Data is incorrect\n"+str,"Error",JOptionPane.ERROR_MESSAGE);
             }
-            else
-                JOptionPane.showMessageDialog(this,"The following Data is incorrect\n"+str,"Error",JOptionPane.ERROR_MESSAGE);
-                
         }
         
         
