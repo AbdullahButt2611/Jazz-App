@@ -1,2 +1,4 @@
 2021-06-16,aneeza,03054749096,Daewoo,Lahore to Karachi,Evening,A/C,1,1150
 2021-06-17,ab,03084316271,Niazi Express,Lahore to Peshawar,Evening,Non A/C,3,3150
+2021-06-18,ab,03084316271,Niazi Express,Lahore to Narowal,Evening,Non A/C,2,1700
+2021-06-18,ab,03084316271,Daewoo,Lahore to Narowal,Evening,Non A/C,1,1050

@@ -321,7 +321,6 @@ public class AddPackage extends javax.swing.JFrame {
         String minutes = minuteText.getText();
         String sms = smsText.getText();
         int v=validationBox.getSelectedIndex();
-        System.out.println("Index = "+v);
         int in =-1;
         if(name.equals(null) || name.equals("") ||code.equals(null) || code.equals("") || mb.equals(null) || mb.equals("") || minutes.equals(null) || minutes.equals("") || sms.equals(null) || sms.equals(""))
             JOptionPane.showMessageDialog(this,"Some of the Boxes are Empty","Null Input",JOptionPane.ERROR_MESSAGE);

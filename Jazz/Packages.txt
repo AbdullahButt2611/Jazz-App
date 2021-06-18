@@ -1,1 +1,2 @@
 ID,       Subscribers,        messages,       minutes,     mbs,     name,     validity,     code
+P-9170,0,100,100,7000,Weekly,7,*159#

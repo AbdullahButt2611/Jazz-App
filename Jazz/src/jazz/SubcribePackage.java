@@ -353,7 +353,7 @@ public class SubcribePackage extends javax.swing.JFrame {
             int in=-1;
             for(int i=0;i<JazzWorld.worldInstance().getPack().size();i++)
             {
-                if(JazzWorld.worldInstance().getPack().get(i).getCode().equals(code))
+                if(code.equals(JazzWorld.worldInstance().getPack().get(i).getCode()))
                 {
                     in=i;
                     break;
@@ -361,7 +361,9 @@ public class SubcribePackage extends javax.swing.JFrame {
                 else
                     in=-1;
                 
-                if(in==-1)
+                
+            }
+            if(in==-1)
                 {
                     JOptionPane.showMessageDialog(this,"Package not found","Unidentified Package",JOptionPane.ERROR_MESSAGE);
                 }
@@ -374,13 +376,15 @@ public class SubcribePackage extends javax.swing.JFrame {
                         price = 200;
                     else if(JazzWorld.worldInstance().getPack().get(in).getValidity()==30)
                         price = 620;
-                        
                     if(JazzWorld.worldInstance().getBalance().get(index).isBalanceAvailable(price))
                     {
                         JazzWorld.worldInstance().getPack().get(in).setSubscribers(JazzWorld.worldInstance().getPack().get(in).getSubscribers()+1);
+                        
                         JazzWorld.worldInstance().getBalance().get(index).retreiveBalance(price);
-                        JazzWorld.worldInstance().getInternet().get(index).SetNumberOfMBS(JazzWorld.worldInstance().getPack().get(in).getMbs());
-                        JazzWorld.worldInstance().getMin().get(index).SetNumberOfMBS(JazzWorld.worldInstance().getPack().get(in).getMinutes());
+                        JazzWorld.worldInstance().getInternet().get(index).SetNumberOfMBS(JazzWorld.worldInstance().getPack().get(in).getMbs()+JazzWorld.worldInstance().getInternet().get(index).GetNumberOfMBS());
+                        
+                        JazzWorld.worldInstance().getMin().get(index).SetNumberOfMBS(JazzWorld.worldInstance().getMin().get(index).GetNumberOfMinutes()+JazzWorld.worldInstance().getPack().get(in).getMinutes());
+                        
                         if(price==30)
                         {
                             DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -409,7 +413,8 @@ public class SubcribePackage extends javax.swing.JFrame {
                             JazzWorld.worldInstance().getMin().get(index).SetExpiry(b);
                         }
                         
-                        JazzWorld.worldInstance().getSms().get(index).SetNumberOfSMS(JazzWorld.worldInstance().getPack().get(in).getMessages());
+                        JazzWorld.worldInstance().getSms().get(index).SetNumberOfSMS(JazzWorld.worldInstance().getSms().get(index).GetNumberOfSMS()+JazzWorld.worldInstance().getPack().get(in).getMessages());
+                        
                         JOptionPane.showMessageDialog(this,"Package has been subscribed","Congratulations",JOptionPane.INFORMATION_MESSAGE);
                         CustomerCashMenu menu=new CustomerCashMenu(index);
                         menu.setVisible(true);
@@ -420,7 +425,6 @@ public class SubcribePackage extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(this,"You dont have Enough balance to subscribe to this offer","Balance Exception",JOptionPane.ERROR_MESSAGE);
                     }
                 }
-            }
         }
     }//GEN-LAST:event_SubscribeButtonActionPerformed
 

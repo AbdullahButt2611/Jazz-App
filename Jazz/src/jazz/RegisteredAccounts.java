@@ -104,7 +104,6 @@ public class RegisteredAccounts {
         {
             System.out.println("Registered Accounts Read");
         }
-        System.out.println("Size :"+RegisteredAccounts.getUsersInstance().users.size());
     }
     
     

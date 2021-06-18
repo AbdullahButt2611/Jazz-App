@@ -236,57 +236,61 @@ public class RechargeBalance extends javax.swing.JFrame {
         int check2 = -1;
         boolean flag=false;
         String a=contactText.getText();
-        int u=Integer.parseInt(amountText.getText());
+        
         String e=passText.getText();
-        int y=Integer.parseInt(e);
-        int o=JazzCash.cashInstance().getCredit().get(index).getAmount();
-        for(int i=0;i<RegisteredAccounts.getUsersInstance().getUsers().size();i++)
+        if(!a.equals("") && !a.equals(null) && !e.equals("") && !e.equals(null) && !amountText.getText().equals("") && !amountText.getText().equals(null))
         {
-            if(RegisteredAccounts.getUsersInstance().getUsers().get(i).getContact().equals(a))   
+            int u=Integer.parseInt(amountText.getText());
+            int y=Integer.parseInt(e);
+            int o=JazzCash.cashInstance().getCredit().get(index).getAmount();
+            for(int i=0;i<RegisteredAccounts.getUsersInstance().getUsers().size();i++)
             {
-                check1=1;
-                if(RegisteredAccounts.getUsersInstance().getUsers().get(i).getTPN()==y)
+                if(RegisteredAccounts.getUsersInstance().getUsers().get(i).getContact().equals(a))   
                 {
+                    check1=i;
+                    break;
                     
-                    flag=JazzCash.cashInstance().getCredit().get(index).isMoneyAvaialbe(u);
-                    if(flag==true)
-                    {
-                        check2=1;
-                         JazzCash.cashInstance().getCredit().get(index).retrieveAmount(u);
-                         JazzWorld.worldInstance().getBalance().get(i).Balance=(double)u;
-                         break;
-                    }
-                    else
-                    {
-                        JOptionPane.showMessageDialog(null,"You dont have Enough Money");
-                    }
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(this,"You have Entered wrong TPN code" , "ERROR", JOptionPane.ERROR_MESSAGE);
+                    check1=-1;
+                    
+
                 }
             }
-            else
+            if(check1==-1)
             {
                 JOptionPane.showMessageDialog(this,"Your Contact Number is Not Registered Register it First" , "ERROR", JOptionPane.ERROR_MESSAGE);
                 
             }
-        }
-        if(check1==-1)
-        {
-            JOptionPane.showMessageDialog(null,"Contact not found");
-        }
-        else if(check2==-1)
-        {
+            else
+            {
+                if(RegisteredAccounts.getUsersInstance().getUsers().get(check1).getTPN()==y)
+                    {
+
+                        flag=JazzCash.cashInstance().getCredit().get(index).isMoneyAvaialbe(u);
+                        if(flag==true)
+                        {
+                            JazzCash.cashInstance().getCredit().get(index).retrieveAmount(u);
+                            JazzWorld.worldInstance().getBalance().get(check1).Balance+=(double)u;
+                            JOptionPane.showMessageDialog(null,"Balance Recharged Successfully");
+                            CustomerCashMenu menu=new CustomerCashMenu(index);
+                            menu.setVisible(true);
+                        }
+                        else
+                        {
+                            JOptionPane.showMessageDialog(null,"You dont have Enough Money");
+                        }
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(this,"You have Entered wrong TPN code" , "ERROR", JOptionPane.ERROR_MESSAGE);
+                    }
+            }
             
         }
-        else if(check1==1 && check2==1)
-        {
-            JOptionPane.showMessageDialog(null,"Balance Recharged Successfully");
-            CustomerCashMenu menu=new CustomerCashMenu(index);
-            menu.setVisible(true);
-            this.dispose();
-        }
+        else
+            JOptionPane.showMessageDialog(null,"The Feilds are Empty");
     }//GEN-LAST:event_loadButtonActionPerformed
 
     private void contactTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactTextActionPerformed

@@ -277,15 +277,16 @@ public class JazzWorld {
             line = br.readLine();
             while(line!="" || line!=null)
             {
-                Packages pack = new Packages(0,0);
+                
                 String toks[] = line.split(",");
+                Packages pack = new Packages(Integer.parseInt(toks[2]),Integer.parseInt(toks[6]));
                 pack.setID(toks[0]);
                 pack.setSubscribers(Integer.parseInt(toks[1]));
-                pack.setMessages(Integer.parseInt(toks[2]));
+//                pack.setMessages();
                 pack.setMinutes(Integer.parseInt(toks[3]));
                 pack.setMbs(Integer.parseInt(toks[4]));
                 pack.setName(toks[5]);
-                pack.setValidity(Integer.parseInt(toks[6]));
+//                pack.setValidity();
                 pack.setCode(toks[7]);
                 this.pack.add(pack);
                 line = br.readLine();

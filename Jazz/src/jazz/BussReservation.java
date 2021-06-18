@@ -379,24 +379,31 @@ public class BussReservation extends javax.swing.JFrame {
             }
             else
             {
-                writeBusData();
-                DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                LocalDateTime now = LocalDateTime.now();
-                String a=now.format(format);
-                String receipt="";
-                receipt+="*******************************************************************************\n";
-                receipt+="                          BUS RESERVATION RECEIPT\n";
-                receipt+="*******************************************************************************\n";
-                receipt+=a+"\n\n";
-                receipt+="Company:         "+company+"\n";
-                receipt+="Route: "+route+"           Timing:"+timing+"\n";
-                receipt+="Type: "+type+"              No. of Seats: "+seats+"\n\n\n";
-                receipt+="Your Bill is : "+amount;
-                
-                JOptionPane.showMessageDialog(this,receipt,"Receipt",JOptionPane.INFORMATION_MESSAGE);
-                CustomerCashMenu menu=new CustomerCashMenu(index);
-                menu.setVisible(true);
-                this.dispose();
+                if(JazzCash.cashInstance().getCredit().get(index).isMoneyAvaialbe(amount))
+                {
+                    JazzCash.cashInstance().getCredit().get(index).retrieveAmount(amount);
+                    writeBusData();
+                    DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                    LocalDateTime now = LocalDateTime.now();
+                    String a=now.format(format);
+                    String receipt="";
+                    receipt+="*******************************************************************************\n";
+                    receipt+="                          BUS RESERVATION RECEIPT\n";
+                    receipt+="*******************************************************************************\n";
+                    receipt+=a+"\n\n";
+                    receipt+="Company:         "+company+"\n";
+                    receipt+="Route: "+route+"           Timing:"+timing+"\n";
+                    receipt+="Type: "+type+"              No. of Seats: "+seats+"\n\n\n";
+                    receipt+="Your Bill is : "+amount;
+
+
+                    JOptionPane.showMessageDialog(this,receipt,"Receipt",JOptionPane.INFORMATION_MESSAGE);
+                    CustomerCashMenu menu=new CustomerCashMenu(index);
+                    menu.setVisible(true);
+                    this.dispose();
+                }
+                else
+                    JOptionPane.showMessageDialog(null,"You wallet does not contain enough money");
                 
             }
     }//GEN-LAST:event_receiptButtonActionPerformed
