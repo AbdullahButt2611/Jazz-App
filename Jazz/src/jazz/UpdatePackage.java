@@ -474,6 +474,7 @@ public class UpdatePackage extends javax.swing.JFrame {
                     
                     JazzWorld.worldInstance().getPack().set(index, pack);
                     JOptionPane.showMessageDialog(this,"Data has been Updated","Updation completed", JOptionPane.INFORMATION_MESSAGE);
+                    JazzWorld.worldInstance().writePackData();
                     WorldAdminMenu menu=new WorldAdminMenu();
                     menu.setVisible(true);
                     this.dispose();

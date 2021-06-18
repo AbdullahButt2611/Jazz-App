@@ -180,6 +180,12 @@ public class DeleteAccountConfirm extends javax.swing.JFrame {
         JazzWorld.worldInstance().getInternet().remove(index);
         JazzWorld.worldInstance().getMin().remove(index);
         JazzWorld.worldInstance().getSms().remove(index);
+        RegisteredAccounts.getUsersInstance().saveData();
+        JazzCash.cashInstance().writeCreditData();
+        JazzWorld.worldInstance().writeBalanceData();
+        JazzWorld.worldInstance().writeIntData();
+        JazzWorld.worldInstance().writeMinData();
+        JazzWorld.worldInstance().writeSmsData();
         JOptionPane.showMessageDialog(this, "User Deleted Successfully", "Deletion Complete", JOptionPane.INFORMATION_MESSAGE);
         AdminCashMenu menu=new AdminCashMenu();
         menu.setVisible(true);

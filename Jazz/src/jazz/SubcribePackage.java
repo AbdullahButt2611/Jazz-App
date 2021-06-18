@@ -414,7 +414,10 @@ public class SubcribePackage extends javax.swing.JFrame {
                         }
                         
                         JazzWorld.worldInstance().getSms().get(index).SetNumberOfSMS(JazzWorld.worldInstance().getSms().get(index).GetNumberOfSMS()+JazzWorld.worldInstance().getPack().get(in).getMessages());
-                        
+                        JazzWorld.worldInstance().writeBalanceData();
+                        JazzWorld.worldInstance().writeIntData();
+                        JazzWorld.worldInstance().writeMinData();
+                        JazzWorld.worldInstance().writeSmsData();
                         JOptionPane.showMessageDialog(this,"Package has been subscribed","Congratulations",JOptionPane.INFORMATION_MESSAGE);
                         CustomerCashMenu menu=new CustomerCashMenu(index);
                         menu.setVisible(true);

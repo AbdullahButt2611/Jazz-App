@@ -164,6 +164,7 @@ public class RetrieveMoneyConfirmation extends javax.swing.JFrame {
         // TODO add your handling code here:
         JazzCash.cashInstance().getCredit().get(index).retrieveAmount(amount);
         JOptionPane.showMessageDialog(this,"Amount Retrieved Successfully","Congratulations!!!",JOptionPane.INFORMATION_MESSAGE);
+        JazzCash.cashInstance().writeCreditData();
         AdminCashMenu menu=new AdminCashMenu();
         menu.setVisible(true);
         this.dispose();

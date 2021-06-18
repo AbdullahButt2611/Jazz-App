@@ -233,6 +233,7 @@ public class DeletePackage extends javax.swing.JFrame {
                     JazzWorld.worldInstance().getPack().remove(i);
                     SetTable();
                     addDatatoRow();
+                    JazzWorld.worldInstance().writePackData();
                     in=1;
                     idText.setText("");
                     break;

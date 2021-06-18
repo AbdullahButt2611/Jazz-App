@@ -337,6 +337,7 @@ public class PayBills extends javax.swing.JFrame {
                                 JazzCash.cashInstance().getCredit().get(index).retrieveAmount(am);
                                 JOptionPane.showMessageDialog(this,"Bill Paid Successfully","Congratulations",JOptionPane.INFORMATION_MESSAGE);
                                 writeData();
+                                JazzCash.cashInstance().writeCreditData();
                                 CustomerCashMenu menu=new CustomerCashMenu(index);
                                 menu.setVisible(true);
                                 this.dispose();

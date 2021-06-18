@@ -201,6 +201,7 @@ public class CallForm extends javax.swing.JFrame {
                         {
                             JazzWorld.worldInstance().getMin().get(index).SetNumberOfMBS(JazzWorld.worldInstance().getMin().get(index).GetNumberOfMinutes()-msg);
                             JOptionPane.showMessageDialog(this,"You used "+msg+" Messages of the Data","Timeline",JOptionPane.INFORMATION_MESSAGE);
+                            JazzWorld.worldInstance().writeIntData();
                             WorldCustomerMenu menu = new WorldCustomerMenu(index);
                             menu.setVisible(true);
                             this.dispose();
@@ -209,6 +210,7 @@ public class CallForm extends javax.swing.JFrame {
                         {
                             JazzWorld.worldInstance().getBalance().get(index).retreiveBalance(msgBalance);
                             JOptionPane.showMessageDialog(this,"You used "+msg+" Messages of the Balance","Timeline",JOptionPane.INFORMATION_MESSAGE);
+                            JazzWorld.worldInstance().writeBalanceData();
                             WorldCustomerMenu menu = new WorldCustomerMenu(index);
                             menu.setVisible(true);
                             this.dispose();

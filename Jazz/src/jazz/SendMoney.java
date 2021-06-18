@@ -294,6 +294,7 @@ public class SendMoney extends javax.swing.JFrame {
                                 {
                                     JazzCash.cashInstance().getCredit().get(in).addAmount(am);
                                     JazzCash.cashInstance().getCredit().get(index).retrieveAmount(am);
+                                    JazzCash.cashInstance().writeCreditData();
                                     JOptionPane.showMessageDialog(this,"Amount Added Successfully","Congratulations!",JOptionPane.INFORMATION_MESSAGE);
                                     CustomerCashMenu menu=new CustomerCashMenu(index);
                                     menu.setVisible(true);

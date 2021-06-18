@@ -245,6 +245,7 @@ public class AddMoney extends javax.swing.JFrame {
                   {
                     JazzCash.cashInstance().getCredit().get(index).addAmount(amount);
                     JOptionPane.showMessageDialog(this,"Amount Added Successfully","Congratulations!!!",JOptionPane.INFORMATION_MESSAGE);
+                    JazzCash.cashInstance().writeCreditData();
                     AdminCashMenu menu=new AdminCashMenu();
                     menu.setVisible(true);
                     this.dispose();                      

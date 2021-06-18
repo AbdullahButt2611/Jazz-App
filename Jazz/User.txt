@@ -1,3 +1,5 @@
 Username,                CNIC,                 Contact,                   Email,                  logins,                   TPN
 aneeza,3520113291437,03054749096,an@gmail.com,2,350
-ab,3520106485889,03084316271,ab@gmail.com,3,9202
+ab,3520106485889,03084316271,ab@gmail.com,4,9202
+waleed dar,3520153052295,03098289884,waleedb275@gmail.com,0,6490
+Hamid,3520150607469,03234971691,mHamidnazir4@gmail.com,1,1252

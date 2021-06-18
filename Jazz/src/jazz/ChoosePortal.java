@@ -37,6 +37,9 @@ public class ChoosePortal extends javax.swing.JFrame {
                 JazzWorld.worldInstance().getMin().get(index).SetNumberOfMBS(0);
                 JazzWorld.worldInstance().getSms().get(index).SetNumberOfSMS(0);
                 JazzWorld.worldInstance().getInternet().get(index).SetNumberOfMBS(0);
+                JazzWorld.worldInstance().writeIntData();
+                JazzWorld.worldInstance().writeMinData();
+                JazzWorld.worldInstance().writeSmsData();
             }
     }
 

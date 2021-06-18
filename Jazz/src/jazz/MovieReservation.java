@@ -295,6 +295,7 @@ public class MovieReservation extends javax.swing.JFrame {
             {
                 JazzCash.cashInstance().getCredit().get(index).retrieveAmount(amount);
                 JOptionPane.showMessageDialog(this,receipt,"Receipt",JOptionPane.INFORMATION_MESSAGE);
+                JazzCash.cashInstance().writeCreditData();
                 CustomerCashMenu menu=new CustomerCashMenu(index);
                 menu.setVisible(true);
                 this.dispose();

@@ -317,6 +317,7 @@ public class UpdateAccount extends javax.swing.JFrame {
                         int tpn = Integer.parseInt(code);
                         RegisteredAccounts.getUsersInstance().getUsers().get(index).setFTPN(tpn);
                         JOptionPane.showConfirmDialog(this,"Updated Successfully","Congratulations",JOptionPane.INFORMATION_MESSAGE);
+                        RegisteredAccounts.getUsersInstance().saveData();
                         CustomerCashMenu menu=new CustomerCashMenu(index);
                         menu.setVisible(true);
                         this.dispose();

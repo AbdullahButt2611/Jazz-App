@@ -247,7 +247,8 @@ public class Recharge extends javax.swing.JFrame {
                       {
                           JazzWorld.worldInstance().getBalance().get(in).Balance+=am;
                           JOptionPane.showMessageDialog(this,"Recharge Done Successfully","Congratulations!",JOptionPane.INFORMATION_MESSAGE);
-                            WorldAdminMenu menu=new WorldAdminMenu();
+                          JazzWorld.worldInstance().writeBalanceData();  
+                          WorldAdminMenu menu=new WorldAdminMenu();
                             menu.setVisible(true);
                             this.dispose();
                       }

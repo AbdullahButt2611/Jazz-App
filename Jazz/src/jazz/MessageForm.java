@@ -202,6 +202,7 @@ public class MessageForm extends javax.swing.JFrame {
                         {
                             JazzWorld.worldInstance().getSms().get(index).SetNumberOfSMS(JazzWorld.worldInstance().getSms().get(index).GetNumberOfSMS()-msg);
                             JOptionPane.showMessageDialog(this,"You used "+msg+" Messages of the Data","Timeline",JOptionPane.INFORMATION_MESSAGE);
+                            JazzWorld.worldInstance().writeSmsData();
                             WorldCustomerMenu menu = new WorldCustomerMenu(index);
                             menu.setVisible(true);
                             this.dispose();
@@ -210,6 +211,7 @@ public class MessageForm extends javax.swing.JFrame {
                         {
                             JazzWorld.worldInstance().getBalance().get(index).retreiveBalance(msgBalance);
                             JOptionPane.showMessageDialog(this,"You used "+msg+" Messages of the Balance","Timeline",JOptionPane.INFORMATION_MESSAGE);
+                            JazzWorld.worldInstance().writeBalanceData();
                             WorldCustomerMenu menu = new WorldCustomerMenu(index);
                             menu.setVisible(true);
                             this.dispose();

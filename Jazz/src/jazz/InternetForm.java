@@ -461,6 +461,7 @@ public class InternetForm extends javax.swing.JFrame {
                     {
                         JazzWorld.worldInstance().getInternet().get(index).SetNumberOfMBS(JazzWorld.worldInstance().getInternet().get(index).GetNumberOfMBS()-total);
                         JOptionPane.showMessageDialog(this,"You used "+total+" MBs of the Data","Timeline",JOptionPane.INFORMATION_MESSAGE);
+                        JazzWorld.worldInstance().writeIntData();
                         WorldCustomerMenu menu = new WorldCustomerMenu(index);
                         menu.setVisible(true);
                         this.dispose();

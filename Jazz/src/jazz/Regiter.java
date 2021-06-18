@@ -316,7 +316,12 @@ public class Regiter extends javax.swing.JFrame {
                         us.setLogins(0);
                         RegisteredAccounts.getUsersInstance().getUsers().add(us);
                         JOptionPane.showMessageDialog(this,"Data has been Added Successfully\n You TPN coode is : "+RegisteredAccounts.getUsersInstance().getUsers().get(RegisteredAccounts.getUsersInstance().getUsers().size()-1).getTPN()+"\n You must remember this code to login to the system","Congratulations",JOptionPane.INFORMATION_MESSAGE);
-
+                        RegisteredAccounts.getUsersInstance().saveData();
+                        JazzCash.cashInstance().writeCreditData();
+                        JazzWorld.worldInstance().writeBalanceData();
+                        JazzWorld.worldInstance().writeIntData();
+                        JazzWorld.worldInstance().writeMinData();
+                        JazzWorld.worldInstance().writeSmsData();
 
                         Login log= new Login();
                         log.setVisible(true);

@@ -265,7 +265,7 @@ public class RechargeBalance extends javax.swing.JFrame {
             }
             else
             {
-                if(RegisteredAccounts.getUsersInstance().getUsers().get(check1).getTPN()==y)
+                if(RegisteredAccounts.getUsersInstance().getUsers().get(index).getTPN()==y)
                     {
 
                         flag=JazzCash.cashInstance().getCredit().get(index).isMoneyAvaialbe(u);
@@ -274,8 +274,11 @@ public class RechargeBalance extends javax.swing.JFrame {
                             JazzCash.cashInstance().getCredit().get(index).retrieveAmount(u);
                             JazzWorld.worldInstance().getBalance().get(check1).Balance+=(double)u;
                             JOptionPane.showMessageDialog(null,"Balance Recharged Successfully");
+                            JazzCash.cashInstance().writeCreditData();
+                            JazzWorld.worldInstance().writeBalanceData();
                             CustomerCashMenu menu=new CustomerCashMenu(index);
                             menu.setVisible(true);
+                            this.dispose();
                         }
                         else
                         {
